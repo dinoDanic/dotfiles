@@ -118,3 +118,4 @@ set -g VISUAL nvim
 # opencode
 fish_add_path /home/dino/.opencode/bin
 
+# bok, hc
