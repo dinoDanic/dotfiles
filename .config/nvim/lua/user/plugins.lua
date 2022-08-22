@@ -15,6 +15,7 @@ return require('packer').startup(function(use)
   use 'windwp/nvim-autopairs'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use "akinsho/toggleterm.nvim"
+  use 'nvim-lua/plenary.nvim'
 
   --lsp
   use 'neovim/nvim-lspconfig'
