@@ -11,11 +11,11 @@ return require('packer').startup(function(use)
   use 'goolord/alpha-nvim'
   use "ahmedkhalf/project.nvim"
   use 'romgrk/barbar.nvim'
-  use 'windwp/nvim-ts-autotag'
-  use 'windwp/nvim-autopairs'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use "akinsho/toggleterm.nvim"
-  use 'nvim-lua/plenary.nvim'
+
+  --auto
+  use 'windwp/nvim-ts-autotag'
 
   --lsp
   use 'neovim/nvim-lspconfig'
@@ -36,7 +36,15 @@ return require('packer').startup(function(use)
   -- formater
   use 'jose-elias-alvarez/null-ls.nvim'
 
+  -- comments
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  }
+
   -- colro themes
   use "EdenEast/nightfox.nvim"
-  use 'folke/tokyonight.nvim'
 end)
+

@@ -1,5 +1,3 @@
-require 'user.lsp.null-ls'
-
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -33,13 +31,8 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 end
 
-local lsp_flags = {
-  -- This is the default in Nvim 0.7+
-  debounce_text_changes = 150,
-}
 
 require('lspconfig')['tsserver'].setup{
     on_attach = on_attach,
-    flags = lsp_flags,
 }
 

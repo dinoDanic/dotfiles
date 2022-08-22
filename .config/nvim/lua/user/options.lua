@@ -43,6 +43,5 @@ end
 -- theme
 
 -- Load the colorscheme
-vim.cmd[[colorscheme terafox]]
-
+vim.cmd[[colorscheme nightfox]]
 
