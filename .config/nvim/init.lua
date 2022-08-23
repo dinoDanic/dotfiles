@@ -13,4 +13,5 @@ require('user.auto-cmd')
 require('user.toggle-term')
 require('user.lsp.null-ls')
 require('user.whichkey')
+require('user.autopairs')
 

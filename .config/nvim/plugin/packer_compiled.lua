@@ -140,6 +140,11 @@ _G.packer_plugins = {
     path = "/Users/dino/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
+  ["nvim-autopairs"] = {
+    loaded = true,
+    path = "/Users/dino/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/dino/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -170,11 +175,6 @@ _G.packer_plugins = {
     path = "/Users/dino/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
   },
-  ["nvim-ts-context-commentstring"] = {
-    loaded = true,
-    path = "/Users/dino/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
-    url = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
-  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/Users/dino/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
@@ -204,6 +204,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/dino/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/Users/dino/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["which-key.nvim"] = {
     loaded = true,

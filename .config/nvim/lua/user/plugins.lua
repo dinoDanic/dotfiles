@@ -1,17 +1,18 @@
 return require('packer').startup(function(use)
+  -- essential
   use 'wbthomason/packer.nvim'
-  use 'kyazdani42/nvim-tree.lua'
   use 'kyazdani42/nvim-web-devicons' 
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim' 
+  use 'kyazdani42/nvim-tree.lua'
   use 'lewis6991/gitsigns.nvim'
-  use 'nvim-lualine/lualine.nvim'
   use 'nvim-treesitter/nvim-treesitter'
+
+  use 'nvim-lualine/lualine.nvim'
   use "folke/which-key.nvim"
   use 'goolord/alpha-nvim'
   use "ahmedkhalf/project.nvim"
   use 'romgrk/barbar.nvim'
-  use 'JoosepAlviste/nvim-ts-context-commentstring'
   use "akinsho/toggleterm.nvim"
 
   --auto
@@ -44,7 +45,12 @@ return require('packer').startup(function(use)
     end
   }
 
+  --auto paris for { enter }
+  use "windwp/nvim-autopairs"
+
   -- colro themes
   use "EdenEast/nightfox.nvim"
-end)
+  use "folke/tokyonight.nvim"
 
+
+end)
