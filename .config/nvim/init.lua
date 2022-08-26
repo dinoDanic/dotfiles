@@ -14,5 +14,6 @@ require('user.toggle-term')
 require('user.lsp.null-ls')
 require('user.whichkey')
 require('user.autopairs')
-require('user.barbar')
+require('user.bufferline')
+--require('user.barbar')
 

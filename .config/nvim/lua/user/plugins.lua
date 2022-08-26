@@ -12,8 +12,11 @@ return require('packer').startup(function(use)
   use "folke/which-key.nvim"
   use 'goolord/alpha-nvim'
   use "ahmedkhalf/project.nvim"
-  use 'romgrk/barbar.nvim'
+  --use 'romgrk/barbar.nvim'
   use "akinsho/toggleterm.nvim"
+
+  -- tabs
+  use {'akinsho/bufferline.nvim', tag = "v2.*"}
 
   --auto
   use 'windwp/nvim-ts-autotag'
