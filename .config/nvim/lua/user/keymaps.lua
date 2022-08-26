@@ -42,6 +42,7 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 -- Insert --
 -- Press jj fast to exit insert mode 
 keymap("i", "jj", "<ESC>", opts)
+keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode

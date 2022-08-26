@@ -73,8 +73,8 @@ require('telescope').setup{
   },
   pickers = {
     buffers = {
-      initial_mode = "normal"
-    }
+      initial_mode = "insert"
+    },
     -- Default configuration for builtin pickers goes here:
     -- picker_name = {
     --   picker_config_key = value,
