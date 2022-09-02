@@ -23,22 +23,20 @@ return require('packer').startup(function(use)
 
   --lsp
   use 'neovim/nvim-lspconfig'
-  use 'hrsh7th/cmp-nvim-lsp'
   use "williamboman/nvim-lsp-installer"
+  use 'jose-elias-alvarez/null-ls.nvim'
 
   -- cmp
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/nvim-cmp'-- the completation plugin
+  use 'hrsh7th/cmp-buffer' -- buffer completation
+  use 'hrsh7th/cmp-path' -- path completations
+  use 'hrsh7th/cmp-cmdline' -- cmdline completations
+  use 'hrsh7th/cmp-nvim-lsp'
 
   -- snippets
   use 'L3MON4D3/LuaSnip'
-  use 'saadparwaiz1/cmp_luasnip'
+  -- use 'saadparwaiz1/cmp_luasnip' -- i think i dont need this
   use 'rafamadriz/friendly-snippets'
-
-  -- formater
-  use 'jose-elias-alvarez/null-ls.nvim'
 
   -- comments
   use {
@@ -54,6 +52,6 @@ return require('packer').startup(function(use)
   -- colro themes
   use "EdenEast/nightfox.nvim"
   use "folke/tokyonight.nvim"
-
+  use 'ful1e5/onedark.nvim'
 
 end)

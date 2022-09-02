@@ -18,7 +18,7 @@ nvim_tree.setup {
   },
   renderer = {
     indent_markers = {
-      enable = true,
+      enable = false,
       inline_arrows = true,
       icons = {
         corner = "└",
@@ -67,7 +67,7 @@ nvim_tree.setup {
   view = {
     adaptive_size = true,
     preserve_window_proportions = true,
-    width = 50,
+    width = 30,
     height = 30,
     side = "left",
     -- mappings for nvim tree

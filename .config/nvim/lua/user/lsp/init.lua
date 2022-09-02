@@ -9,6 +9,10 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+  -- disable ts server formatter if prettier
+  if client.name == "tsserver" then
+    client.resolved_capabilities.document_formating = false
+  end
    -- format on save
   if client.server_capabilities.documentFormattingProvider then
     vim.api.nvim_create_autocmd("BufWritePre", {
