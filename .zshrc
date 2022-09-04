@@ -33,7 +33,7 @@ alias sunnystart="cd ~/kodius/sunnyside/sunnyside-frontend; code .; open -a 'Goo
 alias lvim="/Users/dino/.local/bin/lvim"
 #
 # neovim
-alias conf="cd ~/.config/nvim; nvim ."
+alias conf="cd ~/.dotfiles/.config/nvim; nvim ."
 #
 #
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
