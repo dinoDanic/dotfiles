@@ -3,55 +3,69 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'kyazdani42/nvim-web-devicons' 
   use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim' 
-  use 'kyazdani42/nvim-tree.lua'
-  use 'lewis6991/gitsigns.nvim'
+
+  --lsp
+  use "williamboman/nvim-lsp-installer"
+  use 'neovim/nvim-lspconfig'
+  use 'jose-elias-alvarez/null-ls.nvim'
+
+  -- treesitter
   use 'nvim-treesitter/nvim-treesitter'
 
-  use 'nvim-lualine/lualine.nvim'
+
+  -- tree
+  use 'kyazdani42/nvim-tree.lua'
+
+  -- telescope
+  use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
+
+  -- whichkey
   use "folke/which-key.nvim"
-  use 'goolord/alpha-nvim'
-  use "ahmedkhalf/project.nvim"
-  --use 'romgrk/barbar.nvim'
-  use "akinsho/toggleterm.nvim"
+
+  -- cmp
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer' -- buffer completation
+  use 'hrsh7th/cmp-path' -- path completations
+  use 'hrsh7th/cmp-cmdline' -- cmdline completations
+  use 'hrsh7th/nvim-cmp'-- the completation plugin
+  use 'saadparwaiz1/cmp_luasnip' 
+
+  -- snippets
+  use({"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"})
+
+  --auto closing tags
+  use 'windwp/nvim-ts-autotag'
+
+ -- comments
+  use {
+      'numToStr/Comment.nvim',
+      config = function()
+          require('Comment').setup()
+      end
+  }
+
+  -- git
+  use 'lewis6991/gitsigns.nvim'
+
+  --lualine
+  use 'nvim-lualine/lualine.nvim'
 
   -- tabs
   use {'akinsho/bufferline.nvim', tag = "v2.*"}
 
-  --auto
-  use 'windwp/nvim-ts-autotag'
+  -- terminal
+  use "akinsho/toggleterm.nvim"
 
-  --lsp
-  use 'neovim/nvim-lspconfig'
-  use "williamboman/nvim-lsp-installer"
-  use 'jose-elias-alvarez/null-ls.nvim'
-
-  -- cmp
-  use 'hrsh7th/nvim-cmp'-- the completation plugin
-  use 'hrsh7th/cmp-buffer' -- buffer completation
-  use 'hrsh7th/cmp-path' -- path completations
-  use 'hrsh7th/cmp-cmdline' -- cmdline completations
-  use 'hrsh7th/cmp-nvim-lsp'
-
-  -- snippets
-  use 'L3MON4D3/LuaSnip'
-  -- use 'saadparwaiz1/cmp_luasnip' -- i think i dont need this
-  use 'rafamadriz/friendly-snippets'
-
-  -- comments
+  --autoparis
   use {
-    'numToStr/Comment.nvim',
-    config = function()
-        require('Comment').setup()
-    end
+    "windwp/nvim-autopairs",
+      config = function() require("nvim-autopairs").setup {} end
   }
 
-  --auto paris for { enter }
-  use "windwp/nvim-autopairs"
-
+ -- snippets
+  use 'rafamadriz/friendly-snippets'
+--
   -- colro themes
-  use "EdenEast/nightfox.nvim"
   use "folke/tokyonight.nvim"
-  use 'ful1e5/onedark.nvim'
 
 end)
