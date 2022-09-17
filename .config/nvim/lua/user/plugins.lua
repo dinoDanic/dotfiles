@@ -32,17 +32,16 @@ return require('packer').startup(function(use)
 
   -- snippets
   use({"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"})
+  --use 'rafamadriz/friendly-snippets'
 
   --auto closing tags
   use 'windwp/nvim-ts-autotag'
 
  -- comments
-  use {
-      'numToStr/Comment.nvim',
-      config = function()
-          require('Comment').setup()
-      end
-  }
+  use { 'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end }
 
   -- git
   use 'lewis6991/gitsigns.nvim'
@@ -62,10 +61,8 @@ return require('packer').startup(function(use)
       config = function() require("nvim-autopairs").setup {} end
   }
 
- -- snippets
-  use 'rafamadriz/friendly-snippets'
---
   -- colro themes
   use "folke/tokyonight.nvim"
+  use "ellisonleao/gruvbox.nvim"
 
 end)

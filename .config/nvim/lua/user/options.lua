@@ -42,4 +42,5 @@ end
 -- theme
 
 -- Load the colorscheme
-vim.cmd[[colorscheme tokyonight-night]]
+vim.cmd[[colorscheme tokyonight-storm]]
+-- vim.cmd[[colorscheme gruvbox]]

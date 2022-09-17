@@ -4,6 +4,8 @@ require('telescope').setup{
   defaults = {
     -- Default configuration for telescope goes here:
     -- config_key = value,
+      previewer = false,
+
     mappings = {
       i = {
         -- map actions.which_key to <C-h> (default: <C-/>)
@@ -73,7 +75,7 @@ require('telescope').setup{
   },
   pickers = {
     buffers = {
-      initial_mode = "insert"
+      initial_mode = "insert",
     },
     -- Default configuration for builtin pickers goes here:
     -- picker_name = {

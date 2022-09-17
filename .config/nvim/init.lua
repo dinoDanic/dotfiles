@@ -14,4 +14,4 @@ require('user.lualine')
 require('user.bufferline')
 require('user.toggle-term')
 require('user.autopairs')
-
+require('user.nvim-comment')
