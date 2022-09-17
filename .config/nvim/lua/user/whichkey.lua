@@ -14,7 +14,7 @@ local setup = {
       operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
       motions = true, -- adds help for motions
       text_objects = true, -- help for text objects triggered after entering an operator
-      windows = true, -- default bindings on <c-w>
+      windows = true, -- default bindings on <c-w>plugin
       nav = true, -- misc bindings to work with windows
       z = true, -- bindings for folds, spelling and others prefixed with z
       g = true, -- bindings for prefixed with g
@@ -83,6 +83,21 @@ local opts = {
   nowait = false, -- use `nowait` when creating keymaps
 }
 
+local vopts = {
+  mode = "v", -- NORMAL mode
+  -- prefix: use "<leader>f" for example for mapping everything related to finding files
+  -- the prefix is prepended to every mapping part of `mappings`
+  prefix = "<leader>",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = false, -- use `nowait` when creating keymaps
+} 
+
+local vmappings = {
+  ["/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment toggle linewise (visual)" },
+}
+
 local mappings = {
   ["f"] = { "<cmd>Telescope find_files<cr>", "Find Files" },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
@@ -92,7 +107,32 @@ local mappings = {
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["c"] = { "<cmd>bd<CR>", "Close Buffer" },
-  l = {
+  ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle current line" },
+    b = {
+      name = "Buffers",
+      j = { "<cmd>BufferLinePick<cr>", "Jump" },
+      f = { "<cmd>Telescope buffers<cr>", "Find" },
+      b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
+      n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
+      e = {
+        "<cmd>BufferLinePickClose<cr>",
+        "Pick which buffer to close",
+      },
+      h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
+      l = {
+        "<cmd>BufferLineCloseRight<cr>",
+        "Close all to the right",
+      },
+      D = {
+        "<cmd>BufferLineSortByDirectory<cr>",
+        "Sort by directory",
+      },
+      L = {
+        "<cmd>BufferLineSortByExtension<cr>",
+        "Sort by language",
+      },
+    },  
+    l = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     d = {
@@ -132,7 +172,6 @@ local mappings = {
   },
   g = {
     name = "Git",
-    g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
     j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
     k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
     l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
@@ -162,4 +201,4 @@ local mappings = {
 
 wk.setup(setup)
 wk.register(mappings, opts)
-
+wk.register(vmappings, vopts)
