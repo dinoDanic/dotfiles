@@ -12,6 +12,16 @@ local tree_cb = nvim_tree_config.nvim_tree_callback
 -- nvim-tree.renderer.indent_markers.enable = true
 
 nvim_tree.setup {
+
+  -- for projects
+  sync_root_with_cwd = true,
+  respect_buf_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_root = true
+  },
+  -- for projects
+
   update_focused_file = {
     enable = true,
     update_cwd = true,
