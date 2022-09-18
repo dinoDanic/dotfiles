@@ -40,7 +40,11 @@ for k, v in pairs(options) do
 end
 
 -- theme
+--
+vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+
+vim.cmd [[colorscheme catppuccin]]
 
 -- Load the colorscheme
-vim.cmd[[colorscheme tokyonight-storm]]
+-- vim.cmd[[colorscheme tokyonight-storm]]
 -- vim.cmd[[colorscheme gruvbox]]
