@@ -32,7 +32,7 @@ return require('packer').startup(function(use)
 
   -- snippets
   use({"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"})
-  use 'rafamadriz/friendly-snippets'
+  -- use 'rafamadriz/friendly-snippets'
 
   --auto closing tags
   use 'windwp/nvim-ts-autotag'

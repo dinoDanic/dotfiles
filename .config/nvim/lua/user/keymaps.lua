@@ -45,6 +45,10 @@ keymap("i", "jj", "<ESC>", opts)
 keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
+-- Wrappers
+-- TODO: Try to make this work
+keymap("v", ",log", [[cconsole.log(<c-r>"<esc>]], opts)
+
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
