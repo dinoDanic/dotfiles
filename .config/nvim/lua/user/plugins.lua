@@ -12,7 +12,6 @@ return require('packer').startup(function(use)
   -- treesitter
   use 'nvim-treesitter/nvim-treesitter'
 
-
   -- tree
   use 'kyazdani42/nvim-tree.lua'
 
@@ -61,6 +60,9 @@ return require('packer').startup(function(use)
 
   --buffer close without fucking up layout
   use "moll/vim-bbye"
+
+  --inpatient, speed up load time
+  use 'lewis6991/impatient.nvim'
 
   -- colro themes
   use "folke/tokyonight.nvim"
