@@ -33,7 +33,6 @@ local options = {
   guifont = "monospace:h17",               -- the font used in graphical neovim applications
 }
 
--- vim.opt.shortmess:append "c"
 
 for k, v in pairs(options) do
   vim.opt[k] = v
@@ -47,6 +46,11 @@ end
 vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 
 vim.cmd [[colorscheme catppuccin]]
+
+-- set Lines colors
+vim.cmd [[hi LineNrAbove guifg=#F38BA8 ]] 
+vim.cmd [[hi LineNrBelow guifg=#F38BA8 ]]
+vim.cmd [[hi LineNr guifg=#A6E3A1 ]]
 
 -- Load the colorscheme
 -- vim.cmd[[colorscheme tokyonight-storm]]
