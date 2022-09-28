@@ -59,6 +59,9 @@ return require('packer').startup(function(use)
       config = function() require("nvim-autopairs").setup {} end
   }
 
+  --buffer close without fucking up layout
+  use "moll/vim-bbye"
+
   -- colro themes
   use "folke/tokyonight.nvim"
   use "ellisonleao/gruvbox.nvim"

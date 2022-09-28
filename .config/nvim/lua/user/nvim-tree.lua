@@ -78,7 +78,6 @@ nvim_tree.setup {
     adaptive_size = true,
     preserve_window_proportions = true,
     width = 30,
-    height = 30,
     side = "left",
     -- mappings for nvim tree
     mappings = {
