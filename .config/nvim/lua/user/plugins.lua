@@ -31,7 +31,7 @@ return require('packer').startup(function(use)
 
   -- snippets
   use({"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"})
-  -- use 'rafamadriz/friendly-snippets'
+  use 'rafamadriz/friendly-snippets'
 
   --auto closing tags
   use 'windwp/nvim-ts-autotag'
@@ -60,9 +60,6 @@ return require('packer').startup(function(use)
 
   --buffer close without fucking up layout
   use "moll/vim-bbye"
-
-  --inpatient, speed up load time
-  use 'lewis6991/impatient.nvim'
 
   -- colro themes
   use "folke/tokyonight.nvim"
