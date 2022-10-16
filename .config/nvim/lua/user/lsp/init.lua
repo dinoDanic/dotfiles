@@ -34,13 +34,13 @@ if client.server_capabilities.documentHighlightProvider then
 end
 
  -- format on save
-if client.server_capabilities.documentFormattingProvider then
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    group = vim.api.nvim_create_augroup("Format", { clear = true }),
-    buffer = bufnr,
-    callback = function() vim.lsp.buf.formatting_seq_sync() end
-  })
-end
+-- if client.server_capabilities.documentFormattingProvider then
+--   vim.api.nvim_create_autocmd("BufWritePre", {
+--     group = vim.api.nvim_create_augroup("Format", { clear = true }),
+--     buffer = bufnr,
+--     callback = function() vim.lsp.buf.formatting_seq_sync() end
+--   })
+-- end
 
 local cmd = { bin_name, '--stdio' }
   -- Enable completion triggered by <c-x><c-o>
@@ -52,8 +52,8 @@ local cmd = { bin_name, '--stdio' }
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+  -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
@@ -84,4 +84,5 @@ require('lspconfig')['tsserver'].setup{
       'typescript.tsx',
     },
 }
+
 

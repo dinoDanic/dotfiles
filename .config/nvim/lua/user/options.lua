@@ -18,7 +18,7 @@ local options = {
   termguicolors = true,                    -- set term gui colors (most terminals support this)
   undofile = true,                         -- enable persistent undo
   timeoutlen = 300,                        -- time to wait for a mapped sequence to complete (in milliseconds)
-  updatetime = 300,                        -- faster completion (4000ms default)
+  updatetime = 50,                        -- faster completion (4000ms default)
   writebackup = false,                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
   expandtab = true,                        -- convert tabs to spaces
   shiftwidth = 2,                          -- the number of spaces inserted for each indentation
@@ -43,14 +43,26 @@ end
 -- vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 -- vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha white
 -- vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha
-vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+-- vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 
-vim.cmd [[colorscheme catppuccin]]
+--set Lines colors and colorscheme for catppuccin
+-- vim.cmd [[colorscheme catppuccin]]
+-- vim.cmd [[hi LineNrAbove guifg=#8AADF4 ]] 
+-- vim.cmd [[hi LineNrBelow guifg=#8AADF4 ]]
+-- vim.cmd [[hi LineNr guifg=#A6E3A1 ]]
 
--- set Lines colors
-vim.cmd [[hi LineNrAbove guifg=#F38BA8 ]] 
-vim.cmd [[hi LineNrBelow guifg=#F38BA8 ]]
-vim.cmd [[hi LineNr guifg=#A6E3A1 ]]
+--set Lines colors and colorscheme for onedark
+vim.cmd [[colorscheme onedark]]
+vim.cmd [[hi LineNrAbove guifg=#ABB2BF ]] 
+vim.cmd [[hi LineNrBelow guifg=#ABB2BF ]]
+vim.cmd [[hi LineNr guifg=#56B6C2 ]]
+
+-- Line colors and colorscheme for gruvboxg
+
+-- vim.cmd [[colorscheme gruvbox]]
+-- vim.cmd [[hi LineNrAbove guifg=#b16286 ]] 
+-- vim.cmd [[hi LineNrBelow guifg=#b16286 ]]
+-- vim.cmd [[hi LineNr guifg=#d3869b  ]]
 
 -- Load the colorscheme
 -- vim.cmd[[colorscheme tokyonight-storm]]

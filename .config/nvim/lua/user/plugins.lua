@@ -31,7 +31,7 @@ return require('packer').startup(function(use)
 
   -- snippets
   use({"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"})
-  use 'rafamadriz/friendly-snippets'
+  -- use 'rafamadriz/friendly-snippets'
 
   --auto closing tags
   use 'windwp/nvim-ts-autotag'
@@ -65,5 +65,6 @@ return require('packer').startup(function(use)
   use "folke/tokyonight.nvim"
   use "ellisonleao/gruvbox.nvim"
   use { "catppuccin/nvim", as = "catppuccin" }
+  use 'navarasu/onedark.nvim'
 
 end)
