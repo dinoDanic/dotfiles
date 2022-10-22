@@ -40,22 +40,29 @@ end
 
 -- theme
 --
--- vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 -- vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha white
 -- vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha
 -- vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 
 --set Lines colors and colorscheme for catppuccin
--- vim.cmd [[colorscheme catppuccin]]
--- vim.cmd [[hi LineNrAbove guifg=#8AADF4 ]] 
--- vim.cmd [[hi LineNrBelow guifg=#8AADF4 ]]
--- vim.cmd [[hi LineNr guifg=#A6E3A1 ]]
+vim.cmd [[colorscheme catppuccin]]
+vim.cmd [[hi LineNrAbove guifg=#8AADF4 ]] 
+vim.cmd [[hi LineNrBelow guifg=#8AADF4 ]]
+vim.cmd [[hi LineNr guifg=#A6E3A1 ]]
 
 --set Lines colors and colorscheme for onedark
-vim.cmd [[colorscheme onedark]]
-vim.cmd [[hi LineNrAbove guifg=#ABB2BF ]] 
-vim.cmd [[hi LineNrBelow guifg=#ABB2BF ]]
-vim.cmd [[hi LineNr guifg=#56B6C2 ]]
+
+-- vim.cmd [[colorscheme onedark]]
+-- vim.cmd [[hi LineNrAbove guifg=#ABB2BF ]] 
+-- vim.cmd [[hi LineNrBelow guifg=#ABB2BF ]]
+-- vim.cmd [[hi LineNr guifg=#56B6C2 ]]
+ 
+
+-- transparent 
+vim.cmd [[hi! Normal ctermbg=NONE guibg=NONE]]
+vim.cmd [[ hi! NonText ctermbg=NONE guibg=NONE]]
+vim.cmd [[ hi! EndOfBuffer guibg=NONE ctermbg=NONE]]
 
 -- Line colors and colorscheme for gruvboxg
 
