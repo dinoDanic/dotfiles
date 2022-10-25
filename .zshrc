@@ -28,6 +28,7 @@ alias opti="cd ~/kodius/cosmicfrog-model-editor-service"
 #
 # bmb
 alias bmb="cd ~/projects/bmb"
+#
 # forfend-web
 alias ffweb="cd ~/kodius/forfend/forfend-web"
 #
@@ -50,12 +51,18 @@ alias ac="lvim ~/.config/alacritty/alacritty.yml"
 #
 # kitty config
 alias kc="lvim ~/.config/kitty/kitty.conf"
-# kitty config
 #
-#
+# ranger
 alias ra="ranger"
 #
-#
+# git
+alias ga.="git add ."
+alias gcm="git commit -m"
+alias gp="git push"
+alias grs="git reset --soft HEAD~1"
+alias gs="git status"
+# 
+# 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 eval "$(pyenv init --path)"
