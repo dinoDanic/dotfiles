@@ -64,8 +64,8 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Telescope
-keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
-keymap("n", "<leader>F", "<cmd>Telescope live_grep<cr>", opts)
+-- keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
+-- keymap("n", "<leader>F", "<cmd>Telescope live_grep<cr>", opts)
 
 -- Files
-keymap("n", "<leader>w", "<cmd>w<cr>", opts)
+-- keymap("n", "<leader>w", "<cmd>w<cr>", opts)

@@ -40,9 +40,9 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-  -- My plugins here
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "nvim-tree/nvim-web-devicons"
   
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -61,18 +61,34 @@ return packer.startup(function(use)
   use "williamboman/mason-lspconfig.nvim"
   use "neovim/nvim-lspconfig" -- enable LSP
 
+  -- null ls
+  use "jose-elias-alvarez/null-ls.nvim"
+
   -- telescope
   use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
 
   -- treesiter
   use 'nvim-treesitter/nvim-treesitter'
 
-  -- auto pairs auto closing tags
+  -- auto pairs 
   use {
     "windwp/nvim-autopairs",
       config = function() require("nvim-autopairs").setup {} end
   }
 
+  -- auto close tag
+  use {
+    "windwp/nvim-ts-autotag", 
+      config = function() require("nvim-ts-autotag").setup {} end
+  } 
+
+  -- git sight
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
   -- comments
   use {
     'numToStr/Comment.nvim',
@@ -81,8 +97,26 @@ return packer.startup(function(use)
     end
   }
 
+  -- nvim tree
+  use 'nvim-tree/nvim-tree.lua'
+
+  -- which key
+  use "folke/which-key.nvim" 
+
+  -- bufferline
+  use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'kyazdani42/nvim-web-devicons'}
+
+  -- toggle terminal
+  use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+    require("toggleterm").setup()
+  end}
+
+  --buffer close without fucking up layout
+  use "moll/vim-bbye"
+
   -- colorschemes
   use { "catppuccin/nvim", as = "catppuccin" }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
