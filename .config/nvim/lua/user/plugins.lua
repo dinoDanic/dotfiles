@@ -64,6 +64,23 @@ return packer.startup(function(use)
   -- telescope
   use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
 
+  -- treesiter
+  use 'nvim-treesitter/nvim-treesitter'
+
+  -- auto pairs auto closing tags
+  use {
+    "windwp/nvim-autopairs",
+      config = function() require("nvim-autopairs").setup {} end
+  }
+
+  -- comments
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  }
+
   -- colorschemes
   use { "catppuccin/nvim", as = "catppuccin" }
   -- Automatically set up your configuration after cloning packer.nvim
