@@ -1,71 +1,74 @@
-return require('packer').startup(function(use)
-  -- essential
-  use 'wbthomason/packer.nvim'
-  use 'kyazdani42/nvim-web-devicons' 
-  use 'nvim-lua/plenary.nvim'
+local fn = vim.fn
 
-  --lsp
-  use "williamboman/nvim-lsp-installer"
-  use 'neovim/nvim-lspconfig'
-  use 'jose-elias-alvarez/null-ls.nvim'
+-- Automatically install packer
+local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+if fn.empty(fn.glob(install_path)) > 0 then
+  PACKER_BOOTSTRAP = fn.system {
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    install_path,
+  }
+  print "Installing packer close and reopen Neovim..."
+  vim.cmd [[packadd packer.nvim]]
+end
 
-  -- treesitter
-  use 'nvim-treesitter/nvim-treesitter'
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]]
 
-  -- tree
-  use 'kyazdani42/nvim-tree.lua'
+-- Use a protected call so we don't error out on first use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  return
+end
+
+-- Have packer use a popup window
+packer.init {
+  display = {
+    open_fn = function()
+      return require("packer.util").float { border = "rounded" }
+    end,
+  },
+}
+
+-- Install your plugins here
+return packer.startup(function(use)
+  -- My plugins here
+  use "wbthomason/packer.nvim" -- Have packer manage itself
+  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  
+  -- cmp plugins
+  use "hrsh7th/nvim-cmp" -- The completion plugin
+  use "hrsh7th/cmp-nvim-lsp" 
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions 
+  
+   -- snippets
+  use "L3MON4D3/LuaSnip" --snippet engine
+  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+
+  -- LSP
+  use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
+  use "neovim/nvim-lspconfig" -- enable LSP
 
   -- telescope
   use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
 
-  -- whichkey
-  use "folke/which-key.nvim"
-
-  -- cmp
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer' -- buffer completation
-  use 'hrsh7th/cmp-path' -- path completations
-  use 'hrsh7th/cmp-cmdline' -- cmdline completations
-  use 'hrsh7th/nvim-cmp'-- the completation plugin
-  use 'saadparwaiz1/cmp_luasnip' 
-
-  -- snippets
-  use({"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"})
-  use 'rafamadriz/friendly-snippets'
-
-  --auto closing tags
-  use 'windwp/nvim-ts-autotag'
-
- -- comments
-  use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
-  use 'JoosepAlviste/nvim-ts-context-commentstring' -- For comment block in react and diff languges
-
-  -- git
-  use 'lewis6991/gitsigns.nvim'
-
-  --lualine
-  use 'nvim-lualine/lualine.nvim'
-
-  -- tabs
-  use {'akinsho/bufferline.nvim', tag = "v2.*"}
-
-  -- terminal
-  use "akinsho/toggleterm.nvim"
-
-  --autoparis
-  use {
-    "windwp/nvim-autopairs",
-      config = function() require("nvim-autopairs").setup {} end
-  }
-
-  --buffer close without fucking up layout
-  use "moll/vim-bbye"
-
-  -- colro themes
-  use "folke/tokyonight.nvim"
-  use "ellisonleao/gruvbox.nvim"
+  -- colorschemes
   use { "catppuccin/nvim", as = "catppuccin" }
-  use 'navarasu/onedark.nvim'
-
-
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if PACKER_BOOTSTRAP then
+    require("packer").sync()
+  end
 end)
