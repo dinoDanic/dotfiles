@@ -55,6 +55,16 @@ alias kc="lvim ~/.config/kitty/kitty.conf"
 # ranger
 alias ra="ranger"
 #
+# tmux
+alias tmuxa0="tmux attach-session -t 0"
+alias tmuxa1="tmux attach-session -t 1"
+alias tmuxa2="tmux attach-session -t 2"
+alias tmuxk0="tmux kill-session -t 0"
+alias tmuxk1="tmux kill-session -t 1"
+alias tmuxk2="tmux kill-session -t 2"
+alias tmuxka="tmux kill-server"
+
+#
 # git
 alias ga.="git add ."
 alias gcm="git commit -m"
