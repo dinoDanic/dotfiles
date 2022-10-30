@@ -84,13 +84,14 @@ return packer.startup(function(use)
       config = function() require("nvim-ts-autotag").setup {} end
   } 
 
-  -- git sight
+  -- git 
   use {
     'lewis6991/gitsigns.nvim',
     config = function()
       require('gitsigns').setup()
     end
   }
+
   -- comments
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use {
@@ -123,7 +124,8 @@ return packer.startup(function(use)
   use 'folke/tokyonight.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
 
-use 'ThePrimeagen/vim-be-good'
+  -- game 
+ use 'ThePrimeagen/vim-be-good'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
