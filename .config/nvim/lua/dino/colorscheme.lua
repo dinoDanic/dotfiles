@@ -1,10 +1,17 @@
-
-
-vim.cmd [[colorscheme nightfly]]
-
+require("catppuccin").setup {
+    flavour = "mocha" -- mocha, macchiato, frappe, latte
+}
+vim.api.nvim_command "colorscheme catppuccin"
+--
+-- change color for arrows in tree to light blue
+-- vim.cmd([[ highlight NvimTreeIndentMarker guifg=#58A8ED ]])
+vim.cmd([[ highlight NvimTreeIndentMarker guifg=#CE8DE2 ]])
 
 --set Lines colors and colorscheme for catppuccin
--- vim.cmd [[colorscheme catppuccin]]
+-- vim.cmd [[colorscheme catppuccin-mocha]]
+
+
+
 -- vim.cmd [[hi LineNrAbove guifg=#8AADF4 ]] 
 -- vim.cmd [[hi LineNrBelow guifg=#8AADF4 ]]
 -- vim.cmd [[hi LineNr guifg=#A6E3A1 ]]
