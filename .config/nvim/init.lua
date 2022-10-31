@@ -1,7 +1,7 @@
 require('dino.plugins')
 require('dino.options')
 require('dino.keymaps')
-require('dino.colorscheme')
+require('dino.colors')
 require('dino.comments')
 require('dino.telescope')
 require('dino.nvim-tree')

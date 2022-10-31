@@ -22,7 +22,12 @@ require("nvim-tree").setup({
       },
     },
   },
+  update_focused_file = {
+    enable = true,
+    update_root = true
+  },
   renderer = {
+    root_folder_modifier = ":t",
     group_empty = false,
     icons = {
       glyphs = {
@@ -45,7 +50,7 @@ require("nvim-tree").setup({
           renamed = "➜",
           untracked = "★",
           deleted = "",
-          ignored = "",
+          ignored = "◌",
         },
       },
     },
@@ -60,7 +65,7 @@ require("nvim-tree").setup({
   },
   actions = {
     open_file = {
-      quit_on_open = true,
+      quit_on_open = false,
     },
   },
 })

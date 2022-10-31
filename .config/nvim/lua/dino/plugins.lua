@@ -121,6 +121,7 @@ return packer.startup(function(use)
   use "moll/vim-bbye"
 
   -- colorschemes
+  use 'norcalli/nvim-colorizer.lua'
   use 'folke/tokyonight.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
 

@@ -11,6 +11,10 @@ vim.cmd([[ highlight NvimTreeIndentMarker guifg=#CE8DE2 ]])
 -- vim.cmd [[colorscheme catppuccin-mocha]]
 
 
+-- Colorize
+require 'colorizer'.setup({
+  '*';
+}, { mode = 'foreground', names = false })
 
 -- vim.cmd [[hi LineNrAbove guifg=#8AADF4 ]] 
 -- vim.cmd [[hi LineNrBelow guifg=#8AADF4 ]]
