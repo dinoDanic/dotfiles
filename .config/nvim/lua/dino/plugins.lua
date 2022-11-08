@@ -51,7 +51,6 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lsp" 
   use "saadparwaiz1/cmp_luasnip" -- snippet completions 
   
-
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/mason.nvim"
@@ -120,10 +119,14 @@ return packer.startup(function(use)
   --buffer close without fucking up layout
   use "moll/vim-bbye"
 
+  -- projects
+  use "ahmedkhalf/project.nvim"
+
   -- colorschemes
   use 'norcalli/nvim-colorizer.lua'
   use 'folke/tokyonight.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
+  use "EdenEast/nightfox.nvim"
 
   -- game 
  use 'ThePrimeagen/vim-be-good'

@@ -1,47 +1,42 @@
-require("catppuccin").setup {
-    flavour = "mocha" -- mocha, macchiato, frappe, latte
-}
-vim.api.nvim_command "colorscheme catppuccin"
---
--- change color for arrows in tree to light blue
--- vim.cmd([[ highlight NvimTreeIndentMarker guifg=#58A8ED ]])
-vim.cmd([[ highlight NvimTreeIndentMarker guifg=#CE8DE2 ]])
+-- FOXXXXXXXXXXXXXX
+vim.cmd [[colorscheme carbonfox]]
 
---set Lines colors and colorscheme for catppuccin
+
+
+-- NVIM TREEEEEEEEE
+-- vim.cmd([[ highlight NvimTreeIndentMarker guifg=#CE8DE2 ]])
+
+-- CATPUCCIONOOOOOO
+-- require("catppuccin").setup {
+--     flavour = "mocha" -- mocha, macchiato, frappe, latte
+-- }
 -- vim.cmd [[colorscheme catppuccin-mocha]]
 
 
--- Colorize
-require 'colorizer'.setup({
-  '*';
-}, { mode = 'foreground', names = false })
 
--- vim.cmd [[hi LineNrAbove guifg=#8AADF4 ]] 
--- vim.cmd [[hi LineNrBelow guifg=#8AADF4 ]]
--- vim.cmd [[hi LineNr guifg=#A6E3A1 ]]
-
---set Lines colors and colorscheme for onedark
-
+-- ONE DARKKKKKKKKK
 -- vim.cmd [[colorscheme onedark]]
 -- vim.cmd [[hi LineNrAbove guifg=#ABB2BF ]] 
 -- vim.cmd [[hi LineNrBelow guifg=#ABB2BF ]]
 -- vim.cmd [[hi LineNr guifg=#56B6C2 ]]
+
+
+-- TOKYYYYYYYYYYYYO 
+-- vim.cmd [[ colorscheme tokyonight-moon]]
+-- vim.cmd [[ highlight NvimTreeIndentMarker guifg=#7dcfff ]]
+-- vim.cmd [[ highlight NvimTreeFolderIcon guifg=#7dcfff ]]
+-- vim.cmd [[ hi LineNrAbove guifg=#7dcfff ]] 
+-- vim.cmd [[ hi LineNrBelow guifg=#7dcfff ]]
+-- vim.cmd [[ hi LineNr guifg=#7dcfff ]]
  
 
 -- transparent 
- -- vim.cmd [[hi! Normal ctermbg=NONE guibg=NONE]]
- -- vim.cmd [[ hi! NonText ctermbg=NONE guibg=NONE]]
- -- vim.cmd [[ hi! EndOfBuffer guibg=NONE ctermbg=NONE]]
+-- vim.cmd [[hi! Normal ctermbg=NONE guibg=NONE]]
+-- vim.cmd [[ hi! NonText ctermbg=NONE guibg=NONE]]
+-- vim.cmd [[ hi! EndOfBuffer guibg=NONE ctermbg=NONE]]
 
--- Line colors and colorscheme for gruvboxg
 
--- vim.o.background = "dark"
--- vim.cmd [[colorscheme gruvbox]]
--- vim.cmd [[hi LineNrAbove guifg=#b16286 ]] 
--- vim.cmd [[hi LineNrBelow guifg=#b16286 ]]
--- vim.cmd [[hi LineNr guifg=#d3869b  ]]
-
--- Load the colorscheme
--- vim.cmd[[colorscheme tokyonight-storm]]
--- vim.cmd[[colorscheme gruvbox]]
-
+-- Colorize
+  require 'colorizer'.setup({
+    '*';
+  }, { mode = 'foreground', names = false })

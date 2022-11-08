@@ -1,20 +1,21 @@
+
+# ------------------------------- ZSH -------------------------------
 export ZSH="$HOME/.oh-my-zsh"
-
 ZSH_THEME="cloud"
-
-plugins=(git)
+# Plugins
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting )
 
 source $ZSH/oh-my-zsh.sh
 
+# ------------------------------- ZSH -------------------------------
 
 set -o vi
 
-
-
+# ----------------------------- Keybinds ------------------------------
+#
+bindkey '^ ' autosuggest-accept
+#
 # ----------------------------- ALIAS ------------------------------
-#
-#
-#
 #
 # kekomi
 alias kekomi="cd ~/kodius/kekomi/next"
@@ -63,7 +64,6 @@ alias tmuxk0="tmux kill-session -t 0"
 alias tmuxk1="tmux kill-session -t 1"
 alias tmuxk2="tmux kill-session -t 2"
 alias tmuxka="tmux kill-server"
-
 #
 # git
 alias ga.="git add ."
@@ -87,4 +87,8 @@ export NVM_DIR="$HOME/.nvm"
 #
 #
 # ----------------------------- ALIAS ------------------------------
+
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
 
