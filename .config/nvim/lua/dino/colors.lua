@@ -2,9 +2,8 @@
 vim.cmd [[colorscheme carbonfox]]
 
 
-
 -- NVIM TREEEEEEEEE
--- vim.cmd([[ highlight NvimTreeIndentMarker guifg=#CE8DE2 ]])
+vim.cmd([[ highlight NvimTreeIndentMarker guifg=#CE8DE2 ]])
 
 -- CATPUCCIONOOOOOO
 -- require("catppuccin").setup {
@@ -22,18 +21,18 @@ vim.cmd [[colorscheme carbonfox]]
 
 
 -- TOKYYYYYYYYYYYYO 
--- vim.cmd [[ colorscheme tokyonight-moon]]
--- vim.cmd [[ highlight NvimTreeIndentMarker guifg=#7dcfff ]]
+-- vim.cmd [[ colorscheme tokyonight-night]]
 -- vim.cmd [[ highlight NvimTreeFolderIcon guifg=#7dcfff ]]
--- vim.cmd [[ hi LineNrAbove guifg=#7dcfff ]] 
--- vim.cmd [[ hi LineNrBelow guifg=#7dcfff ]]
--- vim.cmd [[ hi LineNr guifg=#7dcfff ]]
+-- vim.cmd [[ highlight NvimTreeIndentMarker guifg=#7dcfff ]]
+-- vim.cmd [[ hi LineNrAbove guifg=#fff ]] 
+-- vim.cmd [[ hi LineNrBelow guifg=#fff ]]
+-- vim.cmd [[ hi LineNr guifg=#00ffd2 ]]
  
 
 -- transparent 
--- vim.cmd [[hi! Normal ctermbg=NONE guibg=NONE]]
--- vim.cmd [[ hi! NonText ctermbg=NONE guibg=NONE]]
--- vim.cmd [[ hi! EndOfBuffer guibg=NONE ctermbg=NONE]]
+vim.cmd [[hi! Normal ctermbg=NONE guibg=NONE]]
+vim.cmd [[ hi! NonText ctermbg=NONE guibg=NONE]]
+vim.cmd [[ hi! EndOfBuffer guibg=NONE ctermbg=NONE]]
 
 
 -- Colorize

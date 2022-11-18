@@ -1,13 +1,22 @@
 
 # ------------------------------- ZSH -------------------------------
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="cloud"
+# export ZSH="$HOME/.oh-my-zsh"
+# ZSH_THEME="cloud"
 # Plugins
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting )
+# plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting )
 
-source $ZSH/oh-my-zsh.sh
+
+
+# source $ZSH/oh-my-zsh.sh
 
 # ------------------------------- ZSH -------------------------------
+#
+
+# ------------------------------- FISH -------------------------------
+fish
+# ------------------------------- FISH -------------------------------
+
+
 
 set -o vi
 
@@ -55,6 +64,10 @@ alias kc="lvim ~/.config/kitty/kitty.conf"
 #
 # ranger
 alias ra="ranger"
+#
+# nezalijevam
+alias nez="cd ~/projects/nezalijvam"
+alias nezbe="cd ~/projects/nezalijevambe"
 #
 # tmux
 alias tmuxa0="tmux attach-session -t 0"
