@@ -53,5 +53,6 @@ yabai -m config external_bar                 all:32:6
 
 # apps to not manage (ignore)
 yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^Finder$" manage=off
 echo "yabai configuration loaded.."
 
