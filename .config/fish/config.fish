@@ -1,25 +1,30 @@
+if status is-interactive
+    # Commands to run in interactive sessions can go here
 
-# ------------------------------- ZSH -------------------------------
-# export ZSH="$HOME/.oh-my-zsh"
-# ZSH_THEME="cloud"
-# Plugins
-# plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting )
+ fish_vi_key_bindings
+
+# ----------------------------- GREETINGS ------------------------------
+        function fish_greeting
+         echo "
+
+                    █░█ █▀▀   █░█ █▀▄ ▄▀█ █▀█ ▄▀█ █▄░█ ░░█ █▀▀
+                    █▀█ █▄▄   █▄█ █▄▀ █▀█ █▀▄ █▀█ █░▀█ █▄█ ██▄    ¯\_( ͠° . ͡°)_/¯
+
+              "
+
+        end
+# ----------------------------- GREETINGS ------------------------------
+
+ bind -M insert -m default jj 'commandline -f repaint'
+
+  function fish_user_key_bindings
+      for mode in insert default visual
+          bind -M $mode \cf forward-char
+      end
+  end
 
 
 
-# source $ZSH/oh-my-zsh.sh
-
-# ------------------------------- ZSH -------------------------------
-#
-
-
-
-set -o vi
-
-# ----------------------------- Keybinds ------------------------------
-#
-bindkey '^ ' autosuggest-accept
-#
 # ----------------------------- ALIAS ------------------------------
 #
 # kekomi
@@ -47,16 +52,16 @@ alias lvim="/Users/dino/.local/bin/lvim"
 alias lc="lvim ~/"
 #
 # neovim
-alias conf="cd ~/.dotfiles/.config/nvim; nvim ."
+alias conf="nvim ~/.config/nvim"
 #
 # dis
-alias dis="cd ~/kodius/discovery/health-organization-frontend-users-v2"
+alias dis="cd ~/kodius/discovery/healthOrganizationFrontendUsersV2"
 #
 # alacritty config
-alias ac="lvim ~/.config/alacritty/alacritty.yml"
+alias ac="nvim ~/.config/alacritty/alacritty.yml"
 #
 # kitty config
-alias kc="lvim ~/.config/kitty/kitty.conf"
+alias kc="nvim ~/.config/kitty/kitty.conf"
 #
 # ranger
 alias ra="ranger"
@@ -81,26 +86,7 @@ alias gp="git push"
 alias grs="git reset --soft HEAD~1"
 alias gs="git status"
 # 
-# 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
-#
-#
-#
-#
 # ----------------------------- ALIAS ------------------------------
 
+end
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-
-# ------------------------------- FISH -------------------------------
-fish
-# ------------------------------- FISH -------------------------------
