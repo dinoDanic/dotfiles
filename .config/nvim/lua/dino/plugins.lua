@@ -128,6 +128,15 @@ return packer.startup(function(use)
   use "EdenEast/nightfox.nvim"
   use 'navarasu/onedark.nvim'
   -- use "xiyaowong/nvim-transparent"
+  
+  -- useless
+--   use {
+--     'tamton-aquib/duck.nvim',
+--     config = function()
+--         vim.keymap.set('n', '<leader>dd', function() require("duck").hatch() end, {})
+--         vim.keymap.set('n', '<leader>dk', function() require("duck").cook() end, {})
+--     end
+-- }
 
 
   -- Automatically set up your configuration after cloning packer.nvim
