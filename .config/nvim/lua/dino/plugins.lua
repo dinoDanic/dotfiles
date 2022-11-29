@@ -71,7 +71,7 @@ return packer.startup(function(use)
   use 'nvim-treesitter/nvim-treesitter'
 
   -- lualine
-  -- use {'nvim-lualine/lualine.nvim', config = function() require("lualine").setup() end} 
+  use {'nvim-lualine/lualine.nvim', config = function() require("lualine").setup() end} 
 
   -- auto closgin 
   use {
@@ -125,13 +125,10 @@ return packer.startup(function(use)
   -- colors
   use 'norcalli/nvim-colorizer.lua'
   use 'folke/tokyonight.nvim'
-  use { "catppuccin/nvim", as = "catppuccin" }
   use "EdenEast/nightfox.nvim"
-
+  use 'navarasu/onedark.nvim'
   -- use "xiyaowong/nvim-transparent"
 
-  -- game 
- -- use 'ThePrimeagen/vim-be-good'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

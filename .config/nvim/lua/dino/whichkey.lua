@@ -111,6 +111,7 @@ local mappings = {
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle current line" },
+  ["."] = { "<cmd>luafile %<CR>", "Reload configuration" },
     b = {
       name = "Buffers",
       j = { "<cmd>BufferLinePick<cr>", "Jump" },

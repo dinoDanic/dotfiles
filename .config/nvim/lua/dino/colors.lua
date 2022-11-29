@@ -1,9 +1,9 @@
 -- FOXXXXXXXXXXXXXX
-vim.cmd [[colorscheme carbonfox]]
+-- vim.cmd [[colorscheme carbonfox]]
 
 
 -- NVIM TREEEEEEEEE
-vim.cmd([[ highlight NvimTreeIndentMarker guifg=#CE8DE2 ]])
+-- vim.cmd([[ highlight NvimTreeIndentMarker guifg=#CE8DE2 ]])
 
 -- CATPUCCIONOOOOOO
 -- require("catppuccin").setup {
@@ -15,6 +15,11 @@ vim.cmd([[ highlight NvimTreeIndentMarker guifg=#CE8DE2 ]])
 
 -- ONE DARKKKKKKKKK
 -- vim.cmd [[colorscheme onedark]]
+require('onedark').setup {
+    -- style = 'dark'
+}
+require('onedark').load()
+
 -- vim.cmd [[hi LineNrAbove guifg=#ABB2BF ]] 
 -- vim.cmd [[hi LineNrBelow guifg=#ABB2BF ]]
 -- vim.cmd [[hi LineNr guifg=#56B6C2 ]]
