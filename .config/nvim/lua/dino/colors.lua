@@ -14,20 +14,16 @@
 
 
 -- ONE DARKKKKKKKKK
--- vim.cmd [[colorscheme onedark]]
-require('onedark').setup {
-    -- style = 'dark'
-}
 require('onedark').load()
+vim.cmd [[ highlight NvimTreeFolderIcon guifg=#7dcfff ]]
 
--- vim.cmd [[hi LineNrAbove guifg=#ABB2BF ]] 
--- vim.cmd [[hi LineNrBelow guifg=#ABB2BF ]]
+-- vim.cmd [[hi LineNrAbove guifg=gray ]] 
+-- vim.cmd [[hi LineNrBelow guifg=red ]]
 -- vim.cmd [[hi LineNr guifg=#56B6C2 ]]
 
 
 -- TOKYYYYYYYYYYYYO 
 -- vim.cmd [[ colorscheme tokyonight-night]]
--- vim.cmd [[ highlight NvimTreeFolderIcon guifg=#7dcfff ]]
 -- vim.cmd [[ highlight NvimTreeIndentMarker guifg=#7dcfff ]]
 -- vim.cmd [[ hi LineNrAbove guifg=#fff ]] 
 -- vim.cmd [[ hi LineNrBelow guifg=#fff ]]

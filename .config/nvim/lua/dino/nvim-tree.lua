@@ -34,6 +34,10 @@ require("nvim-tree").setup({
     root_folder_modifier = ":t",
     group_empty = false,
     icons = {
+      git_placement = "signcolumn",
+      show = {
+        folder_arrow = false
+      },
       glyphs = {
         default = "",
         symlink = "",
@@ -41,11 +45,19 @@ require("nvim-tree").setup({
           arrow_open = "",
           arrow_closed = "",
           default = "",
-          open = "",
+          open = "",
           empty = "",
           empty_open = "",
           symlink = "",
           symlink_open = "",
+          -- arrow_open = "",
+          -- arrow_closed = "",
+          -- default = "",
+          -- open = "",
+          -- empty = "",
+          -- empty_open = "",
+          -- symlink = "",
+          -- symlink_open = "",
         },
         git = {
           unstaged = "✗",

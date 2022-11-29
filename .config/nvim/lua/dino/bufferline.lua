@@ -1,19 +1,19 @@
 require("bufferline").setup{
   options = {
-    separator_style = "thick",
+    diagnostics  = "nvim_lsp",
     offsets = {
         {
           filetype = "NvimTree",
-          text = "",
+          text = "HC",
           highlight = "Directory",
           separator = false -- use a "true" to enable the default, or set your own character
         }
      },
-
     buffer_close_icon = '',
     modified_icon = '●',
     close_icon = '',
     show_buffer_close_icons = false,
+    show_lose_icons = false,
   }
 }
 

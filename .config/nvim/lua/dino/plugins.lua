@@ -71,7 +71,7 @@ return packer.startup(function(use)
   use 'nvim-treesitter/nvim-treesitter'
 
   -- lualine
-  use {'nvim-lualine/lualine.nvim', config = function() require("lualine").setup() end} 
+  use 'nvim-lualine/lualine.nvim' 
 
   -- auto closgin 
   use {
