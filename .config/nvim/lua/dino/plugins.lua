@@ -92,7 +92,7 @@ return packer.startup(function(use)
   }
 
   -- comments
-  use 'JoosepAlviste/nvim-ts-context-commentstring'
+use 'JoosepAlviste/nvim-ts-context-commentstring'
   use {
     'numToStr/Comment.nvim',
     config = function()
