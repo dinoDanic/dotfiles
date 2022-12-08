@@ -112,6 +112,14 @@ local mappings = {
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle current line" },
   ["."] = { "<cmd>luafile %<CR>", "Reload configuration" },
+  --harpoon
+  ["J"] = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Add to harpoon" },
+  ["j"] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Harpoon" },
+  ["1"] = { "<Cmd>lua require('harpoon.ui').nav_file(1) <Cr>", "Jump 1" },
+  ["2"] = { "<Cmd>lua require('harpoon.ui').nav_file(2) <Cr>", "Jump 2" },
+  ["3"] = { "<Cmd>lua require('harpoon.ui').nav_file(3) <Cr>", "Jump 3" },
+  ["4"] = { "<Cmd>lua require('harpoon.ui').nav_file(4) <Cr>", "Jump 4" },
+  --harpoon
     b = {
       name = "Buffers",
       j = { "<cmd>BufferLinePick<cr>", "Jump" },

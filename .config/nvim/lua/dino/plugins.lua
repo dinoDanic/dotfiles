@@ -129,6 +129,8 @@ use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'navarasu/onedark.nvim'
   -- use "xiyaowong/nvim-transparent"
   
+  -- harpoon
+  use 'ThePrimeagen/harpoon' 
   -- useless
 --   use {
 --     'tamton-aquib/duck.nvim',
