@@ -131,6 +131,13 @@ use 'JoosepAlviste/nvim-ts-context-commentstring'
   
   -- harpoon
   use 'ThePrimeagen/harpoon' 
+
+  -- Leep
+  use {"ggandor/leap.nvim", config = function()
+    require('leap').add_default_mappings() 
+  end
+  } 
+
   -- useless
 --   use {
 --     'tamton-aquib/duck.nvim',
