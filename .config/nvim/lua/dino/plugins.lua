@@ -71,7 +71,7 @@ return packer.startup(function(use)
   use 'nvim-treesitter/nvim-treesitter'
 
   -- lualine
-  use 'nvim-lualine/lualine.nvim' 
+  -- use 'nvim-lualine/lualine.nvim' 
 
   -- auto closgin 
   use {
@@ -120,13 +120,13 @@ use 'JoosepAlviste/nvim-ts-context-commentstring'
   use "moll/vim-bbye"
 
   -- projects
-  use "ahmedkhalf/project.nvim"
+  -- use "ahmedkhalf/project.nvim"
 
   -- colors
   use 'norcalli/nvim-colorizer.lua'
   use 'folke/tokyonight.nvim'
-  use "EdenEast/nightfox.nvim"
-  use 'navarasu/onedark.nvim'
+  -- use "EdenEast/nightfox.nvim"
+  -- use 'navarasu/onedark.nvim'
   -- use "xiyaowong/nvim-transparent"
   
   -- harpoon
