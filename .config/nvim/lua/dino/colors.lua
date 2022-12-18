@@ -1,13 +1,3 @@
-function ColorMyPencils(color)
-  color = color or "tokyonight-night"
-  vim.cmd.colorscheme(color)
-
-  vim.api.nvim_set_hl(0, "Normal", {bg = "none"})
-  vim.api.nvim_set_hl(0, "NormalFloat", {bg = "none"})
-end
-
-ColorMyPencils()
---
 -- FOXXXXXXXXXXXXXX
 -- vim.cmd [[colorscheme carbonfox]]
 
@@ -70,8 +60,7 @@ ColorMyPencils()
 
 
 -- TOKYYYYYYYYYYYYO 
--- vim.cmd [[ colorscheme tokyonight-night]]
--- vim.cmd [[ colorscheme tokyonight-night]]
+vim.cmd [[ colorscheme tokyonight-night]]
 -- vim.cmd [[ highlight NvimTreeIndentMarker guifg=#7dcfff ]]
 -- vim.cmd [[ hi LineNrAbove guifg=#fff ]] 
 -- vim.cmd [[ hi LineNrBelow guifg=#fff ]]
@@ -79,9 +68,9 @@ ColorMyPencils()
  
 
 -- transparent 
--- vim.cmd [[hi! Normal ctermbg=NONE guibg=NONE]]
 -- vim.cmd [[ hi! NonText ctermbg=NONE guibg=NONE]]
 -- vim.cmd [[ hi! EndOfBuffer guibg=NONE ctermbg=NONE]]
+-- vim.cmd [[hi! Normal ctermbg=NONE guibg=NONE]]
 
 -- require("transparent").setup({
 --   enable = true, -- boolean: enable transparent

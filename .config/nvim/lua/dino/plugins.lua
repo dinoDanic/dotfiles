@@ -43,23 +43,47 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "nvim-tree/nvim-web-devicons"
+
+  --zero lsp
+  
+  use {
+  'VonHeikemen/lsp-zero.nvim',
+  requires = {
+    -- LSP Support
+    {'neovim/nvim-lspconfig'},
+    {'williamboman/mason.nvim'},
+    {'williamboman/mason-lspconfig.nvim'},
+
+    -- Autocompletion
+    {'hrsh7th/nvim-cmp'},
+    {'hrsh7th/cmp-buffer'},
+    {'hrsh7th/cmp-path'},
+    {'saadparwaiz1/cmp_luasnip'},
+    {'hrsh7th/cmp-nvim-lsp'},
+    {'hrsh7th/cmp-nvim-lua'},
+
+    -- Snippets
+    {'L3MON4D3/LuaSnip'},
+    {'rafamadriz/friendly-snippets'},
+  }
+}
   
   -- cmp plugins
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-nvim-lsp" 
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions 
+  -- use "hrsh7th/nvim-cmp" -- The completion plugin
+  -- use "hrsh7th/cmp-buffer" -- buffer completions
+  -- use "hrsh7th/cmp-path" -- path completions
+  -- use "hrsh7th/cmp-nvim-lsp" 
+  -- use "saadparwaiz1/cmp_luasnip" -- snippet completions 
   
   -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/mason.nvim"
-  use "williamboman/mason-lspconfig.nvim"
+  -- use "neovim/nvim-lspconfig" -- enable LSP
+  -- use "williamboman/mason.nvim"
+  -- use "williamboman/mason-lspconfig.nvim"
 	use "onsails/lspkind.nvim" -- vs-code like icons for autocompletion
 
    -- snippets
-  use({"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"})
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+  -- use({"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"})
+  -- use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
   -- null ls
   use "jose-elias-alvarez/null-ls.nvim"
