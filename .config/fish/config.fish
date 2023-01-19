@@ -56,6 +56,7 @@ alias conf="nvim ~/.config/nvim"
 #
 # dis
 alias dis="cd ~/kodius/discovery/healthOrganizationFrontendUsersV2"
+alias disa="cd ~/kodius/discovery/discovery-fe-admin"
 #
 # alacritty config
 alias ac="nvim ~/.config/alacritty/alacritty.yml"

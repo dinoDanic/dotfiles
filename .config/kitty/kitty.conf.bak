@@ -1,8 +1,3 @@
-# BEGIN_KITTY_THEME
-# Tokyo Night
-include current-theme.conf
-# END_KITTY_THEME
-#
 # UI
 hide_window_decorations titlebar-only
 mouse_hide_wait 1
@@ -21,13 +16,12 @@ map cmd+. load_config_file
 
 map shift+cmd+t new_tab_with_cwd
 
-
-
 # COLORS
 # cursor #B85DD4 
 # cursor #DDB368 
 # cursor #00FF00 
 # cursor #2FB3C5
+# include ./OneDark.conf
 
 #background
 # background_opacity 0.96
@@ -35,14 +29,14 @@ map shift+cmd+t new_tab_with_cwd
 # background_image_layout tiled 
 # background_tint 0.95
 
+=>
 # FONT
 # font_family          Fira Code Retina
-font_family          Fira Code Medium
+# font_family          Fira Code Medium
 # font_family          Fira Code Regluar
 # font_family          Fira Code SemiBold
 # font_family          Fira Code Bold
 # font_family          Monaco Regluar 
-disable_ligatures always
 font_size 13.0
 
 # macos_thicken_font 0.2
@@ -2301,3 +2295,7 @@ macos_show_window_title_in none
 #: }}}
 
 
+# BEGIN_KITTY_THEME
+# Catppuccin-Latte
+include current-theme.conf
+# END_KITTY_THEME
