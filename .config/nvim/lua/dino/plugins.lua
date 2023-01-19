@@ -1,6 +1,6 @@
 local fn = vim.fn
 
--- Automatically install packer
+-- Automatically install packerplug
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system {
@@ -71,7 +71,7 @@ return packer.startup(function(use)
   use 'nvim-treesitter/nvim-treesitter'
 
   -- lualine
-  -- use 'nvim-lualine/lualine.nvim' 
+  use 'nvim-lualine/lualine.nvim' 
 
   -- auto closgin 
   use {
@@ -119,24 +119,25 @@ use 'JoosepAlviste/nvim-ts-context-commentstring'
   --buffer close without fucking up layout
   use "moll/vim-bbye"
 
-  -- projects
-  -- use "ahmedkhalf/project.nvim"
-
   -- colors
   use 'norcalli/nvim-colorizer.lua'
   use 'folke/tokyonight.nvim'
-  -- use "EdenEast/nightfox.nvim"
+  use "EdenEast/nightfox.nvim"
   -- use 'navarasu/onedark.nvim'
+  use { "catppuccin/nvim", as = "catppuccin" }
   -- use "xiyaowong/nvim-transparent"
   
+  -- prisma
+  -- use 'pantharshit00/vim-prisma'
+  
   -- harpoon
-  use 'ThePrimeagen/harpoon' 
+  -- use 'ThePrimeagen/harpoon' 
 
   -- Leep
-  use {"ggandor/leap.nvim", config = function()
-    require('leap').add_default_mappings() 
-  end
-  } 
+  -- use {"ggandor/leap.nvim", config = function()
+  --   require('leap').add_default_mappings() 
+  -- end
+  -- } 
 
   -- useless
 --   use {

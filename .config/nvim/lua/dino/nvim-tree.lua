@@ -23,8 +23,8 @@ require("nvim-tree").setup({
     },
   },
   -- for project.nvim
-  sync_root_with_cwd = true,
-  respect_buf_cwd = true,
+  -- sync_root_with_cwd = true,
+  -- respect_buf_cwd = true,
   -- for project.nvim
   update_focused_file = {
     enable = true,
@@ -32,7 +32,7 @@ require("nvim-tree").setup({
   },
   renderer = {
     root_folder_modifier = ":t",
-    group_empty = false,
+    group_empty = true,
     icons = {
       git_placement = "signcolumn",
       show = {
@@ -50,14 +50,6 @@ require("nvim-tree").setup({
           empty_open = "",
           symlink = "",
           symlink_open = "",
-          -- arrow_open = "",
-          -- arrow_closed = "",
-          -- default = "",
-          -- open = "",
-          -- empty = "",
-          -- empty_open = "",
-          -- symlink = "",
-          -- symlink_open = "",
         },
         git = {
           unstaged = "✗",

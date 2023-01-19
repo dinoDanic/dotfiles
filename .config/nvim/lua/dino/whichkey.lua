@@ -114,12 +114,12 @@ local mappings = {
   ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle current line" },
   ["."] = { "<cmd>luafile %<CR>", "Reload configuration" },
   --harpoon
-  ["J"] = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Add to harpoon" },
-  ["j"] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Harpoon" },
-  ["1"] = { "<Cmd>lua require('harpoon.ui').nav_file(1) <Cr>", "Harpoon 1" },
-  ["2"] = { "<Cmd>lua require('harpoon.ui').nav_file(2) <Cr>", "Harpoon 2" },
-  ["3"] = { "<Cmd>lua require('harpoon.ui').nav_file(3) <Cr>", "Harpoon 3" },
-  ["4"] = { "<Cmd>lua require('harpoon.ui').nav_file(4) <Cr>", "Harpoon 4" },
+  -- ["J"] = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Add to harpoon" },
+  -- ["j"] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Harpoon" },
+  -- ["1"] = { "<Cmd>lua require('harpoon.ui').nav_file(1) <Cr>", "Harpoon 1" },
+  -- ["2"] = { "<Cmd>lua require('harpoon.ui').nav_file(2) <Cr>", "Harpoon 2" },
+  -- ["3"] = { "<Cmd>lua require('harpoon.ui').nav_file(3) <Cr>", "Harpoon 3" },
+  -- ["4"] = { "<Cmd>lua require('harpoon.ui').nav_file(4) <Cr>", "Harpoon 4" },
   --harpoon
     b = {
       name = "Buffers",
