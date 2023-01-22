@@ -1,8 +1,8 @@
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 
--- highlight on hover 
+-- highlight on hover
 -- if client.server_capabilities.documentHighlightProvider then
 --     vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
 --     vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_document_highlight" }
@@ -39,13 +39,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 local on_attach = function(client, bufnr)
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-   
+
 end
 
 local lsp_flags = {
@@ -53,12 +53,12 @@ local lsp_flags = {
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-vim.diagnostic.config({virtual_text = false})
+vim.diagnostic.config({ virtual_text = false })
 
-require('lspconfig')['tsserver'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities
+require('lspconfig')['tsserver'].setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities
 }
 
 -- require('lspconfig')['prisma-language-server'].setup{

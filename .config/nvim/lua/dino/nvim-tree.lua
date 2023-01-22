@@ -32,7 +32,7 @@ require("nvim-tree").setup({
   },
   renderer = {
     root_folder_modifier = ":t",
-    group_empty = true,
+    group_empty = false,
     icons = {
       git_placement = "signcolumn",
       show = {
@@ -73,7 +73,7 @@ require("nvim-tree").setup({
   },
   actions = {
     open_file = {
-      quit_on_open = false,
+      quit_on_open = true,
     },
   },
 })

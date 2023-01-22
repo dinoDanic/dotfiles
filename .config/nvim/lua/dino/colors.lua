@@ -1,13 +1,11 @@
 -- FOXXXXXXXXXXXXXX
 -- vim.cmd [[colorscheme carbonfox]]
 
-
 -- NVIM TREEEEEEEEE
 -- vim.cmd([[ highlight NvimTreeIndentMarker guifg=#CE8DE2 ]])
 
 -- CATPUCCIONOOOOOO
 -- vim.cmd [[colorscheme catppuccin-frappe]]
-
 
 -- DRACULA
 -- vim.cmd[[colorscheme dracula]]
@@ -15,63 +13,23 @@
 -- NIGHTFOX
 -- vim.cmd[[colorscheme nightfox]]
 
-
 -- ONE DARKKKKKKKKK
- -- require('onedark').setup  {
- --     -- Main options --
- --     style = 'deep', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
- --     transparent = false,  -- Show/hide background
- --     term_colors = true, -- Change terminal color as per the selected theme style
- --     ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
- --     cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
- --
- --     -- Change code style ---
- --     -- Options are italic, bold, underline, none
- --     -- You can configure multiple style with comma seperated, For e.g., keywords = 'italic,bold'
- --     code_style = {
- --         comments = 'italic',
- --         keywords = 'none',
- --         functions = 'none',
- --         strings = 'none',
- --         variables = 'none'
- --     },
- --
- --     -- Lualine options --
- --     lualine = {
- --         transparent = false, -- lualine center bar transparency
- --     },
- --
- --     -- Custom Highlights --
- --     colors = {}, -- Override default colors
- --     highlights = {}, -- Override highlight groups
- --
- --     -- Plugins Config --
- --     diagnostics = {
- --         darker = true, -- darker colors for diagnostic
- --         undercurl = true,   -- use undercurl instead of underline for diagnostics
- --         background = true,    -- use background color for virtual text
- --     },
- -- }
- --
- -- require('onedark').load()
- -- vim.cmd [[ highlight NvimTreeFolderIcon guifg=#7dcfff ]]
--- ONE DARKKKKKKKKKKKKKKKKKK ENDDDDDDDDDDDDDdd
-
--- vim.cmd [[hi LineNrAbove guifg=gray ]] 
--- vim.cmd [[hi LineNrBelow guifg=red ]]
--- vim.cmd [[hi LineNr guifg=#56B6C2 ]]
+-- require('onedark').load()
 
 
--- TOKYYYYYYYYYYYYO 
-vim.cmd [[ colorscheme tokyonight]]
--- vim.cmd [[ colorscheme tokyonight-night]]
+-- ROSE PINE
+require("rose-pine").setup()
+vim.cmd('colorscheme rose-pine')
+vim.cmd[[hi NonText guifg=bg]]
+
+-- TOKYYYYYYYYYYYYO
+-- vim.cmd [[ colorscheme tokyonight]]
 -- vim.cmd [[ highlight NvimTreeIndentMarker guifg=#7dcfff ]]
--- vim.cmd [[ hi LineNrAbove guifg=#fff ]] 
--- vim.cmd [[ hi LineNrBelow guifg=#fff ]]
--- vim.cmd [[ hi LineNr guifg=#00ffd2 ]]
- 
+-- vim.cmd [[ hi LineNrAbove guifg=#5A67AC ]]
+-- vim.cmd [[ hi LineNrBelow guifg=#5A67AC ]]
 
--- transparent 
+
+-- transparent
 -- vim.cmd [[hi! Normal ctermbg=NONE guibg=NONE]]
 -- vim.cmd [[ hi! NonText ctermbg=NONE guibg=NONE]]
 -- vim.cmd [[ hi! EndOfBuffer guibg=NONE ctermbg=NONE]]
@@ -88,6 +46,11 @@ vim.cmd [[ colorscheme tokyonight]]
 --
 
 -- Colorize
-  require 'colorizer'.setup({
-    '*';
+require 'colorizer'.setup({
+  '*';
 }, { mode = 'foreground', names = false })
+
+
+-- Global
+vim.cmd[[hi clear SpellBad]]
+vim.cmd[[hi SpellBad cterm=underline gui=undercurl]]

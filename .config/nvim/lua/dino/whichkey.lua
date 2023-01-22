@@ -53,7 +53,7 @@ local setup = {
     align = "left", -- align columns left, center or right
   },
   ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
-  hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, -- hide mapping boilerplate
+  hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
   show_help = true, -- show help message on the command line when the popup is visible
   triggers = "auto", -- automatically setup triggers
   -- triggers = {"<leader>"} -- or specify a list manually
@@ -92,7 +92,17 @@ local vopts = {
   silent = true, -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
   nowait = false, -- use `nowait` when creating keymaps
-} 
+}
+
+function toggle_spell()
+  if vim.g.spell then
+    vim.cmd("set nospell")
+    vim.g.spell = false
+  else
+    vim.cmd("set spell")
+    vim.g.spell = true
+  end
+end
 
 local vmappings = {
   ["/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment" },
@@ -121,30 +131,40 @@ local mappings = {
   -- ["3"] = { "<Cmd>lua require('harpoon.ui').nav_file(3) <Cr>", "Harpoon 3" },
   -- ["4"] = { "<Cmd>lua require('harpoon.ui').nav_file(4) <Cr>", "Harpoon 4" },
   --harpoon
-    b = {
-      name = "Buffers",
-      j = { "<cmd>BufferLinePick<cr>", "Jump" },
-      f = { "<cmd>Telescope buffers<cr>", "Find" },
-      b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
-      n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
-      e = {
-        "<cmd>BufferLinePickClose<cr>",
-        "Pick which buffer to close",
-      },
-      h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
-      l = {
-        "<cmd>BufferLineCloseRight<cr>",
-        "Close all to the right",
-      },
-      D = {
-        "<cmd>BufferLineSortByDirectory<cr>",
-        "Sort by directory",
-      },
-      L = {
-        "<cmd>BufferLineSortByExtension<cr>",
-        "Sort by language",
-      },
-    },  
+
+  a = {
+    name = "File",
+    r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "rename" },
+    s = { "<cmd>Telescope spell_suggest<cr>", "spell check" },
+    d = { "<cmd>lua toggle_spell()<cr>", "spell toggle" },
+  },
+
+  b = {
+    name = "Buffers",
+    j = { "<cmd>BufferLinePick<cr>", "Jump" },
+    f = { "<cmd>Telescope buffers<cr>", "Find" },
+    b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
+    n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
+    e = {
+      "<cmd>BufferLinePickClose<cr>",
+      "Pick which buffer to close",
+    },
+    h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
+    l = {
+      "<cmd>BufferLineCloseRight<cr>",
+      "Close all to the right",
+    },
+    D = {
+      "<cmd>BufferLineSortByDirectory<cr>",
+      "Sort by directory",
+    },
+    L = {
+      "<cmd>BufferLineSortByExtension<cr>",
+      "Sort by language",
+    },
+  },
+
+
   l = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
@@ -173,6 +193,7 @@ local mappings = {
     C = { "<cmd>Telescope commands<cr>", "Commands" },
     p = { "<cmd>Telescope projects<cr>", "Commands" },
   },
+
   g = {
     name = "Git",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -188,13 +209,19 @@ local mappings = {
       "Undo Stage Hunk",
     },
     o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
     d = {
       "<cmd>Gitsigns diffthis HEAD<cr>",
       "Diff",
     },
   },
+  z = {
+    name = "Zen mode",
+    a = { ":TZAtaraxis<cr>", "Ataraxis / Orginal" },
+    n = { ":TZNarrow<cr>", "Narrow" },
+    f = { ":TZFocus<cr>", "Focus" },
+    m = { ":TZMinimalist<cr>", "Minimalist" },
+  }
 }
 
 wk.setup(setup)
