@@ -1,16 +1,17 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
-
+ fish_add_path /opt/homebrew/bin
  fish_vi_key_bindings
 
 # ----------------------------- GREETINGS ------------------------------
         function fish_greeting
-         echo "
+
+        set_color green 
+         echo  "
 
                     █░█ █▀▀   █░█ █▀▄ ▄▀█ █▀█ ▄▀█ █▄░█ ░░█ █▀▀
                     █▀█ █▄▄   █▄█ █▄▀ █▀█ █▀▄ █▀█ █░▀█ █▄█ ██▄    ¯\_( ͠° . ͡°)_/¯
-
-              "
+              
+         "
 
         end
 # ----------------------------- GREETINGS ------------------------------
@@ -63,13 +64,11 @@ alias ac="nvim ~/.config/alacritty/alacritty.yml"
 #
 # kitty config
 alias kc="nvim ~/.config/kitty/kitty.conf"
+# fish config
+alias fc="nvim ~/.config/fish/config.fish"
 #
 # ranger
 alias ra="ranger"
-#
-# nezalijevam
-alias nez="cd ~/projects/nezalijvam"
-alias nezbe="cd ~/projects/nezalijevambe"
 #
 # tmux
 alias tmuxa0="tmux attach-session -t 0"

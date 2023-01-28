@@ -5,7 +5,7 @@
 -- vim.cmd([[ highlight NvimTreeIndentMarker guifg=#CE8DE2 ]])
 
 -- CATPUCCIONOOOOOO
--- vim.cmd [[colorscheme catppuccin-frappe]]
+vim.cmd [[colorscheme catppuccin]]
 
 -- DRACULA
 -- vim.cmd[[colorscheme dracula]]
@@ -18,9 +18,9 @@
 
 
 -- ROSE PINE
-require("rose-pine").setup()
-vim.cmd('colorscheme rose-pine')
-vim.cmd[[hi NonText guifg=bg]]
+-- require("rose-pine").setup()
+-- vim.cmd('colorscheme rose-pine')
+-- vim.cmd[[hi NonText guifg=bg]]
 
 -- TOKYYYYYYYYYYYYO
 -- vim.cmd [[ colorscheme tokyonight]]

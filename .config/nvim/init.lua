@@ -10,7 +10,6 @@ require('dino.nvim-tree')
 require('dino.treesitter')
 require('dino.bufferline')
 require('dino.whichkey')
-require('dino.zen')
 require('dino.lualine')
 
 -- old LSP
@@ -18,3 +17,6 @@ require('dino.lualine')
 -- require('dino.lsp')
 -- require('dino.lsp.null-ls')
 -- require('dino.cmp')
+
+
+-- require('dino.zen')

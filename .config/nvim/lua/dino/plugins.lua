@@ -138,12 +138,12 @@ return packer.startup(function(use)
   -- use "xiyaowong/nvim-transparent"
 
   -- ZEN MODE
-  use({
-    "Pocco81/true-zen.nvim",
-    config = function()
-      require("true-zen").setup {}
-    end,
-  })
+  -- use({
+  --   "Pocco81/true-zen.nvim",
+  --   config = function()
+  --     require("true-zen").setup {}
+  --   end,
+  -- })
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

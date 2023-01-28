@@ -1,11 +1,17 @@
+# editor . 
+#
 # BEGIN_KITTY_THEME
-# Tokyo Night
+# Catppuccin-Macchiato
 include current-theme.conf
 # END_KITTY_THEME
 #
 # UI
 hide_window_decorations titlebar-only
 mouse_hide_wait 1
+# active_border_color #00ff00
+inactive_text_alpha 0.5
+
+hyper = ctrl+opt+cmd+shift+enter
 
 # MAPPINGS
 map cmd+1 goto_tab 1
@@ -19,6 +25,18 @@ map cmd+8 goto_tab 8
 map cmd+9 goto_tab 9
 map cmd+. load_config_file
 map shift+cmd+t new_tab_with_cwd
+# WINDOW management
+map ctrl+opt+cmd+shift+enter  new_window_with_cwd 
+map ctrl+opt+cmd+shift+w  close_window 
+map ctrl+opt+cmd+shift+h  previous_window 
+map ctrl+opt+cmd+shift+l  next_window 
+map ctrl+opt+cmd+shift+f  move_window_forward 
+map ctrl+opt+cmd+shift+b  move_window_backward 
+map ctrl+opt+cmd+shift+r  start_resizing_window 
+map ctrl+opt+cmd+shift+u  next_layout 
+map ctrl+opt+cmd+shift+e  open_url_with_hints 
+
+# map cmd+1 set tab_bar_min_tabs 2
 
 # map cmd+1 set tab_bar_min_tabs 2
 # map cmd+2 set tab_bar_min_tabs 5
@@ -31,6 +49,8 @@ map shift+cmd+t new_tab_with_cwd
 # cursor #DDB368 
 # cursor #00FF00 
 # cursor #2FB3C5
+# cursor #E5ADAC 
+
 
 #background
 # background_opacity 0.96
@@ -44,7 +64,7 @@ map shift+cmd+t new_tab_with_cwd
 # font_family          Fira Code SemiBold
 # font_family          Fira Code Bold
 # font_family          Monaco Regluar 
-font_family          Fira Code Medium
+font_family            Fira Code Medium
 disable_ligatures always
 font_size              13.0
 bold_font              auto 
@@ -760,7 +780,7 @@ active_tab_title_template "{fmt.fg._e5c07b}{fmt.bg.default}{fmt.fg._282c34}{fmt.
 #: start_resizing_window. The cells value is used for horizontal
 #: resizing, and the lines value is used for vertical resizing.
 
-# window_border_width 0.5pt
+# window_border_width 1.5pt
 
 #: The width of window borders. Can be either in pixels (px) or pts
 #: (pt). Values in pts will be rounded to the nearest number of pixels
@@ -775,7 +795,7 @@ active_tab_title_template "{fmt.fg._e5c07b}{fmt.bg.default}{fmt.fg._282c34}{fmt.
 #: drawn. Note that setting a non-zero window_margin_width overrides
 #: this and causes all borders to be drawn.
 
-# window_margin_width 0
+window_margin_width 1
 
 #: The window margin (in pts) (blank area outside the border). A
 #: single value sets all four sides. Two values set the vertical and
@@ -798,7 +818,7 @@ active_tab_title_template "{fmt.fg._e5c07b}{fmt.bg.default}{fmt.fg._282c34}{fmt.
 #: and bottom. Four values set top, right, bottom and left.
 
 # placement_strategy center
-
+#
 #: When the window size is not an exact multiple of the cell size, the
 #: cell area of the terminal window will have some extra padding on
 #: the sides. You can control how that padding is distributed with
@@ -814,13 +834,12 @@ active_tab_title_template "{fmt.fg._e5c07b}{fmt.bg.default}{fmt.fg._282c34}{fmt.
 # inactive_border_color #cccccc
 
 #: The color for the border of inactive windows.
-
 # bell_border_color #ff5a00
 
 #: The color for the border of inactive windows in which a bell has
 #: occurred.
 
-# inactive_text_alpha 1.0
+# inactive_text_alpha 0.2
 
 #: Fade the text in inactive windows by the specified amount (a number
 #: between zero and one, with zero being fully faded).

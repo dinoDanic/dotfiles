@@ -81,26 +81,9 @@ alias grs="git reset --soft HEAD~1"
 alias gs="git status"
 # 
 # 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
 #
 #
 #
 #
 # ----------------------------- ALIAS ------------------------------
-
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-
-# ------------------------------- FISH -------------------------------
-fish
-# ------------------------------- FISH -------------------------------
-export NVM_DIR=~/.nvm\nsource $(brew --prefix nvm)/nvm.sh

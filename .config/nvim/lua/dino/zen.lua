@@ -11,7 +11,7 @@ require("true-zen").setup {
       padding = { -- padding windows
         left = 52,
         right = 52,
-        top = 0,
+        top = 300,
         bottom = 0,
       },
       callbacks = { -- run functions when opening/closing Ataraxis mode
@@ -24,7 +24,7 @@ require("true-zen").setup {
     minimalist = {
       ignored_buf_types = { "nofile" }, -- save current options from any window except ones displaying these kinds of buffers
       options = { -- options to be disabled when entering Minimalist mode
-        number = true,
+        number = false,
         relativenumber = false,
         showtabline = 0,
         signcolumn = "no",
