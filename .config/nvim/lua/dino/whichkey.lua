@@ -110,7 +110,7 @@ local vmappings = {
 
 local mappings = {
   ["h"] = { ":nohl<CR>", "Clear Highlight" },
-  ["d"] = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Diagnostics" },
+  ["d"] = { "<cmd>lua vim.diagnostic.open_float({focusable = true})<CR>", "Diagnostics" },
   ["t"] = { "<cmd>ToggleTerm direction=float<cr>", "Terminal" },
   ["f"] = { "<cmd>Telescope find_files<cr>", "Find Files" },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },

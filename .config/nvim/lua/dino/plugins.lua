@@ -99,6 +99,8 @@ return packer.startup(function(use)
     end
   }
 
+  use("tpope/vim-fugitive")
+
   -- comments
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use {
@@ -137,13 +139,14 @@ return packer.startup(function(use)
   use({ 'rose-pine/neovim', as = 'rose-pine' })
   -- use "xiyaowong/nvim-transparent"
 
-  -- ZEN MODE
-  -- use({
-  --   "Pocco81/true-zen.nvim",
+  -- useless
+  -- use {
+  --   'tamton-aquib/duck.nvim',
   --   config = function()
-  --     require("true-zen").setup {}
-  --   end,
-  -- })
+  --     vim.keymap.set('n', '<leader>dd', function() require("duck").hatch() end, {})
+  --     vim.keymap.set('n', '<leader>dk', function() require("duck").cook() end, {})
+  --   end
+  -- }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

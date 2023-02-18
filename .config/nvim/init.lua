@@ -1,4 +1,3 @@
-require('dino.lsp.zero-lsp')
 require('dino.lsp.null-ls')
 require('dino.plugins')
 require('dino.options')
@@ -11,6 +10,7 @@ require('dino.treesitter')
 require('dino.bufferline')
 require('dino.whichkey')
 require('dino.lualine')
+require('dino.lsp.zero-lsp-2')
 
 -- old LSP
 -- require('dino.mason')
@@ -18,5 +18,3 @@ require('dino.lualine')
 -- require('dino.lsp.null-ls')
 -- require('dino.cmp')
 
-
--- require('dino.zen')

@@ -6,6 +6,8 @@
 
 -- CATPUCCIONOOOOOO
 vim.cmd [[colorscheme catppuccin]]
+vim.cmd [[ hi LineNrAbove guifg=#5A67n1 ]]
+vim.cmd [[ hi LineNrBelow guifg=#5A67n1 ]]
 
 -- DRACULA
 -- vim.cmd[[colorscheme dracula]]

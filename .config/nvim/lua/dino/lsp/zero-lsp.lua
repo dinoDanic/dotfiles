@@ -15,46 +15,12 @@ lsp.ensure_installed({
 })
 
 
-lsp.configure('tsserver', {
-  on_attach = function(client, bufnr)
-    -- highlight
-    --   if client.server_capabilities.documentHighlightProvider then
-    --     vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-    --     vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_document_highlight" }
-    --     vim.api.nvim_create_autocmd("CursorHold", {
-    --       callback = vim.lsp.buf.document_highlight,
-    --       buffer = bufnr,
-    --       group = "lsp_document_highlight",
-    --       desc = "Document Highlight",
-    --     })
-    --     vim.api.nvim_create_autocmd("CursorMoved", {
-    --       callback = vim.lsp.buf.clear_references,
-    --       buffer = bufnr,
-    --       group = "lsp_document_highlight",
-    --       desc = "Clear All the References",
-    --     })
-    --   end
-    --   -- format on save
-    --   if client.server_capabilities.documentFormattingProvider then
-    --     vim.api.nvim_create_autocmd("BufWritePre", {
-    --       group = vim.api.nvim_create_augroup("Format", { clear = true }),
-    --       buffer = bufnr,
-    --       callback = function() vim.lsp.buf.formatting_seq_sync() end
-    --     })
-    --   end
-  end,
-  settings = {
-    completions = {
-      completeFunctionCalls = true
-    }
-  }
-})
-
 local luasnip = require("luasnip")
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 local cmp_mappings = lsp.defaults.cmp_mappings({
+  ['<C-Space>'] = cmp.mapping.complete(),
   ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
   ["<Tab>"] = cmp.mapping(function(fallback)
@@ -75,16 +41,17 @@ lsp.setup_nvim_cmp({
   mapping = cmp_mappings,
   sources = {
     { name = 'nvim_lsp', keyword_length = 1 },
-    { name = 'luasnip', keyword_length = 2 },
+    { name = 'luasnip',  keyword_length = 2 },
     { name = 'path' },
-    { name = 'buffer', keyword_length = 3 },
+    { name = 'buffer',   keyword_length = 3 },
   },
 })
+
 local lsp_opts = {
   single_file_support = false,
 }
 
-lsp.setup_servers({ 'html', 'cssls', opts = lsp_opts })
+-- lsp.setup_servers({ 'html', 'cssls', opts = lsp_opts })
 
 
 lsp.nvim_workspace()
@@ -95,7 +62,7 @@ lsp.set_preferences({
 
 lsp.setup()
 
-vim.diagnostic.config({})
+-- vim.diagnostic.config({})
 
 -- yank highlight
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
