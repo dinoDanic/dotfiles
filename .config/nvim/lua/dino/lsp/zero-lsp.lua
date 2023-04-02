@@ -15,6 +15,13 @@ lsp.ensure_installed({
 })
 
 
+-- TODO: TSserver dosent want to load so im using this keymaps
+local bufopts = { noremap = true, silent = true }
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+
 local luasnip = require("luasnip")
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -47,11 +54,12 @@ lsp.setup_nvim_cmp({
   },
 })
 
-local lsp_opts = {
-  single_file_support = false,
-}
+-- local lsp_opts = {
+--   single_file_support = false,
+-- }
 
 -- lsp.setup_servers({ 'html', 'cssls', opts = lsp_opts })
+
 
 
 lsp.nvim_workspace()
@@ -62,7 +70,7 @@ lsp.set_preferences({
 
 lsp.setup()
 
--- vim.diagnostic.config({})
+vim.diagnostic.config({ virtual_text = true })
 
 -- yank highlight
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })

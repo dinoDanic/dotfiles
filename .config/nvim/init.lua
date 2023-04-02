@@ -1,5 +1,6 @@
-require('dino.lsp.null-ls')
 require('dino.plugins')
+require('dino.lsp.zero-lsp')
+require('dino.lsp.null-ls')
 require('dino.options')
 require('dino.keymaps')
 require('dino.colors')
@@ -10,11 +11,10 @@ require('dino.treesitter')
 require('dino.bufferline')
 require('dino.whichkey')
 require('dino.lualine')
-require('dino.lsp.zero-lsp-2')
+require('dino.leap')
 
 -- old LSP
 -- require('dino.mason')
 -- require('dino.lsp')
 -- require('dino.lsp.null-ls')
 -- require('dino.cmp')
-

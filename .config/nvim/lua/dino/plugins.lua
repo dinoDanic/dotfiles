@@ -40,7 +40,6 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
@@ -70,7 +69,9 @@ return packer.startup(function(use)
 
   -- null ls
   use "jose-elias-alvarez/null-ls.nvim"
-  --
+  
+  -- leap
+  use "ggandor/leap.nvim"
 
   -- telescope
   use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
@@ -137,6 +138,10 @@ return packer.startup(function(use)
   use 'navarasu/onedark.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
   use({ 'rose-pine/neovim', as = 'rose-pine' })
+  use { "ellisonleao/gruvbox.nvim" }
+  use { 'nyoom-engineering/oxocarbon.nvim' }
+  use { "bluz71/vim-nightfly-colors", as = "nightfly" }
+  use { "bluz71/vim-moonfly-colors", as = "moonfly" }
   -- use "xiyaowong/nvim-transparent"
 
   -- useless

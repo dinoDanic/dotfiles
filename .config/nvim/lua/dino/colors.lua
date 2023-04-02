@@ -5,9 +5,21 @@
 -- vim.cmd([[ highlight NvimTreeIndentMarker guifg=#CE8DE2 ]])
 
 -- CATPUCCIONOOOOOO
-vim.cmd [[colorscheme catppuccin]]
-vim.cmd [[ hi LineNrAbove guifg=#5A67n1 ]]
-vim.cmd [[ hi LineNrBelow guifg=#5A67n1 ]]
+-- vim.cmd [[colorscheme catppuccin]]
+-- vim.cmd [[ hi LineNrAbove guifg=#5A67n1 ]]
+-- vim.cmd [[ hi LineNrBelow guifg=#5A67n1 ]]
+
+-- GRUVBOX
+-- vim.cmd [[colorscheme gruvbox]]
+
+-- OXOCARBON
+-- vim.cmd [[colorscheme oxocarbon]]
+
+-- NIGHTGLY
+-- vim.cmd [[colorscheme nightfly]]
+
+-- MOONFLY
+-- vim.cmd [[colorscheme moonfly]]
 
 -- DRACULA
 -- vim.cmd[[colorscheme dracula]]
@@ -18,17 +30,16 @@ vim.cmd [[ hi LineNrBelow guifg=#5A67n1 ]]
 -- ONE DARKKKKKKKKK
 -- require('onedark').load()
 
-
 -- ROSE PINE
 -- require("rose-pine").setup()
 -- vim.cmd('colorscheme rose-pine')
 -- vim.cmd[[hi NonText guifg=bg]]
 
 -- TOKYYYYYYYYYYYYO
--- vim.cmd [[ colorscheme tokyonight]]
--- vim.cmd [[ highlight NvimTreeIndentMarker guifg=#7dcfff ]]
--- vim.cmd [[ hi LineNrAbove guifg=#5A67AC ]]
--- vim.cmd [[ hi LineNrBelow guifg=#5A67AC ]]
+vim.cmd [[ colorscheme tokyonight]]
+vim.cmd [[ highlight NvimTreeIndentMarker guifg=#7dcfff ]]
+vim.cmd [[ hi LineNrAbove guifg=#5A67AC ]]
+vim.cmd [[ hi LineNrBelow guifg=#5A67AC ]]
 
 
 -- transparent
@@ -49,10 +60,10 @@ vim.cmd [[ hi LineNrBelow guifg=#5A67n1 ]]
 
 -- Colorize
 require 'colorizer'.setup({
-  '*';
+  '*',
 }, { mode = 'foreground', names = false })
 
 
 -- Global
-vim.cmd[[hi clear SpellBad]]
-vim.cmd[[hi SpellBad cterm=underline gui=undercurl]]
+-- vim.cmd [[hi clear SpellBad]]
+-- vim.cmd [[hi SpellBad cterm=underline gui=undercurl]]
