@@ -34,6 +34,7 @@ alias kekomi="cd ~/kodius/kekomi/next"
 # kodiui
 alias kodiui="cd ~/kodius/kodiui-core/packages/ui"
 alias kodiplay="cd ~/kodius/kodiui-core/apps/playground"
+alias kodidocs="cd ~/kodius/kodiui-core/apps/docs"
 #
 # opti
 alias opti="cd ~/kodius/cosmicfrog-model-editor-service"

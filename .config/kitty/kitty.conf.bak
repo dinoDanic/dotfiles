@@ -1,15 +1,15 @@
 # editor . 
 #
 # BEGIN_KITTY_THEME
-# Gruvbox Dark
+# Tokyo Night Storm
 include current-theme.conf
 # END_KITTY_THEME
 #
 # UI
 hide_window_decorations titlebar-only
 mouse_hide_wait 1
-enabled_layouts tall:bias=80;full_size=1;mirrored=false
-# enabled_layouts tall:bias=50;full_size=1;mirrored=false
+# enabled_layouts tall:bias=80;full_size=1;mirrored=false
+enabled_layouts tall:bias=50;full_size=1;mirrored=false
 # enabled_layouts horizontal
 # window_margin_width 1
 # active_border_color #00ff00
@@ -68,10 +68,10 @@ map ctrl+opt+cmd+shift+e  open_url_with_hints
 # FONT
 # font_family          Fira Code Retina
 # font_family          Fira Code Regluar
-# font_family          Fira Code SemiBold
+font_family          Fira Code SemiBold
 # font_family          Fira Code Bold
 # font_family          Monaco Regluar 
-font_family            Fira Code Medium
+# font_family            Fira Code Medium
 disable_ligatures always
 font_size              13.0
 bold_font              auto 
