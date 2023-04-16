@@ -45,31 +45,31 @@ return packer.startup(function(use)
     branch = 'v1.x',
     requires = {
       -- LSP Support
-      { 'neovim/nvim-lspconfig' }, -- Required
-      { 'williamboman/mason.nvim' }, -- Optional
+      { 'neovim/nvim-lspconfig' },             -- Required
+      { 'williamboman/mason.nvim' },           -- Optional
       { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
       -- Autocompletion
-      { 'hrsh7th/nvim-cmp' }, -- Required
-      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-      { 'hrsh7th/cmp-buffer' }, -- Optional
-      { 'hrsh7th/cmp-path' }, -- Optional
+      { 'hrsh7th/nvim-cmp' },         -- Required
+      { 'hrsh7th/cmp-nvim-lsp' },     -- Required
+      { 'hrsh7th/cmp-buffer' },       -- Optional
+      { 'hrsh7th/cmp-path' },         -- Optional
       { 'saadparwaiz1/cmp_luasnip' }, -- Optional
-      { 'hrsh7th/cmp-nvim-lua' }, -- Optional
+      { 'hrsh7th/cmp-nvim-lua' },     -- Optional
 
       -- Snippets
-      { 'L3MON4D3/LuaSnip' }, -- Required
+      { 'L3MON4D3/LuaSnip' },             -- Required
       { 'rafamadriz/friendly-snippets' }, -- Optional
     }
   }
 
   use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "nvim-lua/plenary.nvim"  -- Useful lua functions used ny lots of plugins
   use "nvim-tree/nvim-web-devicons"
 
   -- null ls
   use "jose-elias-alvarez/null-ls.nvim"
-  
+
   -- leap
   use "ggandor/leap.nvim"
 
@@ -144,6 +144,16 @@ return packer.startup(function(use)
   use { "bluz71/vim-moonfly-colors", as = "moonfly" }
   -- use "xiyaowong/nvim-transparent"
 
+  use {
+    'glepnir/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require('dashboard').setup {
+        -- config
+      }
+    end,
+    requires = { 'nvim-tree/nvim-web-devicons' }
+  }
   -- useless
   -- use {
   --   'tamton-aquib/duck.nvim',

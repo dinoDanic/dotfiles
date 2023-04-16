@@ -5,7 +5,7 @@
 -- vim.cmd([[ highlight NvimTreeIndentMarker guifg=#CE8DE2 ]])
 
 -- CATPUCCIONOOOOOO
--- vim.cmd [[colorscheme catppuccin]]
+vim.cmd [[colorscheme catppuccin]]
 -- vim.cmd [[ hi LineNrAbove guifg=#5A67n1 ]]
 -- vim.cmd [[ hi LineNrBelow guifg=#5A67n1 ]]
 
@@ -36,10 +36,10 @@
 -- vim.cmd[[hi NonText guifg=bg]]
 
 -- TOKYYYYYYYYYYYYO
-vim.cmd [[ colorscheme tokyonight]]
-vim.cmd [[ highlight NvimTreeIndentMarker guifg=#7dcfff ]]
-vim.cmd [[ hi LineNrAbove guifg=#5A67AC ]]
-vim.cmd [[ hi LineNrBelow guifg=#5A67AC ]]
+-- vim.cmd [[ colorscheme tokyonight]]
+-- vim.cmd [[ highlight NvimTreeIndentMarker guifg=#7dcfff ]]
+-- vim.cmd [[ hi LineNrAbove guifg=#5A67AC ]]
+-- vim.cmd [[ hi LineNrBelow guifg=#5A67AC ]]
 
 
 -- transparent
