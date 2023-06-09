@@ -8,10 +8,9 @@ if status is-interactive
         set_color green 
          echo  "
 
-                    █░█ █▀▀   █░█ █▀▄ ▄▀█ █▀█ ▄▀█ █▄░█ ░░█ █▀▀
-                    █▀█ █▄▄   █▄█ █▄▀ █▀█ █▀▄ █▀█ █░▀█ █▄█ ██▄    ¯\_( ͠° . ͡°)_/¯
-              
-         "
+           █░█ █▀▀   █░█ █▀▄ ▄▀█ █▀█ ▄▀█ █▄░█ ░░█ █▀▀         
+           █▀█ █▄▄   █▄█ █▄▀ █▀█ █▀▄ █▀█ █░▀█ █▄█ ██▄  (╯ ͡❛ ⏥ ͡❛)╯┻━┻
+    "
 
         end
 # ----------------------------- GREETINGS ------------------------------
@@ -26,15 +25,24 @@ if status is-interactive
 
 
 
+# ----------------------------- PATHS ------------------------------
+# KOIDUI
+set -x KODIUI_PATH ~/kodius
+set -x KODIUI_MY_PROJECT_PATH ~/projects/bmb-elixir/bmb-fe
+
 # ----------------------------- ALIAS ------------------------------
 #
+# xchange
+alias xchange="cd ~/kodius/xchange-fe"
 # kekomi
 alias kekomi="cd ~/kodius/kekomi/next"
 #
 # kodiui
 alias kodiui="cd ~/kodius/kodiui-core/packages/ui"
 alias kodiplay="cd ~/kodius/kodiui-core/apps/playground"
-alias kodidocs="cd ~/kodius/kodiui-core/apps/docs"
+alias kodidocs="cd ~/kodius/kodiui-core/apps/kodidocs"
+alias kodicli="cd ~/kodius/kodiui-core/packages/cli"
+alias kodicore="cd ~/kodius/kodiui-core"
 #
 # opti
 alias opti="cd ~/kodius/cosmicfrog-model-editor-service"
@@ -51,11 +59,9 @@ alias sunnystart="cd ~/kodius/sunnyside/sunnyside-frontend; code .; open -a 'Goo
 #
 # lunarvim 
 alias lvim="/Users/dino/.local/bin/lvim"
-alias emacs="~/.config/emacs/bin"
-alias lc="lvim ~/"
 #
 # neovim
-alias conf="nvim ~/.config/nvim"
+alias nc="nvim ~/.config/nvim"
 #
 # dis
 alias dis="cd ~/kodius/discovery/healthOrganizationFrontendUsersV2"
@@ -96,3 +102,8 @@ end
 # Setting PATH for Python 3.11
 # The original version is saved in /Users/dino/.config/fish/config.fish.pysave
 set -x PATH "/Library/Frameworks/Python.framework/Versions/3.11/bin" "$PATH"
+
+# pnpm
+set -gx PNPM_HOME "/Users/dino/Library/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+# pnpm end

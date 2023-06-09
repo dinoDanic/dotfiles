@@ -142,29 +142,12 @@ return packer.startup(function(use)
   use { 'nyoom-engineering/oxocarbon.nvim' }
   use { "bluz71/vim-nightfly-colors", as = "nightfly" }
   use { "bluz71/vim-moonfly-colors", as = "moonfly" }
+  use "rebelot/kanagawa.nvim"
+  use { 'nyoom-engineering/oxocarbon.nvim' }
+  use("oxfist/night-owl.nvim")
   -- use "xiyaowong/nvim-transparent"
 
-  use {
-    'glepnir/dashboard-nvim',
-    event = 'VimEnter',
-    config = function()
-      require('dashboard').setup {
-        -- config
-      }
-    end,
-    requires = { 'nvim-tree/nvim-web-devicons' }
-  }
-  -- useless
-  -- use {
-  --   'tamton-aquib/duck.nvim',
-  --   config = function()
-  --     vim.keymap.set('n', '<leader>dd', function() require("duck").hatch() end, {})
-  --     vim.keymap.set('n', '<leader>dk', function() require("duck").cook() end, {})
-  --   end
-  -- }
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end

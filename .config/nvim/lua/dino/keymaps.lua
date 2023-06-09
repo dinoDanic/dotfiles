@@ -109,9 +109,5 @@ keymap("n", "x", '"_x', opts)
 -- keymap("n", "<leader>st", "<cmd>Telescope help_tags<cr>", opts) -- list available help tags
 -- keymap("n", "<leader>sf", "<cmd>Telescope grep_string<cr>", opts) -- find string under cursor in current working directory
 
--- git
--- todo
-
-
 -- Files
 -- keymap("n", "<leader>w", "<cmd>w<cr>", opts)

@@ -8,19 +8,17 @@ if not config_status_ok then
   return
 end
 
-local tree_cb = nvim_tree_config.nvim_tree_callback
-
 require("nvim-tree").setup({
+  on_attach = on_attach,
   sort_by = "case_sensitive",
   view = {
     adaptive_size = true,
-    mappings = {
-      list = {
-        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-        { key = "h", cb = tree_cb "close_node" },
-        { key = "v", cb = tree_cb "vsplit" },
-      },
-    },
+    -- mappings = {
+    --   list = {
+    --     { key = "l", action = "edit" },
+    --     { key = "v", action = "vsplit" },
+    --   },
+    -- },
   },
   -- for project.nvim
   -- sync_root_with_cwd = true,
