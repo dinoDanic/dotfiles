@@ -1,0 +1,1 @@
+/Users/dinodanic/.local/share/omf/themes/boxfish/fish_prompt.fish

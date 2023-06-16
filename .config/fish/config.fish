@@ -79,6 +79,7 @@ alias fc="nvim ~/.config/fish/config.fish"
 alias ra="ranger"
 #
 # tmux
+alias tc="nvim ~/.config/tmux/.tmux.conf"
 alias tmuxa0="tmux attach-session -t 0"
 alias tmuxa1="tmux attach-session -t 1"
 alias tmuxa2="tmux attach-session -t 2"
@@ -94,6 +95,9 @@ alias gp="git push"
 alias grs="git reset --soft HEAD~1"
 alias gs="git status"
 # 
+# comands
+# alias ls="ls -all"
+
 # ----------------------------- ALIAS ------------------------------
 
 end
