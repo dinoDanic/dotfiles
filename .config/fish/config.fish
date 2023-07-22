@@ -2,6 +2,9 @@ if status is-interactive
  fish_add_path /opt/homebrew/bin
  fish_vi_key_bindings
 
+# PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+
+
 # ----------------------------- GREETINGS ------------------------------
         function fish_greeting
 
@@ -31,7 +34,15 @@ set -x KODIUI_PATH ~/kodius
 set -x KODIUI_MY_PROJECT_PATH ~/projects/bmb-elixir/bmb-fe
 
 # ----------------------------- ALIAS ------------------------------
+
+# kitty
+alias s="kitty +kitten ssh"
 #
+# milivoja
+alias milivoje="ssh root@192.168.20.25"
+alias milivoje_vani="ssh root@185.155.224.196 -p 21222"
+alias serverina_vani="ssh kodius@185.98.12.29 -p 22001"
+alias serverina="ssh kodius@192.168.10.68"
 # xchange
 alias xchange="cd ~/kodius/xchange-fe"
 # kekomi
@@ -58,7 +69,7 @@ alias sunny="cd ~/kodius/sunnyside/sunnyside-frontend"
 alias sunnystart="cd ~/kodius/sunnyside/sunnyside-frontend; code .; open -a 'Google Chrome' http://localhost:3000/; yarn dev" 
 #
 # lunarvim 
-alias lvim="/Users/dino/.local/bin/lvim"
+alias lvim="/Users/dinodanic/.local/bin/lvim"
 #
 # neovim
 alias nc="nvim ~/.config/nvim"
@@ -77,6 +88,7 @@ alias fc="nvim ~/.config/fish/config.fish"
 #
 # ranger
 alias ra="ranger"
+alias rc="nvim ~/.config/ranger/rc.conf"
 #
 # tmux
 alias tc="nvim ~/.config/tmux/.tmux.conf"

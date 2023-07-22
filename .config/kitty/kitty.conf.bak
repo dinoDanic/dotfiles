@@ -8,16 +8,6 @@ include current-theme.conf
 # UI
 hide_window_decorations titlebar-only
 mouse_hide_wait 1
-# enabled_layouts tall:bias=80;full_size=1;mirrored=false
-# enabled_layouts tall:bias=50;full_size=1;mirrored=false
-# enabled_layouts horizontal
-window_margin_width 1
-window_border_width 2pt
-active_border_color purple
-# inactive_text_alpha 0.7
-
-hyper = ctrl+opt+cmd+shift+enter
-macos_custom_beam_cursor yes
 
 # MAPPINGS
 map cmd+1 goto_tab 1
@@ -33,18 +23,38 @@ map cmd+. load_config_file
 map shift+cmd+t new_tab_with_cwd
 
 # WINDOW management
-map ctrl+opt+cmd+shift+enter  new_window_with_cwd 
-map ctrl+opt+cmd+shift+w  close_window 
-map ctrl+opt+cmd+shift+h  previous_window 
-map ctrl+opt+cmd+shift+l  next_window 
-map ctrl+opt+cmd+shift+f  move_window_forward 
-map ctrl+opt+cmd+shift+b  move_window_backward 
-map ctrl+opt+cmd+shift+r  start_resizing_window 
-map ctrl+opt+cmd+shift+u  next_layout 
-map ctrl+opt+cmd+shift+e  open_url_with_hints 
-map ctrl+opt+cmd+shift+f    toggle_fullscreen
+map ctrl+opt+cmd+shift+enter   new_window_with_cwd 
+map ctrl+opt+cmd+shift+w       close_window 
+map ctrl+opt+cmd+shift+h       previous_window 
+map ctrl+opt+cmd+shift+l       next_window 
+map ctrl+opt+cmd+shift+f       move_window_forward 
+map ctrl+opt+cmd+shift+t       move_window_to_top 
+map ctrl+opt+cmd+shift+b       move_window_backward 
+map ctrl+opt+cmd+shift+.       resize_window wider 2
+map ctrl+opt+cmd+shift+,       resize_window narrower 2
+map ctrl+opt+cmd+shift+n       resize_window shorter 2
+map ctrl+opt+cmd+shift+m       resize_window taller 2
+map ctrl+opt+cmd+shift+x       resize_window reset
+map ctrl+opt+cmd+shift+e       open_url_with_hints 
+map ctrl+opt+cmd+shift+d       move_tab_forward
+map ctrl+opt+cmd+shift+a       move_tab_backward
+map ctrl+opt+cmd+shift+r       set_tab_title 
+map ctrl+opt+cmd+shift+k       new_window_with_cwd ranger
 
-# map cmd+1 set tab_bar_min_tabs 2
+## Search
+# map ctrl+f launch --type=overlay --stdin-source=@screen_scrollback /opt/homebrew/bin/fzf --no-sort --no-mouse --exact -i
+map cmd+f launch --type=overlay --stdin-source=@screen_scrollback /opt/homebrew/bin/fzf --no-sort --no-mouse --exact -i --tac
+
+
+# Window layout`
+map ctrl+opt+cmd+shift+s toggle_layout stack
+map ctrl+opt+cmd+shift+u  next_layout 
+enabled_layouts tall:bias=70;full_size=1;mirrored=false, stack
+window_border_width 2pt
+active_border_color #B85DD4
+# active_border_color #00ff00
+
+# map cmd+1 set tab_bar_min_tab 2
 
 # map cmd+1 set tab_bar_min_tabs 2
 # map cmd+2 set tab_bar_min_tabs 5
@@ -56,46 +66,51 @@ map ctrl+opt+cmd+shift+f    toggle_fullscreen
 # cursor #B85DD4 
 # cursor #DDB368 
 # cursor #00FF00 
-cursor #2FB3C5
+# cursor #2FB3C5
 # cursor #E5ADAC 
-
 
 #background
 # background_opacity 0.90
 # background_image ~/.dotfiles/Wallpapers/line_icons.png
 # background_image_layout tiled 
-# background_tint 0.95
+# background_tint 0.97
+# background black 
 
 # FONT
-# font_family          Fira Code Retina
-# font_family          Fira Code Regluar
+# font_family           RobotoMono Nerd Font SemiBold
+# font_family            FiraCode Nerd Font Mono Medium
+# font_family             FiraCode Nerd Font Mono SemiBold
+# font_family          UbuntuMono Nerd Font Mono Regular
+# font_family          DejaVuSansM Nerd Font Mono Regular  
+# font_family            Hack Nerd Font Mono Regular
+# font_family          DejaVuSansM Nerd Font Regular  
 # font_family          Fira Code SemiBold
+# font_family Courier New Bold
 # font_family          Fira Code Bold
 # font_family          Monaco Regluar 
 # font_family            Fira Code Medium
 # font_family          jetbrainsmononl nerd font mono regular 
 # font_family         agave nerd font mono r 
 # font_family        agave nerd font r 
-
-
+#
 
 # disable_ligatures always
-# font_size              14.0
+font_size              13.0
 # bold_font              auto 
 # italic_font            auto
 # bold_italic_font       auto 
 
-# macos_thicken_font 0.2
+# macos_thicken_font 0.75
 
 #BAR
 tab_bar_style separator
-tab_separator ""
+tab_separator " "
 tab_bar_min_tabs 2
-# background #242636 
-
-# tab_bar_align center
+tab_bar_edge bottom
+tab_bar_align left
+# tab_bar_background #9DD799
 tab_title_template        "{fmt.fg._5c6370}{fmt.bg.default}{fmt.fg._abb2bf}{fmt.bg._141922 }  {title.split()[0]}  {fmt.fg._5c6370}{fmt.bg.default}"
-active_tab_title_template "{fmt.fg._e5c07b}{fmt.bg.default}{fmt.fg._55165e}{fmt.bg._f29dff}  {title.split()[0]}  {fmt.fg._e5c07b}{fmt.bg.default}"
+active_tab_title_template "{fmt.fg._e5c07b}{fmt.bg.default}{fmt.fg._55165e}{fmt.bg._9DD799}  {title.split()[0]}  {fmt.fg._e5c07b}{fmt.bg.default}"
 
 # active_tab_foreground   darkgreen 
 # active_tab_background   lightgreen
@@ -1563,7 +1578,7 @@ active_tab_title_template "{fmt.fg._e5c07b}{fmt.bg.default}{fmt.fg._55165e}{fmt.
 #: Draw an extra border around the font with the given width, to
 #: increase legibility at small font sizes on macOS. For example, a
 #: value of 0.75 will result in rendering that looks similar to sub-
-#: pixel antialiasing at common font sizes.
+# : pixel antialiasing at common font sizes.
 
 # macos_traditional_fullscreen no
 
