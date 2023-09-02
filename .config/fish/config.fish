@@ -39,10 +39,18 @@ set -x KODIUI_MY_PROJECT_PATH ~/projects/bmb-elixir/bmb-fe
 alias s="kitty +kitten ssh"
 #
 # milivoja
-alias milivoje="ssh root@192.168.20.25"
-alias milivoje_vani="ssh root@185.155.224.196 -p 21222"
-alias serverina_vani="ssh kodius@185.98.12.29 -p 22001"
+alias milivoje="kitty +kitten ssh root@192.168.20.25"
+alias milivoje_vani="kitty +kitten ssh root@185.155.224.196 -p 21222"
+alias serverina_vani="kitty +kitten ssh kodius@185.98.12.29 -p 22001"
 alias serverina="ssh kodius@192.168.10.68"
+
+# problem with this aliases the docker must run..
+
+# alias swarm.restart='systemctl restart docker'
+# alias swarm.down='docker stack rm'
+# alias swarm.up='docker stack deploy -c stack.yml'
+# alias swarm.ram="docker stats  --no-stream --format '{{.MemPerc}}\t{{.MemUsage}}\t{{.Name}}' $(docker ps -q -f name=CONTAINER_NAME) | sed -u 's/\x1b\[[0-9;]*[a-zA-Z]//g' | sort -k 2 -h | tee stats"
+
 # xchange
 alias xchange="cd ~/kodius/xchange-fe"
 # kekomi
@@ -57,6 +65,8 @@ alias kodicore="cd ~/kodius/kodiui-core"
 #
 # opti
 alias opti="cd ~/kodius/cosmicfrog-model-editor-service"
+# we-get-music-core
+alias wgm="cd ~/kodius/wegetmusic/wegetmusic-fe-core"
 #
 # bmb
 alias bmb="cd ~/projects/bmb"
