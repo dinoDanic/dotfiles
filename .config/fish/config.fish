@@ -82,7 +82,7 @@ alias sunnystart="cd ~/kodius/sunnyside/sunnyside-frontend; code .; open -a 'Goo
 alias lvim="/Users/dinodanic/.local/bin/lvim"
 #
 # neovim
-alias nc="nvim ~/.config/nvim"
+alias nc="cd ~/.config/nvim && nvim"
 #
 # dis
 alias dis="cd ~/kodius/discovery/healthOrganizationFrontendUsersV2"

@@ -28,10 +28,10 @@ map ctrl+opt+cmd+shift+l       next_window
 map ctrl+opt+cmd+shift+f       move_window_forward 
 map ctrl+opt+cmd+shift+t       move_window_to_top 
 map ctrl+opt+cmd+shift+b       move_window_backward 
-map ctrl+opt+cmd+shift+.       resize_window wider 2
-map ctrl+opt+cmd+shift+,       resize_window narrower 2
-map ctrl+opt+cmd+shift+n       resize_window shorter 2
-map ctrl+opt+cmd+shift+m       resize_window taller 2
+map ctrl+opt+cmd+shift+.       resize_window wider 10
+map ctrl+opt+cmd+shift+,       resize_window narrower 10
+map ctrl+opt+cmd+shift+n       resize_window shorter 10
+map ctrl+opt+cmd+shift+m       resize_window taller 10
 map ctrl+opt+cmd+shift+x       resize_window reset
 map ctrl+opt+cmd+shift+e       open_url_with_hints 
 map ctrl+opt+cmd+shift+d       move_tab_forward
@@ -47,7 +47,7 @@ map cmd+f launch --type=overlay --stdin-source=@screen_scrollback /opt/homebrew/
 # Window layout`
 map ctrl+opt+cmd+shift+s toggle_layout stack
 map ctrl+opt+cmd+shift+u  next_layout 
-enabled_layouts tall:bias=70;full_size=1;mirrored=false, stack
+# enabled_layouts tall:bias=70;full_size=1;mirrored=false, stack
 window_border_width 2pt
 # active_border_color #B85DD4
 # active_border_color #00ff00
@@ -2358,6 +2358,6 @@ macos_show_window_title_in none
 
 
 # BEGIN_KITTY_THEME
-# Hachiko
+# Default
 include current-theme.conf
 # END_KITTY_THEME
