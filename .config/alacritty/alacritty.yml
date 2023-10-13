@@ -1,0 +1,17 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+#
+shell:
+ program: /opt/homebrew/bin/fish 
+ args:
+    - -l
+    - -c
+    - "tmux attach || tmux"
+window:
+  decorations: buttonless
+
+font:
+  normal:
+    family: FiraCode Nerd Font Mono
+    style: Regular
+  size: 12.0
+

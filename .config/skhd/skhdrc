@@ -1,7 +1,0 @@
-hyper - t: /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
-# cmd - return: /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
-
-#.blacklist [
-#  "kitty"
-#  "terminal"
-# ]
