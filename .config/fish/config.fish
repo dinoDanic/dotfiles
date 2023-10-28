@@ -40,11 +40,25 @@ set -x KODIUI_MY_PROJECT_PATH ~/projects/bmb-elixir/bmb-fe
 
 # ----------------------------- ALIAS ------------------------------
 
+
+# function air
+#     $GOPATH/bin/air $argv
+# end
+
+set -gx GOPATH "/Users/dino/go"
+
+# swag
+alias swag=$GOPATH/bin/swag
+
+# swag
+alias air=$GOPATH/bin/air 
+
 # kitty
 alias s="kitty +kitten ssh"
 #
 # milivoja
 alias milivoje="kitty +kitten ssh root@192.168.20.25"
+alias dinosur="kitty +kitten ssh root@dinosur.app"
 alias milivoje_vani="kitty +kitten ssh root@185.155.224.196 -p 21222"
 alias serverina_vani="kitty +kitten ssh kodius@185.98.12.29 -p 22001"
 alias serverina="ssh kodius@192.168.10.68"
@@ -88,6 +102,11 @@ alias lvim="/Users/dinodanic/.local/bin/lvim"
 #
 # neovim
 alias nc="cd ~/.config/nvim && nvim"
+#
+alias tnf="cd ~/kodius/tnf/tnf-frontend"
+#
+# history
+alias h="history"
 #
 # dis
 alias dis="cd ~/kodius/discovery/healthOrganizationFrontendUsersV2"
