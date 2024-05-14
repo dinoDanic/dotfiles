@@ -1,11 +1,15 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 #
+bell:
+  command:
+    program: osascript
+    args: ["-e", "beep"]
 shell:
- program: /opt/homebrew/bin/fish 
- # args:
- #    - -l
- #    - -c
- #    - "tmux attach || tmux"
+  program: /opt/homebrew/bin/fish
+  args:
+    - -l
+    - -c
+    - "tmux attach || tmux"
 window:
   decorations: buttonless
 
@@ -15,7 +19,6 @@ font:
     family: JetBrainsMono Nerd Font
     style: Regular
   size: 14.0
-
 # Nord
 # colors:
 #   primary:

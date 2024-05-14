@@ -1,6 +1,7 @@
 if status is-interactive
  fish_add_path /opt/homebrew/bin
  fish_vi_key_bindings
+ zoxide init fish | source 
 
 # PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 
@@ -8,11 +9,15 @@ if status is-interactive
 # ----------------------------- GREETINGS ------------------------------
         function fish_greeting
 
-        set_color green 
+        set_color blue 
          echo  "
 
            █░█ █▀▀   █░█ █▀▄ ▄▀█ █▀█ ▄▀█ █▄░█ ░░█ █▀▀         
-           █▀█ █▄▄   █▄█ █▄▀ █▀█ █▀▄ █▀█ █░▀█ █▄█ ██▄  (╯ ͡❛ ⏥ ͡❛)╯┻━┻
+           █▀█ █▄▄   █▄█ █▄▀ █▀█ █▀▄ █▀█ █░▀█ █▄█ ██▄  
+
+                   (づ｡◕‿‿◕｡)づ  ναzιη     ٩(˘◡˘)۶
+    "
+    echo "
     "
 
         end
@@ -40,6 +45,17 @@ set -x KODIUI_MY_PROJECT_PATH ~/projects/bmb-elixir/bmb-fe
 
 # ----------------------------- ALIAS ------------------------------
 
+# react native
+
+set -gx ANDROID_HOME $HOME/Library/Android/sdk
+set -gx PATH $PATH $ANDROID_HOME/emulator
+set -gx PATH $PATH $ANDROID_HOME/platform-tools
+
+#flutter
+
+
+# set PATH /development/flutter/bin $PATH
+set -gx PATH Users/dino/development/flutter/bin $PATH
 
 # function air
 #     $GOPATH/bin/air $argv
@@ -50,17 +66,23 @@ set -gx GOPATH "/Users/dino/go"
 # swag
 alias swag=$GOPATH/bin/swag
 
-# swag
+# air
 alias air=$GOPATH/bin/air 
+
+# templ
+alias templ=$GOPATH/bin/templ 
 
 # kitty
 alias s="kitty +kitten ssh"
 #
-# milivoja
-alias milivoje="kitty +kitten ssh root@192.168.20.25"
+# milivoja kitty
+# alias milivoje="kitty +kitten ssh root@192.168.20.25"
 alias dinosur="kitty +kitten ssh root@dinosur.app"
-alias milivoje_vani="kitty +kitten ssh root@185.155.224.196 -p 21222"
+# alias milivoje_vani="kitty +kitten ssh root@185.155.224.196 -p 21222"
 alias serverina_vani="kitty +kitten ssh kodius@185.98.12.29 -p 22001"
+
+alias milivoje="ssh root@192.168.20.25"
+alias milivoje_vani="ssh root@185.155.224.196 -p 21222"
 alias serverina="ssh kodius@192.168.10.68"
 
 # problem with this aliases the docker must run..
@@ -98,10 +120,12 @@ alias sunny="cd ~/kodius/sunnyside/sunnyside-frontend"
 alias sunnystart="cd ~/kodius/sunnyside/sunnyside-frontend; code .; open -a 'Google Chrome' http://localhost:3000/; yarn dev" 
 #
 # lunarvim 
-alias lvim="/Users/dinodanic/.local/bin/lvim"
+alias lvim="/Users/dino/.local/bin/lvim"
+
 #
 # neovim
 alias nc="cd ~/.config/nvim && nvim"
+alias n="nvim"
 #
 alias tnf="cd ~/kodius/tnf/tnf-frontend"
 #
@@ -125,7 +149,7 @@ alias ra="ranger"
 alias rc="nvim ~/.config/ranger/rc.conf"
 #
 # tmux
-alias tc="nvim ~/.config/tmux/tmux.conf"
+alias tc="nvim ~/.tmux.conf"
 #
 # git
 alias ga.="git add ."
@@ -135,7 +159,7 @@ alias grs="git reset --soft HEAD~1"
 alias gs="git status"
 # 
 # comands
-# alias ls="ls -all"
+# alias ll="ll -a"
 
 # ----------------------------- ALIAS ------------------------------
 
@@ -152,5 +176,3 @@ set -gx PATH "$PNPM_HOME" $PATH
 # pnpm end
 
 # bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
