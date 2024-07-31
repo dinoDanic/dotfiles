@@ -57,6 +57,10 @@ set -gx PATH $PATH $ANDROID_HOME/platform-tools
 # set PATH /development/flutter/bin $PATH
 set -gx PATH Users/dino/development/flutter/bin $PATH
 
+function flutter
+    fvm flutter $argv
+end
+
 # function air
 #     $GOPATH/bin/air $argv
 # end
@@ -150,6 +154,8 @@ alias rc="nvim ~/.config/ranger/rc.conf"
 #
 # tmux
 alias tc="nvim ~/.tmux.conf"
+alias t="tmux"
+alias tn="tmux new -s"
 #
 # git
 alias ga.="git add ."
