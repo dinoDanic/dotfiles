@@ -1,16 +1,16 @@
-- show history
+# show history
 
 ```
 history
 ```
 
-- use command from history
+# use command from history
 
 ```
 !<number>
 ```
 
-- grep
+# grep
 
 ```
 ll -a | grep .md
