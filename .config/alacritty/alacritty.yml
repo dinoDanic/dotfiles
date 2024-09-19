@@ -12,6 +12,7 @@ shell:
     - "tmux attach || tmux"
 window:
   decorations: buttonless
+  opacity: 1
 
 font:
   normal:
