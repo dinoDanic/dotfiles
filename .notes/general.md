@@ -15,3 +15,10 @@ history
 ```
 ll -a | grep .md
 ```
+
+# symilinks
+
+```
+ln -s /path/to/original /path/to/link
+
+```
