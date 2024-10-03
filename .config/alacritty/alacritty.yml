@@ -6,13 +6,14 @@ bell:
     args: ["-e", "beep"]
 shell:
   program: /opt/homebrew/bin/fish
-  args:
-    - -l
-    - -c
-    - "tmux attach || tmux"
+  # args:
+  # - -l
+  # - -c
+  # - "tmux attach || tmux"
 window:
   decorations: buttonless
-  opacity: 1
+  # opacity: 0.90
+  # blur: true
 
 font:
   normal:
