@@ -151,7 +151,7 @@ alias dis="cd ~/kodius/discovery/healthOrganizationFrontendUsersV2"
 alias disa="cd ~/kodius/discovery/discovery-fe-admin"
 #
 # alacritty config
-alias ac="nvim ~/.config/alacritty/alacritty.yml"
+alias ac="nvim ~/.config/alacritty/alacritty.toml"
 #
 # kitty config
 alias kc="nvim ~/.config/kitty/kitty.conf"
