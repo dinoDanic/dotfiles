@@ -198,9 +198,12 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
+# use for app ids
+# aerospace list-apps 
+
 [[on-window-detected]]
 if.app-id = 'org.zulip.zulip-electron'
-run = 'move-node-to-workspace 3'
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'org.alacritty'
@@ -212,4 +215,8 @@ run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
 if.app-id = 'at.eggerapps.Postico'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.figma.Desktop'
 run = 'move-node-to-workspace 3'
