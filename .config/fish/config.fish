@@ -133,4 +133,6 @@ set -gx PNPM_HOME "/Users/dino/Library/pnpm"
 set -gx PATH "$PNPM_HOME" $PATH
 # pnpm end
 
-# bun
+# add  default editor
+set -g EDITOR nvim
+set -g VISUAL nvim
