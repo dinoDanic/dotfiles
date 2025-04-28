@@ -106,7 +106,7 @@ alias lg="lazygit"
 alias milivoje="ssh root@192.168.20.25"
 alias milivoje_vani="ssh root@185.155.224.196 -p 21222"
 alias serverina="ssh kodius@192.168.10.68"
-alias serverina_vani="kitty +kitten ssh kodius@185.98.12.29 -p 22001"
+alias serverina_vani="ssh kodius@185.98.12.29 -p 22001"
 
 # ----------------------------- ALIAS ------------------------------
 
