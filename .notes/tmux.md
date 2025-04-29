@@ -15,3 +15,8 @@ tmux ls
 ```
 tmux source-file ~/.tmux.conf
 ```
+
+## move and copy
+```
+prefix + [
+```

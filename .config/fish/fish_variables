@@ -3,7 +3,10 @@
 SETUVAR --export EDITOR:nvim
 SETUVAR --export OPENAI_API_KEY:sk\x2dproj\x2dnTCeo2kXH1zkMghZQbtSIlPr6\x2dGOrQn6vcXy4u34wmqmg3jN3EGs1Mn8P\x2d81So\x2d6iHgWl1X5xkT3BlbkFJE0z4Bx_V6raalYW7zpZpX5XcLlNH6K_YEYgu3QcVrCnkxOHCTr6j3B3kPoaxvK_Yf4nk4YcvkA
 SETUVAR --export VISUAL:nvim
-SETUVAR __fish_initialized:3400
+SETUVAR __fish_initialized:3800
+SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/fisher
+SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_color_autosuggestion:4c566a
 SETUVAR fish_color_cancel:\x2d\x2dreverse
 SETUVAR fish_color_command:81a1c1
@@ -24,7 +27,7 @@ SETUVAR fish_color_option:\x1d
 SETUVAR fish_color_param:eceff4
 SETUVAR fish_color_quote:a3be8c
 SETUVAR fish_color_redirection:b48ead
-SETUVAR fish_color_search_match:bryellow\x1e\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_color_search_match:white\x1e\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_color_status:red
 SETUVAR fish_color_user:brgreen

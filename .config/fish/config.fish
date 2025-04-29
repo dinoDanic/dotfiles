@@ -61,6 +61,11 @@ end
 set -gx GOPATH "/Users/dino/go"
 
 
+# ----------------------------- AEROSPACE ------------------------------
+function sf
+    aerospace list-windows --all | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
+end
+
 # ----------------------------- ALIAS ------------------------------
 
 # swag
@@ -92,7 +97,7 @@ alias kc="nvim ~/.config/kitty/kitty.conf"
 alias fc="nvim ~/.config/fish/config.fish"
 
 # tmux
-alias tc="nvim ~/.tmux.conf"
+alias tc="nvim ~/.config/tmux/.tmux.conf"
 
 # git
 alias ga.="git add ."
