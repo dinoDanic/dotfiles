@@ -4,7 +4,7 @@
 # https://github.com/FelixKratz/dotfiles
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
-source "$CONFIG_DIR/variables.sh"
+source "$CONFIG_DIR/../variables.sh"
 
 sketchybar --add event aerospace_workspace_change
 
@@ -64,27 +64,28 @@ sketchybar --add item clock right \
              update_freq=10 \
              script="$PLUGIN_DIR/clock.sh" \
              background.drawing=on \
-             background.color=$PINE \
+             background.color=$FOAM \
              background.corner_radius=$BORDER_RADIUS \
              background.height=20 \
              label.padding_left=12 \
              label.padding_right=12 \
              label.drawing=on \
-             label.color=$FOREGROUND
+             label.color=$HIGHLIGHT
 
 sketchybar --add item battery right \
            --set battery \
              update_freq=120 \
              script="$PLUGIN_DIR/battery.sh" \
              background.drawing=on \
-             background.color=$PINE \
+             background.color=$FOAM \
              background.corner_radius=$BORDER_RADIUS \
              background.height=20 \
              label.padding_left=12 \
              label.padding_right=12 \
              icon.padding_left=12 \
+             icon.color=$HIGHLIGHT \
              label.drawing=on \
-             label.color=$FOREGROUND \
+             label.color=$HIGHLIGHT \
            --subscribe battery system_woke power_source_change
 
 ##### Force all scripts to run the first time (never do this in a script) #####

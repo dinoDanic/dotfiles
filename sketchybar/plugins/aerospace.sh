@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Load color variables
-source "$CONFIG_DIR/variables.sh"
+source "$CONFIG_DIR/../variables.sh"
 
 if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
     sketchybar --set "$NAME" \

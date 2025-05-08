@@ -21,6 +21,9 @@ config.window_padding = {
 
 -- For example, changing the color scheme:
 config.colors = theme.colors()
+config.colors.cursor_bg = "#FFCC00"     -- Cursor color (e.g., yellow)
+config.colors.cursor_fg = "#000000"     -- Text color under the cursor
+config.colors.cursor_border = "#FFCC00" -- Optional: outline/border color of the cursor
 config.window_frame = theme.window_frame()
 
 -- open link

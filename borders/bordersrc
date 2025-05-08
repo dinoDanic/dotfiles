@@ -1,11 +1,13 @@
 #!/bin/bash
 
+source "$HOME/.config/variables.sh"
+
 options=(
 	style=round
-	width=8.0
+	width=10.0
 	hidpi=off
-	active_color=0xff9ccfd8     # rose (accent for active border)
-	inactive_color=0xff6e6a86   # overlay (for inactive border)
+	active_color=$FOAM
+	inactive_color=$TRANSLUCENT_BACKGROUND
 )
 
 borders "${options[@]}"
