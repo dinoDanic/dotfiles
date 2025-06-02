@@ -14,6 +14,7 @@ return {
   },
   -------------------------------------UTILS-------------------------------------
   require 'custom.plugins.avante',
+  -- require 'custom.plugins.code-companion',
   -- i use this so i can comment in TS components etc
   'JoosepAlviste/nvim-ts-context-commentstring',
   {
