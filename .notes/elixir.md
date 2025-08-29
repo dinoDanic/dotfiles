@@ -1,12 +1,20 @@
-## create migration
+- start elixir server
+```elixir
+iex -S mix phx.server
 
+```
+
+- create migration
+```elixir
 mix ecto.gen.migration create_images
+```
 
-## create context (also creates migraion)
-
+- create context (also creates migraion)
+```elixir
 mix phx.gen.context Items Item items
+```
 
-## pagination
+- pagination
 
 ```elixir
 # schema.ex:

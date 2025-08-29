@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export EDITOR:nvim
+SETUVAR --export JAVA_HOME:/opt/homebrew/opt/openjdk\x4017/libexec/openjdk\x2ejdk/Contents/Home
 SETUVAR --export OPENAI_API_KEY:sk\x2dproj\x2dnTCeo2kXH1zkMghZQbtSIlPr6\x2dGOrQn6vcXy4u34wmqmg3jN3EGs1Mn8P\x2d81So\x2d6iHgWl1X5xkT3BlbkFJE0z4Bx_V6raalYW7zpZpX5XcLlNH6K_YEYgu3QcVrCnkxOHCTr6j3B3kPoaxvK_Yf4nk4YcvkA
 SETUVAR --export VISUAL:nvim
 SETUVAR __fish_initialized:3800

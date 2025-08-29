@@ -43,3 +43,11 @@ vim.keymap.set('n', '<leader>lj', '<cmd>lua vim.diagnostic.goto_next()<cr>', { d
 vim.keymap.set('n', '<leader>lk', '<cmd>lua vim.diagnostic.goto_prev()<cr>', { desc = 'Previous diagnostic' })
 vim.keymap.set('n', '<leader>lf', '<cmd>lua vim.lsp.buf.format{async = true}<cr>', { desc = 'Format buffer' })
 vim.keymap.set('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<cr>', { desc = 'Rename symbol' })
+
+vim.keymap.set(
+  'n',
+  '<leader>kc',
+  [[:%s/\v(\w+)-(\w+)/\=submatch(1) . toupper(submatch(2)[0]) . submatch(2)[1:]/g<CR>]],
+  { desc = 'Convert kebab-case to camelCase' }
+)
+

@@ -13,8 +13,19 @@ return {
     end,
   },
   -------------------------------------UTILS-------------------------------------
-  require 'custom.plugins.avante',
-  -- require 'custom.plugins.code-companion',
+  {
+    'pwntester/octo.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      -- OR 'ibhagwan/fzf-lua',
+      -- OR 'folke/snacks.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require('octo').setup()
+    end,
+  },
   -- i use this so i can comment in TS components etc
   'JoosepAlviste/nvim-ts-context-commentstring',
   {
