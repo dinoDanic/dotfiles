@@ -1,1 +1,4 @@
 /.config/nvim/plugin/packer_compiles.lua
+
+# Raycast extensions (downloaded from store)
+raycast/
