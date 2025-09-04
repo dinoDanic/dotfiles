@@ -3,11 +3,11 @@
 source "$HOME/.config/variables.sh"
 
 options=(
-	style=round
-	width=10.0
+	style=square
+	# width=10.0
 	hidpi=off
-	active_color=$FOAM
-	inactive_color=$TRANSLUCENT_BACKGROUND
+	# active_color=$FOAM
+	# inactive_color=$TRANSLUCENT_BACKGROUND
 )
 
 borders "${options[@]}"

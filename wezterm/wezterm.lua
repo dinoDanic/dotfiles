@@ -9,8 +9,8 @@ local theme = wezterm.plugin.require("https://github.com/neapsix/wezterm").main
 config.font = wezterm.font("JetBrains Mono", { weight = "Bold", italic = false })
 config.font_size = 14.0
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.8
-config.macos_window_background_blur = 100
+-- config.window_background_opacity = 0.8
+-- config.macos_window_background_blur = 100
 config.hide_tab_bar_if_only_one_tab = true
 config.window_padding = {
 	left = 0,

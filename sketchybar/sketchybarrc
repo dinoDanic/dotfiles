@@ -28,7 +28,7 @@ for sid in $(aerospace list-workspaces --all); do
         script="$CONFIG_DIR/plugins/aerospace.sh $sid"
 done
 
-sketchybar --bar position=top height=36 blur_radius=30 color=0x40000000
+sketchybar --bar position=top height=36 blur_radius=0 
 
 default=(
   padding_left=10
@@ -56,7 +56,8 @@ sketchybar --add item front_app left \
            label.padding_right=12 \
            background.height=20 \
            background.height=20 \
-           background.color=$ROSE \
+           background.color=$FOAM \
+           label.color=$HIGHLIGHT \
            --subscribe front_app front_app_switched
 
 sketchybar --add item clock right \

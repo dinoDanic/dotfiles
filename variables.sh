@@ -23,4 +23,4 @@ LOVE=0xffeb6f92         # Same as ROSE (used for error or highlight)
 TRANSLUCENT_WHITE=0x44ffffff
 TRANSLUCENT_BACKGROUND=0x441f1d2e
 
-BORDER_RADIUS=12
+BORDER_RADIUS=1

@@ -29,6 +29,10 @@ keybinds clear-defaults=true {
         bind "z" { TogglePaneFrames; SwitchToMode "normal"; }
     }
     tab {
+        bind "Shift Left" { MoveTab "Left"; }
+        bind "Shift h" { MoveTab "Left"; }
+        bind "Shift Right" { MoveTab "Right"; }
+        bind "Shift l" { MoveTab "Right"; }
         bind "left" { GoToPreviousTab; }
         bind "down" { GoToNextTab; }
         bind "up" { GoToPreviousTab; }
@@ -80,7 +84,7 @@ keybinds clear-defaults=true {
         bind "up" { MovePane "up"; }
         bind "right" { MovePane "right"; }
         bind "h" { MovePane "left"; }
-        bind "Ctrl m" { SwitchToMode "normal"; }
+        bind "Ctrl h" { SwitchToMode "normal"; }
         bind "j" { MovePane "down"; }
         bind "k" { MovePane "up"; }
         bind "l" { MovePane "right"; }
@@ -91,7 +95,6 @@ keybinds clear-defaults=true {
     scroll {
         bind "e" { EditScrollback; SwitchToMode "normal"; }
         bind "s" { SwitchToMode "entersearch"; SearchInput 0; }
-        bind "Ctrl s" { SwitchToMode "normal"; }
     }
     search {
         bind "c" { SearchToggleOption "CaseSensitivity"; }
@@ -138,44 +141,40 @@ keybinds clear-defaults=true {
             SwitchToMode "normal"
         }
     }
-    shared_among "normal" "locked" {
-        bind "Shift left" { MoveFocusOrTab "left"; }
-        bind "Shift down" { MoveFocus "down"; }
-        bind "Shift up" { MoveFocus "up"; }
-        bind "Shift right" { MoveFocusOrTab "right"; }
-        bind "Shift +" { Resize "Increase"; }
-        bind "Shift -" { Resize "Decrease"; }
-        bind "Shift =" { Resize "Increase"; }
-        bind "Shift [" { PreviousSwapLayout; }
-        bind "Shift ]" { NextSwapLayout; }
-        bind "Shift f" { ToggleFloatingPanes; }
-        bind "Shift h" { MoveFocusOrTab "left"; }
-        bind "Shift i" { MoveTab "left"; }
-        bind "Shift j" { MoveFocus "down"; }
-        bind "Shift k" { MoveFocus "up"; }
-        bind "Shift l" { MoveFocusOrTab "right"; }
-        bind "Shift n" { NewPane; }
-        bind "Shift o" { MoveTab "right"; }
-    }
     shared_except "locked" {
+        bind "Alt left" { MoveFocusOrTab "left"; }
+        bind "Alt down" { MoveFocus "down"; }
+        bind "Alt up" { MoveFocus "up"; }
+        bind "Alt right" { MoveFocusOrTab "right"; }
+        bind "Alt +" { Resize "Increase"; }
+        bind "Alt -" { Resize "Decrease"; }
+        bind "Alt =" { Resize "Increase"; }
+        bind "Alt [" { PreviousSwapLayout; }
+        bind "Alt ]" { NextSwapLayout; }
+        bind "Alt f" { ToggleFloatingPanes; }
         bind "Ctrl g" { SwitchToMode "locked"; }
-        bind "Ctrl Alt p" { TogglePaneInGroup; }
-        bind "Ctrl Alt Shift p" { ToggleGroupMarking; }
+        bind "Alt h" { MoveFocusOrTab "left"; }
+        bind "Alt i" { MoveTab "left"; }
+        bind "Alt j" { MoveFocus "down"; }
+        bind "Alt k" { MoveFocus "up"; }
+        bind "Alt l" { MoveFocusOrTab "right"; }
+        bind "Alt n" { NewPane; }
+        bind "Alt o" { MoveTab "right"; }
         bind "Alt p" { TogglePaneInGroup; }
         bind "Alt Shift p" { ToggleGroupMarking; }
         bind "Ctrl q" { Quit; }
     }
     shared_except "locked" "move" {
-        bind "Ctrl m" { SwitchToMode "move"; }
+        bind "Ctrl n" { SwitchToMode "move"; }
     }
     shared_except "locked" "session" {
         bind "Ctrl o" { SwitchToMode "session"; }
     }
-    shared_except "locked" "scroll" {
-        bind "Ctrl s" { SwitchToMode "scroll"; }
-    }
     shared_except "locked" "scroll" "search" "tmux" {
         bind "Ctrl b" { SwitchToMode "tmux"; }
+    }
+    shared_except "locked" "scroll" "search" {
+        bind "Ctrl s" { SwitchToMode "scroll"; }
     }
     shared_except "locked" "tab" {
         bind "Ctrl t" { SwitchToMode "tab"; }
@@ -185,42 +184,6 @@ keybinds clear-defaults=true {
     }
     shared_except "locked" "resize" {
         bind "Ctrl n" { SwitchToMode "resize"; }
-    }
-    shared_except "normal" "locked" {
-        bind "Ctrl Alt left" { MoveFocusOrTab "left"; }
-        bind "Alt left" { MoveFocusOrTab "left"; }
-        bind "Ctrl Alt down" { MoveFocus "down"; }
-        bind "Alt down" { MoveFocus "down"; }
-        bind "Ctrl Alt up" { MoveFocus "up"; }
-        bind "Alt up" { MoveFocus "up"; }
-        bind "Ctrl Alt right" { MoveFocusOrTab "right"; }
-        bind "Alt right" { MoveFocusOrTab "right"; }
-        bind "Ctrl Alt +" { Resize "Increase"; }
-        bind "Alt +" { Resize "Increase"; }
-        bind "Ctrl Alt -" { Resize "Decrease"; }
-        bind "Alt -" { Resize "Decrease"; }
-        bind "Ctrl Alt =" { Resize "Increase"; }
-        bind "Alt =" { Resize "Increase"; }
-        bind "Ctrl Alt [" { PreviousSwapLayout; }
-        bind "Alt [" { PreviousSwapLayout; }
-        bind "Ctrl Alt ]" { NextSwapLayout; }
-        bind "Alt ]" { NextSwapLayout; }
-        bind "Ctrl Alt f" { ToggleFloatingPanes; }
-        bind "Alt f" { ToggleFloatingPanes; }
-        bind "Ctrl Alt h" { MoveFocusOrTab "left"; }
-        bind "Alt h" { MoveFocusOrTab "left"; }
-        bind "Ctrl Alt i" { MoveTab "left"; }
-        bind "Alt i" { MoveTab "left"; }
-        bind "Ctrl Alt j" { MoveFocus "down"; }
-        bind "Alt j" { MoveFocus "down"; }
-        bind "Ctrl Alt k" { MoveFocus "up"; }
-        bind "Alt k" { MoveFocus "up"; }
-        bind "Ctrl Alt l" { MoveFocusOrTab "right"; }
-        bind "Alt l" { MoveFocusOrTab "right"; }
-        bind "Ctrl Alt n" { NewPane; }
-        bind "Alt n" { NewPane; }
-        bind "Ctrl Alt o" { MoveTab "right"; }
-        bind "Alt o" { MoveTab "right"; }
     }
     shared_except "normal" "locked" "entersearch" {
         bind "enter" { SwitchToMode "normal"; }
@@ -246,6 +209,7 @@ keybinds clear-defaults=true {
         bind "j" { ScrollDown; }
         bind "k" { ScrollUp; }
         bind "l" { PageScrollDown; }
+        bind "Ctrl s" { SwitchToMode "normal"; }
         bind "u" { HalfPageScrollUp; }
     }
     entersearch {
@@ -301,9 +265,7 @@ plugins {
     session-manager location="zellij:session-manager"
     status-bar location="zellij:status-bar"
     strider location="zellij:strider"
-    tab-bar location="zellij:tab-bar" {
-        attach "bottom"
-    }
+    tab-bar location="zellij:tab-bar"
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
@@ -549,7 +511,7 @@ web_client {
 // Whether to show tips on startup
 // Default: true
 // 
-// show_startup_tips false
+show_startup_tips false
  
 // Whether to show release notes on first version run
 // Default: true

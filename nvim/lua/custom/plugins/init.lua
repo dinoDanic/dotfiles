@@ -71,8 +71,8 @@ return {
       {
         '<leader>y',
         mode = { 'n', 'v' },
-        '<cmd>Yazi<cr>',
-        desc = 'Open [Y]azi at the current file',
+        '<cmd>Yazi cwd<cr>',
+        desc = 'Open [Y]azi at project root',
       },
     },
     opts = {

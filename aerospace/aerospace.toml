@@ -56,17 +56,17 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 14
-inner.vertical = 14
+inner.horizontal = 8
+inner.vertical = 8
 
 [gaps.outer]
-left = 14
-right = 14
-bottom = 14
+left = 8
+right = 8
+bottom = 8
 top = [
   { monitor."Built-in Retina Display" = 20 },
-  { monitor."LG HDR 4K" = 52 },
-  52
+  { monitor."LG HDR 4K" = 40 },
+   44
 ]
 
 # 'main' binding mode declaration
@@ -229,7 +229,7 @@ if.app-id = 'org.alacritty'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
-if.app-id = 'org.github.wezterm'
+if.app-id = 'org.github.wez.wezterm'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
@@ -251,6 +251,8 @@ run = 'move-node-to-workspace M'
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'move-node-to-workspace S'
+
+
 
 # [[on-window-detected]]
 # if.app-id = 'com.tinyspeck.slackmacgap'
