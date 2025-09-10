@@ -1,140 +1,138 @@
 if status is-interactive
- fish_add_path /opt/homebrew/bin
- fish_vi_key_bindings
- zoxide init fish | source 
+    fish_add_path /opt/homebrew/bin
+    fish_vi_key_bindings
+    zoxide init fish | source
 
-# ----------------------------- GREETINGS ------------------------------
-        function fish_greeting
+    # ----------------------------- GREETINGS ------------------------------
+    function fish_greeting
 
-        set_color blue 
-         echo  "
+        set_color blue
+        echo "
 
            █░█ █▀▀   █░█ █▀▄ ▄▀█ █▀█ ▄▀█ █▄░█ ░░█ █▀▀         
            █▀█ █▄▄   █▄█ █▄▀ █▀█ █▀▄ █▀█ █░▀█ █▄█ ██▄  
 
                    (づ｡◕‿‿◕｡)づ  ναzιη     ٩(˘◡˘)۶
     "
-    echo "
+        echo "
     "
 
+    end
+    # ----------------------------- KEYBINDS ------------------------------
+
+    bind -M insert -m default jj 'commandline -f repaint'
+
+    function fish_user_key_bindings
+        for mode in insert default visual
+            bind -M $mode \cf forward-char
         end
-# ----------------------------- KEYBINDS ------------------------------
+    end
 
- bind -M insert -m default jj 'commandline -f repaint'
+    # ----------------------------- TMUX -------------------------------
 
-  function fish_user_key_bindings
-      for mode in insert default visual
-          bind -M $mode \cf forward-char
-      end
-  end
+    function develop
+        tmux -neww session_name: -n window_name -d
+    end
 
-# ----------------------------- TMUX -------------------------------
+    # -------------------------- AEROSPACE -----------------------------
 
-function develop
-    tmux -neww session_name: -n window_name -d
-end
+    if test -d (brew --prefix)"/share/fish/completions"
+        set -p fish_complete_path (brew --prefix)/share/fish/completions
+    end
 
-# -------------------------- AEROSPACE -----------------------------
+    if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+        set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+    end
 
-if test -d (brew --prefix)"/share/fish/completions"
-    set -p fish_complete_path (brew --prefix)/share/fish/completions
-end
+    # ----------------------------- PATHS ------------------------------
 
-if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-    set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
-end
+    # react native
+    set -gx ANDROID_HOME $HOME/Library/Android/sdk
+    set -gx PATH $PATH $ANDROID_HOME/emulator
+    set -gx PATH $PATH $ANDROID_HOME/platform-tools
 
-# ----------------------------- PATHS ------------------------------
+    # flutter
+    set -gx PATH Users/dino/development/flutter/bin $PATH
 
-# react native
-set -gx ANDROID_HOME $HOME/Library/Android/sdk
-set -gx PATH $PATH $ANDROID_HOME/emulator
-set -gx PATH $PATH $ANDROID_HOME/platform-tools
+    function flutter
+        fvm flutter $argv
+    end
 
-# flutter
-set -gx PATH Users/dino/development/flutter/bin $PATH
+    set -gx GOPATH /Users/dino/go
 
-function flutter
-    fvm flutter $argv
-end
+    # ----------------------------- AEROSPACE ------------------------------
+    function sf
+        aerospace list-windows --all | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
+    end
 
-set -gx GOPATH "/Users/dino/go"
+    # ----------------------------- ALIAS ------------------------------
 
+    # swag
+    alias swag=$GOPATH/bin/swag
 
-# ----------------------------- AEROSPACE ------------------------------
-function sf
-    aerospace list-windows --all | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
-end
+    # air
+    alias air=$GOPATH/bin/air
 
-# ----------------------------- ALIAS ------------------------------
+    # templ
+    alias templ=$GOPATH/bin/templ
 
-# swag
-alias swag=$GOPATH/bin/swag
+    # lunarvim 
+    alias lvim="/Users/dino/.local/bin/lvim"
 
-# air
-alias air=$GOPATH/bin/air 
+    # neovim
+    alias nc="cd ~/.config/nvim && nvim"
+    alias n="nvim"
 
-# templ
-alias templ=$GOPATH/bin/templ 
+    # globals
+    alias h="history"
 
-# lunarvim 
-alias lvim="/Users/dino/.local/bin/lvim"
+    # alacritty 
+    alias ac="nvim ~/.config/alacritty/alacritty.toml"
 
-# neovim
-alias nc="cd ~/.config/nvim && nvim"
-alias n="nvim"
+    # kitty 
+    alias kc="nvim ~/.config/kitty/kitty.conf"
 
-# globals
-alias h="history"
+    # fish 
+    alias fc="nvim ~/.config/fish/config.fish"
 
-# alacritty 
-alias ac="nvim ~/.config/alacritty/alacritty.toml"
+    # tmux
+    alias tc="nvim ~/.config/tmux/.tmux.conf"
 
-# kitty 
-alias kc="nvim ~/.config/kitty/kitty.conf"
+    # git
+    alias ga.="git add ."
+    alias gcm="git commit -m"
+    alias gp="git push"
+    alias grs="git reset --soft HEAD~1"
+    alias gs="git status"
+    alias lg="lazygit"
 
-# fish 
-alias fc="nvim ~/.config/fish/config.fish"
+    #kodius
+    alias milivoje="ssh root@192.168.20.25"
+    alias milivoje_vani="ssh root@185.155.224.196 -p 21222"
+    alias serverina="ssh kodius@192.168.10.68"
+    alias serverina_vani="ssh kodius@185.98.12.29 -p 22001"
 
-# tmux
-alias tc="nvim ~/.config/tmux/.tmux.conf"
-
-# git
-alias ga.="git add ."
-alias gcm="git commit -m"
-alias gp="git push"
-alias grs="git reset --soft HEAD~1"
-alias gs="git status"
-alias lg="lazygit"
-
-#kodius
-alias milivoje="ssh root@192.168.20.25"
-alias milivoje_vani="ssh root@185.155.224.196 -p 21222"
-alias serverina="ssh kodius@192.168.10.68"
-alias serverina_vani="ssh kodius@185.98.12.29 -p 22001"
-
-# ----------------------------- ALIAS ------------------------------
+    # ----------------------------- ALIAS ------------------------------
 
 end
 
 # ----------------------------- YAZI ------------------------------
 function y
-	set tmp (mktemp -t "yazi-cwd.XXXXXX")
-	yazi $argv --cwd-file="$tmp"
-	if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-		builtin cd -- "$cwd"
-	end
-	rm -f -- "$tmp"
+    set tmp (mktemp -t "yazi-cwd.XXXXXX")
+    yazi $argv --cwd-file="$tmp"
+    if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+        builtin cd -- "$cwd"
+    end
+    rm -f -- "$tmp"
 end
 # ----------------------------- YAZI ------------------------------
-
 
 # Setting PATH for Python 3.11
 # The original version is saved in /Users/dino/.config/fish/config.fish.pysave
 set -x PATH "/Library/Frameworks/Python.framework/Versions/3.11/bin" "$PATH"
 
 # pnpm
-set -gx PNPM_HOME "/Users/dino/Library/pnpm"
+set -gx PNPM_HOME /Users/dino/Library/pnpm
 set -gx PATH "$PNPM_HOME" $PATH
 # pnpm end
 
