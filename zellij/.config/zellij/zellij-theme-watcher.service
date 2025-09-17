@@ -1,0 +1,13 @@
+[Unit]
+Description=Watch for Omarchy theme changes and sync Zellij
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c 'while inotifywait -e modify,create,delete,move ~/.config/omarchy/current/theme 2>/dev/null; do /home/dino/.config/zellij/sync-zellij-theme.sh; sleep 1; done'
+Restart=always
+RestartSec=5
+Environment=HOME=/home/dino
+
+[Install]
+WantedBy=default.target

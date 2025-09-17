@@ -1,0 +1,12 @@
+[Unit]
+Description=Sync Zellij theme with Omarchy theme changes
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/dino/.config/zellij/sync-zellij-theme.sh
+Restart=no
+Environment=HOME=/home/dino
+
+[Install]
+WantedBy=default.target

@@ -321,7 +321,7 @@ simplified_ui true
 // theme "nord"
 // theme "ayu_dark"
 // theme "gruvbox-dark" // zelena
-theme "catppuccin-frappe"
+//theme "catppuccin-frappe"
 // theme "catppuccin-macchiato"
 // theme "everforest-dark"
 // theme "onedark"
