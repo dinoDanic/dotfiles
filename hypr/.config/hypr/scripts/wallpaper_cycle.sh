@@ -1,30 +1,40 @@
 #!/bin/bash
 
-# Wallpaper paths
-WALLS=("~/walls/an_astronaut_playing_a_piano.png" "~/walls/a_woman_standing_in_front_of_a_window.jpg")
+WALLS_DIR="$HOME/walls"
+STATE_FILE="$HOME/.cache/wallpaper_cycle_state"
 
-CONFIG_FILE="$HOME/.config/hypr/hyprpaper.conf"
+if [ ! -d "$WALLS_DIR" ]; then
+    echo "Error: Wallpapers directory $WALLS_DIR not found"
+    exit 1
+fi
 
-# Get current wallpaper from config
-CURRENT=$(grep "wallpaper = " "$CONFIG_FILE" | cut -d',' -f2)
+WALLS=($(find "$WALLS_DIR" -type f \( -name "*.jpg" -o -name "*.png" -o -name "*.jpeg" -o -name "*.webp" \) | sort))
 
-# Find current index
-CURRENT_INDEX=-1
-for i in "${!WALLS[@]}"; do
-    if [[ "${WALLS[$i]}" == "$CURRENT" ]]; then
-        CURRENT_INDEX=$i
-        break
-    fi
-done
+if [ ${#WALLS[@]} -eq 0 ]; then
+    echo "Error: No wallpapers found in $WALLS_DIR"
+    exit 1
+fi
 
-# Get next wallpaper
-NEXT_INDEX=$(( (CURRENT_INDEX + 1) % ${#WALLS[@]} ))
-NEXT_WALL="${WALLS[$NEXT_INDEX]}"
+if [ ! -f "$STATE_FILE" ]; then
+    echo "0" > "$STATE_FILE"
+fi
 
-# Ensure all wallpapers are preloaded
-for wall in "${WALLS[@]}"; do
-    hyprctl hyprpaper preload "$wall"
-done
+CURRENT_INDEX=$(cat "$STATE_FILE")
 
-# Apply new wallpaper
-hyprctl hyprpaper wallpaper ",$NEXT_WALL"
+if [ "$CURRENT_INDEX" -ge ${#WALLS[@]} ]; then
+    CURRENT_INDEX=0
+fi
+
+WALLPAPER="${WALLS[$CURRENT_INDEX]}"
+
+hyprctl hyprpaper preload "$WALLPAPER"
+hyprctl hyprpaper wallpaper ",$WALLPAPER"
+
+NEXT_INDEX=$((CURRENT_INDEX + 1))
+if [ "$NEXT_INDEX" -ge ${#WALLS[@]} ]; then
+    NEXT_INDEX=0
+fi
+
+echo "$NEXT_INDEX" > "$STATE_FILE"
+
+echo "Switched to wallpaper: $(basename "$WALLPAPER")"
