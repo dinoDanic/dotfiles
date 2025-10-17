@@ -62,3 +62,14 @@ tooltip {
 .hidden {
   opacity: 0;
 }
+
+#custom-recorder {
+  color: #ff0000;
+  font-weight: bold;
+  margin: 0 7.5px;
+  animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.5; }
+}

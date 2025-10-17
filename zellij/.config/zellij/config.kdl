@@ -547,6 +547,11 @@ default_layout "default"
 // 
 show_startup_tips false
  
+// Skip the command invocation prompt when resurrecting sessions
+// Default: false
+// 
+skip_command_invocation_prompt true
+ 
 // Whether to show release notes on first version run
 // Default: true
 // 
