@@ -1,4 +1,5 @@
 vim.cmd [[colorscheme rose-pine-main]]
+-- vim.cmd [[colorscheme catppuccin]]
 
 -- Make background transparent
 -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
