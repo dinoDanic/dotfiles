@@ -43,3 +43,23 @@ vim.keymap.set('n', '<leader>lj', '<cmd>lua vim.diagnostic.goto_next()<cr>', { d
 vim.keymap.set('n', '<leader>lk', '<cmd>lua vim.diagnostic.goto_prev()<cr>', { desc = 'Previous diagnostic' })
 vim.keymap.set('n', '<leader>lf', '<cmd>lua vim.lsp.buf.format{async = true}<cr>', { desc = 'Format buffer' })
 vim.keymap.set('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<cr>', { desc = 'Rename symbol' })
+
+
+--- formating
+local function kebab_to_camel(str)
+  return str:gsub("%-([a-z])", function(c)
+    return c:upper()
+  end)
+end
+
+vim.keymap.set("n", "<leader>sc", function()
+  local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+
+  for i, line in ipairs(lines) do
+    lines[i] = line:gsub("([%w]+%-[%w%-]+)", function(word)
+      return kebab_to_camel(word)
+    end)
+  end
+
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+end, { desc = "Convert kebab-case to camelCase in entire file" })
