@@ -171,9 +171,7 @@ require('lazy').setup({
         builtin.find_files(require('telescope.themes').get_dropdown())
       end, { desc = '[S]earch [F]iles' })
 
-      vim.keymap.set('n', '<leader>f', function()
-        builtin.find_files(require('telescope.themes').get_dropdown())
-      end, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = '[S]earch [F]iles' })
 
       vim.keymap.set('n', '<leader>sg', function()
         builtin.live_grep(require('telescope.themes').get_ivy())
