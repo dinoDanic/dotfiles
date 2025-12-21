@@ -28,7 +28,6 @@ if status is-interactive
         end
     end
 
-
     # neovim
     alias nc="cd ~/.config/nvim && nvim"
     alias n="nvim"
@@ -39,11 +38,10 @@ if status is-interactive
     # alacritty 
     alias ac="nvim ~/.config/alacritty/alacritty.toml"
 
-    # fish 
-    alias fc="nvim ~/.config/fish/config.fish"
-
     # tmux
     alias tc="nvim ~/.config/tmux/.tmux.conf"
+
+    alias lla="ll -a"
 
     # git
     alias ga.="git add ."
@@ -52,6 +50,10 @@ if status is-interactive
     alias grs="git reset --soft HEAD~1"
     alias gs="git status"
     alias lg="lazygit"
+
+    alias fc="nvim ~/.config/fish/config.fish"
+    alias zc="nvim ~/.config/zellij/config.kdl"
+    alias hyp="nvim ~/.config/hypr/bindings.conf"
 
     #kodius
     alias milivoje="ssh root@192.168.20.25"
@@ -63,6 +65,13 @@ if status is-interactive
 
 end
 
+# ----------------------------- PATHS ------------------------------
+set -gx ANDROID_HOME $HOME/Android/Sdk
+set -x PATH $PATH $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+set -gx PATH $PNPM_HOME $PATH
+set -Ux ANDROID_AVD_HOME $HOME/.config/.android/avd
 # ----------------------------- YAZI ------------------------------
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")

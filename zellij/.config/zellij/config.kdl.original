@@ -25,10 +25,6 @@ keybinds clear-defaults=true {
         bind "z" { TogglePaneFrames; SwitchToMode "normal"; }
     }
     tab {
-        bind "Shift Left" { MoveTab "Left"; }
-        bind "Shift h" { MoveTab "Left"; }
-        bind "Shift Right" { MoveTab "Right"; }
-        bind "Shift l" { MoveTab "Right"; }
         bind "left" { GoToPreviousTab; }
         bind "down" { GoToNextTab; }
         bind "up" { GoToPreviousTab; }
@@ -161,7 +157,7 @@ keybinds clear-defaults=true {
         bind "Ctrl q" { Quit; }
     }
     shared_except "locked" "move" {
-        bind "Ctrl n" { SwitchToMode "move"; }
+        bind "Ctrl h" { SwitchToMode "move"; }
     }
     shared_except "locked" "session" {
         bind "Ctrl o" { SwitchToMode "session"; }
@@ -281,44 +277,13 @@ web_client {
 //   - true
 //   - false (Default)
 // 
-
-simplified_ui true
+// simplified_ui true
  
 // Choose the theme that is specified in the themes section.
 // Default: default
-
-// List of themes
-// theme "Dark Themes"
-// theme "ansi"
-// theme "ao"
-// theme "atelier-sulphurpool"
-// theme "ayu_mirage"
-// theme "ayu_dark"
-// theme "catppuccin-frappe"
-// theme "catppuccin-macchiato"
-// theme "cyber-noir"
-// theme "blade-runner"
-// theme "retro-wave"
+// 
 // theme "dracula"
-// theme "everforest-dark"
-// theme "gruvbox-dark"
-// theme "iceberg-dark"
-// theme "kanagawa"
-// theme "lucario"
-// theme "menace"
-// theme "molokai-dark"
-theme "night-owl"
-// theme "nightfox"
-// theme "nord"
-// theme "one-half-dark"
-// theme "onedark"
-// theme "solarized-dark"
-// theme "tokyo-night-dark"
-// theme "tokyo-night-storm"
-// theme "tokyo-night"
-// theme "vesper"
-
-
+ 
 // Choose the base input mode of zellij.
 // Default: normal
 // 
@@ -327,7 +292,7 @@ theme "night-owl"
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
 // 
-default_shell "fish"
+// default_shell "fish"
  
 // Choose the path to override cwd that zellij will use for opening new panes
 // 
@@ -336,7 +301,7 @@ default_shell "fish"
 // The name of the default layout to load on startup
 // Default: "default"
 // 
-default_layout "compact"
+// default_layout "compact"
  
 // The folder in which Zellij will look for layouts
 // (Requires restart)
@@ -355,14 +320,15 @@ default_layout "compact"
 //   - true (default)
 //   - false
 // 
-mouse_mode false
+// mouse_mode false
  
 // Toggle having pane frames around the panes
 // Options:
 //   - true (default, enabled)
 //   - false
 // 
-pane_frames false
+// pane_frames false
+ 
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
 // or should each user have their own cursor (false)
@@ -537,12 +503,7 @@ pane_frames false
 // Whether to show tips on startup
 // Default: true
 // 
-show_startup_tips false
- 
-// Skip the command invocation prompt when resurrecting sessions
-// Default: false
-// 
-skip_command_invocation_prompt true
+// show_startup_tips false
  
 // Whether to show release notes on first version run
 // Default: true
@@ -569,5 +530,3 @@ skip_command_invocation_prompt true
 // can be useful for removing wrappers around commands
 // Note: be sure to escape backslashes and similar characters properly
 // post_command_discovery_hook "echo $RESURRECT_COMMAND | sed <your_regex_here>"
-
-
