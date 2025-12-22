@@ -33,7 +33,13 @@ vim.keymap.set('v', '<leader>/', 'gc', { desc = 'Toggle comment for selection', 
 vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and stay in visual mode' })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and stay in visual mode' })
 
-vim.keymap.set('n', '<leader>c', '<cmd>bdelete<CR>', { desc = 'Close buffer' })
+vim.keymap.set('n', '<leader>c', function()
+  Snacks.bufdelete()
+end, { desc = 'Close buffer' })
+
+-- map("n", "<leader>bd", function()
+--   Snacks.bufdelete()
+-- end, { desc = "Delete Buffer" })
 
 vim.keymap.del('n', '<leader>l')
 
