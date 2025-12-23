@@ -1,6 +1,23 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
+
+
+vim.opt.cmdheight = 0
+
+-- set cmd height when entering command mode
+vim.api.nvim_command 'autocmd CmdlineEnter * set cmdheight=1'
+vim.api.nvim_command 'autocmd CmdlineLeave * set cmdheight=0'
+vim.api.nvim_command 'autocmd RecordingEnter * set cmdheight=1'
+vim.api.nvim_command 'autocmd RecordingLeave * set cmdheight=0'
+
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = false,
+  underline = false,
+  update_in_insert = false,
+})
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
