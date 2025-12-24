@@ -79,6 +79,17 @@ vim.keymap.set("n", "<leader>.", "<cmd>luafile %<CR>", { desc = "Source file" })
 
 vim.keymap.set("n", "<leader>e", "<cmd>Ex<CR>", { desc = "NetRW" })
 
+vim.keymap.set("n", "<leader>e", function()
+  local file = vim.fn.expand("%:t")
+  local dir = vim.fn.expand("%:p:h")
+
+  vim.cmd("Explore " .. dir)
+
+  vim.schedule(function()
+    vim.fn.search("\\V" .. file)
+  end)
+end, { desc = "Netrw (file dir, cursor on file)" })
+
 -- ============================================================================
 -- Editing
 -- ============================================================================

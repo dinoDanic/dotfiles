@@ -8,6 +8,7 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.scrolloff = 10
 vim.opt.smartcase = true
+vim.opt.signcolumn = "yes"
 
 -- vim.opt.timeoutlen = 300
 -- vim.opt.updatetime = 50
@@ -16,7 +17,9 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.expandtab = true
+vim.opt.smarttab = true
 vim.opt.smartindent = true
+vim.opt.autoindent = true
 
 
 vim.opt.cmdheight = 0
@@ -37,3 +40,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- auto resize screen
+-- Create an autocommand group for auto resizing
+vim.api.nvim_create_augroup('autoequalize', { clear = true })
+
+vim.api.nvim_create_autocmd({ 'VimEnter', 'VimResized' }, {
+  callback = function()
+    vim.cmd 'wincmd ='
+  end,
+  group = 'autoequalize',
+})
