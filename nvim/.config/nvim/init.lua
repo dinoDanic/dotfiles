@@ -1,6 +1,6 @@
 require("config.options")
 require("plugins.lsp")
-require("plugins.life")
+require("plugins.autopairs")
 require("plugins.colors")
 require("config.lazy")
 require("config.keymaps")
