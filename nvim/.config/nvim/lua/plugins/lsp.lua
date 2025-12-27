@@ -11,30 +11,8 @@ return {
               desc = "LSP: " .. desc,
             })
           end
-
-          map("gd", function()
-            MiniExtra.pickers.lsp({ scope = "definition" })
-          end, "Goto definition")
-
-          map("gr", function()
-            MiniExtra.pickers.lsp({ scope = "references" })
-          end, "Goto references")
-
-          map("gi", function()
-            MiniExtra.pickers.lsp({ scope = "implementation" })
-          end, "Goto implementation")
-
-          map("<leader>D", function()
-            MiniExtra.pickers.lsp({ scope = "type_definition" })
-          end, "Type definition")
-
-          map("<leader>ds", function()
-            MiniExtra.pickers.lsp({ scope = "document_symbol" })
-          end, "Document symbols")
-
-          map("K", vim.lsp.buf.hover, "Hover")
-          map("<leader>lr", vim.lsp.buf.rename, "Rename")
-          map("<leader>la", vim.lsp.buf.code_action, "Code action")
+          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
         end,
       })
     end,

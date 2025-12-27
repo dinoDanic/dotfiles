@@ -1,7 +1,6 @@
 -- ============================================================================
 -- Requires
 -- ============================================================================
-local pick = require("mini.pick")
 local bufremove = require("mini.bufremove")
 
 -- ============================================================================
@@ -10,21 +9,6 @@ local bufremove = require("mini.bufremove")
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<leader>h", "<cmd>nohlsearch<CR>")
 vim.keymap.set("i", "jj", "<Esc>")
-
--- ============================================================================
--- Mini.pick
--- ============================================================================
-vim.keymap.set("n", "<leader>f", pick.builtin.files, { desc = "Find files" })
-vim.keymap.set("n", "<leader>sg", pick.builtin.grep_live, { desc = "Live grep" })
-vim.keymap.set("n", "<leader>sb", pick.builtin.buffers, { desc = "Buffers" })
-vim.keymap.set("n", "<leader>sh", pick.builtin.help, { desc = "Help" })
-
--- Git diff files
-vim.keymap.set("n", "<leader><leader>", function()
-  pick.builtin.cli({
-    command = { "git", "diff", "--name-only", "--relative", "HEAD" },
-  })
-end, { desc = "Git diff files" })
 
 -- ============================================================================
 -- Window navigation
@@ -109,8 +93,16 @@ vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
 -- ============================================================================
 -- Comments (mini.comment)
 -- ============================================================================
-vim.keymap.set("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)", { desc = "Toggle comment" })
-vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)", { desc = "Toggle comment" })
+-- vim.keymap.set("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)", { desc = "Toggle comment" })
+-- vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)", { desc = "Toggle comment" })
+vim.keymap.set("n", "<leader>/", "gcc", {
+  desc = "Toggle comment (gcc)",
+  remap = true,
+})
+vim.keymap.set("v", "<leader>/", "gc", {
+  desc = "Toggle comment",
+  remap = true,
+})
 
 -- ============================================================================
 -- Utilities
