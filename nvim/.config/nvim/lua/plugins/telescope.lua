@@ -1,6 +1,7 @@
 return {
   'nvim-telescope/telescope.nvim',
   tag = 'v0.2.0',
+  enabled = true,
   dependencies = {
     'nvim-lua/plenary.nvim',
     { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -17,7 +18,8 @@ return {
       end,
     },
     -- Useful for getting pretty icons, but requires a Nerd Font.
-    { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+    -- we use mini.icons
+    -- { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   },
   config = function()
     require('telescope').setup {
@@ -35,6 +37,23 @@ return {
           },
         },
       },
+      pickers = {
+        find_files = {
+          theme = "dropdown"
+        },
+        live_grep = {
+          theme = "ivy"
+        },
+        keymaps = {
+          theme = "ivy"
+        },
+        oldfiles = {
+          theme = "dropdown"
+        },
+        buffers = {
+          theme = "cursor"
+        }
+      }
     }
     local builtin = require('telescope.builtin')
     vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Telescope find files' })
