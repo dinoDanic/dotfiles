@@ -66,12 +66,15 @@ if status is-interactive
 end
 
 # ----------------------------- PATHS ------------------------------
+
 set -gx ANDROID_HOME $HOME/Android/Sdk
 set -x PATH $PATH $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 set -gx PATH $PNPM_HOME $PATH
 set -Ux ANDROID_AVD_HOME $HOME/.config/.android/avd
+set -gx PATH $HOME/.local/bin $PATH
+set -gx PATH $HOME/.local/share/gem/ruby/3.4.0/bin $PATH
 # ----------------------------- YAZI ------------------------------
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
@@ -85,3 +88,6 @@ end
 # add  default editor
 set -g EDITOR nvim
 set -g VISUAL nvim
+
+# opencode
+fish_add_path /home/dino/.opencode/bin

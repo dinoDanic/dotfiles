@@ -268,7 +268,7 @@ simplified_ui true
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-theme "night-owl"
+theme "nord"
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -313,7 +313,7 @@ mouse_mode false
 //   - true (default, enabled)
 //   - false
 // 
-pane_frames false
+pane_frames true
  
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
