@@ -1,0 +1,1008 @@
+lua/plugins/markdown.lua:1:return {
+lua/plugins/markdown.lua:2:  'MeanderingProgrammer/render-markdown.nvim',
+lua/plugins/markdown.lua:3:  dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },   -- if you use the mini.nvim suite
+lua/plugins/markdown.lua:4:  -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
+lua/plugins/markdown.lua:5:  -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+lua/plugins/markdown.lua:6:  ---@module 'render-markdown'
+lua/plugins/markdown.lua:7:  ---@type render.md.UserConfig
+lua/plugins/markdown.lua:8:  opts = {},
+lua/plugins/markdown.lua:9:}
+lua/plugins/omarchy-theme-hotreload.lua:1:return {
+lua/plugins/omarchy-theme-hotreload.lua:2:	{
+lua/plugins/omarchy-theme-hotreload.lua:3:		name = "theme-hotreload",
+lua/plugins/omarchy-theme-hotreload.lua:4:		dir = vim.fn.stdpath("config"),
+lua/plugins/omarchy-theme-hotreload.lua:5:		lazy = false,
+lua/plugins/omarchy-theme-hotreload.lua:6:		priority = 1000,
+lua/plugins/omarchy-theme-hotreload.lua:7:		config = function()
+lua/plugins/omarchy-theme-hotreload.lua:8:			local transparency_file = vim.fn.stdpath("config") .. "/plugin/after/transparency.lua"
+lua/plugins/omarchy-theme-hotreload.lua:9:
+lua/plugins/omarchy-theme-hotreload.lua:10:			vim.api.nvim_create_autocmd("User", {
+lua/plugins/omarchy-theme-hotreload.lua:11:				pattern = "LazyReload",
+lua/plugins/omarchy-theme-hotreload.lua:12:				callback = function()
+lua/plugins/omarchy-theme-hotreload.lua:13:					-- Unload the theme module
+lua/plugins/omarchy-theme-hotreload.lua:14:					package.loaded["plugins.theme"] = nil
+lua/plugins/omarchy-theme-hotreload.lua:15:
+lua/plugins/omarchy-theme-hotreload.lua:16:					vim.schedule(function()
+lua/plugins/omarchy-theme-hotreload.lua:17:						local ok, theme_spec = pcall(require, "plugins.theme")
+lua/plugins/omarchy-theme-hotreload.lua:18:						if not ok then
+lua/plugins/omarchy-theme-hotreload.lua:19:							return
+lua/plugins/omarchy-theme-hotreload.lua:20:						end
+lua/plugins/omarchy-theme-hotreload.lua:21:
+lua/plugins/omarchy-theme-hotreload.lua:22:						-- Find the theme plugin and unload it
+lua/plugins/omarchy-theme-hotreload.lua:23:						local theme_plugin_name = nil
+lua/plugins/omarchy-theme-hotreload.lua:24:						for _, spec in ipairs(theme_spec) do
+lua/plugins/omarchy-theme-hotreload.lua:25:							if spec[1] and spec[1] ~= "LazyVim/LazyVim" then
+lua/plugins/omarchy-theme-hotreload.lua:26:								theme_plugin_name = spec.name or spec[1]
+lua/plugins/omarchy-theme-hotreload.lua:27:								break
+lua/plugins/omarchy-theme-hotreload.lua:28:							end
+lua/plugins/omarchy-theme-hotreload.lua:29:						end
+lua/plugins/omarchy-theme-hotreload.lua:30:
+lua/plugins/omarchy-theme-hotreload.lua:31:						-- Clear all highlight groups before applying new theme
+lua/plugins/omarchy-theme-hotreload.lua:32:						vim.cmd("highlight clear")
+lua/plugins/omarchy-theme-hotreload.lua:33:						if vim.fn.exists("syntax_on") then
+lua/plugins/omarchy-theme-hotreload.lua:34:							vim.cmd("syntax reset")
+lua/plugins/omarchy-theme-hotreload.lua:35:						end
+lua/plugins/omarchy-theme-hotreload.lua:36:
+lua/plugins/omarchy-theme-hotreload.lua:37:						-- Reset background to default so colorscheme can set it properly (light themes will set to light)
+lua/plugins/omarchy-theme-hotreload.lua:38:						vim.o.background = "dark"
+lua/plugins/omarchy-theme-hotreload.lua:39:
+lua/plugins/omarchy-theme-hotreload.lua:40:						-- Unload theme plugin modules to force full reload
+lua/plugins/omarchy-theme-hotreload.lua:41:						if theme_plugin_name then
+lua/plugins/omarchy-theme-hotreload.lua:42:							local plugin = require("lazy.core.config").plugins[theme_plugin_name]
+lua/plugins/omarchy-theme-hotreload.lua:43:							if plugin then
+lua/plugins/omarchy-theme-hotreload.lua:44:								-- Unload all lua modules from the plugin directory
+lua/plugins/omarchy-theme-hotreload.lua:45:								local plugin_dir = plugin.dir .. "/lua"
+lua/plugins/omarchy-theme-hotreload.lua:46:								require("lazy.core.util").walkmods(plugin_dir, function(modname)
+lua/plugins/omarchy-theme-hotreload.lua:47:									package.loaded[modname] = nil
+lua/plugins/omarchy-theme-hotreload.lua:48:									package.preload[modname] = nil
+lua/plugins/omarchy-theme-hotreload.lua:49:								end)
+lua/plugins/omarchy-theme-hotreload.lua:50:							end
+lua/plugins/omarchy-theme-hotreload.lua:51:						end
+lua/plugins/omarchy-theme-hotreload.lua:52:
+lua/plugins/omarchy-theme-hotreload.lua:53:						-- Find and apply the new colorscheme
+lua/plugins/omarchy-theme-hotreload.lua:54:						for _, spec in ipairs(theme_spec) do
+lua/plugins/omarchy-theme-hotreload.lua:55:							if spec[1] == "LazyVim/LazyVim" and spec.opts and spec.opts.colorscheme then
+lua/plugins/omarchy-theme-hotreload.lua:56:								local colorscheme = spec.opts.colorscheme
+lua/plugins/omarchy-theme-hotreload.lua:57:
+lua/plugins/omarchy-theme-hotreload.lua:58:								-- Load the colorscheme plugin
+lua/plugins/omarchy-theme-hotreload.lua:59:								require("lazy.core.loader").colorscheme(colorscheme)
+lua/plugins/omarchy-theme-hotreload.lua:60:
+lua/plugins/omarchy-theme-hotreload.lua:61:								vim.defer_fn(function()
+lua/plugins/omarchy-theme-hotreload.lua:62:									-- Apply the colorscheme (it will set background itself)
+lua/plugins/omarchy-theme-hotreload.lua:63:									pcall(vim.cmd.colorscheme, colorscheme)
+lua/plugins/omarchy-theme-hotreload.lua:64:
+lua/plugins/omarchy-theme-hotreload.lua:65:									-- Force redraw to update all UI elements
+lua/plugins/omarchy-theme-hotreload.lua:66:									vim.cmd("redraw!")
+lua/plugins/omarchy-theme-hotreload.lua:67:
+lua/plugins/omarchy-theme-hotreload.lua:68:									-- Reload transparency settings
+lua/plugins/omarchy-theme-hotreload.lua:69:									if vim.fn.filereadable(transparency_file) == 1 then
+lua/plugins/omarchy-theme-hotreload.lua:70:										vim.defer_fn(function()
+lua/plugins/omarchy-theme-hotreload.lua:71:											vim.cmd.source(transparency_file)
+lua/plugins/omarchy-theme-hotreload.lua:72:
+lua/plugins/omarchy-theme-hotreload.lua:73:											-- Trigger UI updates for various plugins
+lua/plugins/omarchy-theme-hotreload.lua:74:											vim.api.nvim_exec_autocmds("ColorScheme", { modeline = false })
+lua/plugins/omarchy-theme-hotreload.lua:75:											vim.api.nvim_exec_autocmds("VimEnter", { modeline = false })
+lua/plugins/omarchy-theme-hotreload.lua:76:
+lua/plugins/omarchy-theme-hotreload.lua:77:											-- Final redraw
+lua/plugins/omarchy-theme-hotreload.lua:78:											vim.cmd("redraw!")
+lua/plugins/omarchy-theme-hotreload.lua:79:										end, 5)
+lua/plugins/omarchy-theme-hotreload.lua:80:									end
+lua/plugins/omarchy-theme-hotreload.lua:81:								end, 5)
+lua/plugins/omarchy-theme-hotreload.lua:82:
+lua/plugins/omarchy-theme-hotreload.lua:83:								break
+lua/plugins/omarchy-theme-hotreload.lua:84:							end
+lua/plugins/omarchy-theme-hotreload.lua:85:						end
+lua/plugins/omarchy-theme-hotreload.lua:86:					end)
+lua/plugins/omarchy-theme-hotreload.lua:87:				end,
+lua/plugins/omarchy-theme-hotreload.lua:88:			})
+lua/plugins/omarchy-theme-hotreload.lua:89:		end,
+lua/plugins/omarchy-theme-hotreload.lua:90:	},
+lua/plugins/omarchy-theme-hotreload.lua:91:}
+lua/plugins/colors.lua:1:-- Transparent background
+lua/plugins/colors.lua:2:-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+lua/plugins/colors.lua:3:-- vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+lua/plugins/colors.lua:4:-- vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+lua/plugins/colors.lua:5:-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+lua/plugins/colors.lua:6:-- vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+lua/plugins/colors.lua:7:--
+lua/plugins/colors.lua:8:-- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+lua/plugins/colors.lua:9:-- vim.api.nvim_set_hl(0, "FloatTitle", { bg = "none" })
+lua/plugins/colors.lua:10:--
+lua/plugins/colors.lua:11:--
+lua/plugins/colors.lua:12:--
+lua/plugins/colors.lua:13:return {
+lua/plugins/colors.lua:14:  'shaunsingh/nord.nvim',
+lua/plugins/colors.lua:15:  config = function()
+lua/plugins/colors.lua:16:    vim.cmd("colorscheme nord")
+lua/plugins/colors.lua:17:  end
+lua/plugins/colors.lua:18:}
+lua/plugins/colors.lua:19:
+lua/plugins/colors.lua:20:-- return {
+lua/plugins/colors.lua:21:--   "rose-pine/neovim",
+lua/plugins/colors.lua:22:--   name = "rose-pine",
+lua/plugins/colors.lua:23:--   enabled = true,
+lua/plugins/colors.lua:24:--   config = function()
+lua/plugins/colors.lua:25:--     vim.cmd("colorscheme rose-pine")
+lua/plugins/colors.lua:26:--   end
+lua/plugins/colors.lua:27:-- }
+lua/plugins/telescope.lua:1:return {
+lua/plugins/telescope.lua:2:  'nvim-telescope/telescope.nvim',
+lua/plugins/telescope.lua:3:  tag = 'v0.2.0',
+lua/plugins/telescope.lua:4:  enabled = true,
+lua/plugins/telescope.lua:5:  dependencies = {
+lua/plugins/telescope.lua:6:    'nvim-lua/plenary.nvim',
+lua/plugins/telescope.lua:7:    {
+lua/plugins/telescope.lua:8:      'nvim-telescope/telescope-fzf-native.nvim',
+lua/plugins/telescope.lua:9:      build = 'make',
+lua/plugins/telescope.lua:10:      cond = function()
+lua/plugins/telescope.lua:11:        return vim.fn.executable 'make' == 1
+lua/plugins/telescope.lua:12:      end,
+lua/plugins/telescope.lua:13:    },
+lua/plugins/telescope.lua:14:  },
+lua/plugins/telescope.lua:15:  config = function()
+lua/plugins/telescope.lua:16:    require('telescope').setup {
+lua/plugins/telescope.lua:17:      defaults = {
+lua/plugins/telescope.lua:18:        mappings = {
+lua/plugins/telescope.lua:19:          i = {
+lua/plugins/telescope.lua:20:            ['<c-enter>'] = 'to_fuzzy_refine',
+lua/plugins/telescope.lua:21:            ['<C-j>'] = 'move_selection_next',
+lua/plugins/telescope.lua:22:            ['<C-k>'] = 'move_selection_previous',
+lua/plugins/telescope.lua:23:            ['<C-d>'] = 'delete_buffer',
+lua/plugins/telescope.lua:24:          },
+lua/plugins/telescope.lua:25:          n = {
+lua/plugins/telescope.lua:26:            ['d'] = require('telescope.actions').delete_buffer,
+lua/plugins/telescope.lua:27:            ['q'] = require('telescope.actions').close,
+lua/plugins/telescope.lua:28:          },
+lua/plugins/telescope.lua:29:        },
+lua/plugins/telescope.lua:30:      },
+lua/plugins/telescope.lua:31:      pickers = {
+lua/plugins/telescope.lua:32:        find_files = {
+lua/plugins/telescope.lua:33:          theme = "dropdown"
+lua/plugins/telescope.lua:34:        },
+lua/plugins/telescope.lua:35:        live_grep = {
+lua/plugins/telescope.lua:36:          theme = "ivy"
+lua/plugins/telescope.lua:37:        },
+lua/plugins/telescope.lua:38:        keymaps = {
+lua/plugins/telescope.lua:39:          theme = "ivy"
+lua/plugins/telescope.lua:40:        },
+lua/plugins/telescope.lua:41:        oldfiles = {
+lua/plugins/telescope.lua:42:          theme = "dropdown"
+lua/plugins/telescope.lua:43:        },
+lua/plugins/telescope.lua:44:        buffers = {
+lua/plugins/telescope.lua:45:          theme = "dropdown"
+lua/plugins/telescope.lua:46:        }
+lua/plugins/telescope.lua:47:      }
+lua/plugins/telescope.lua:48:    }
+lua/plugins/telescope.lua:49:    local builtin = require('telescope.builtin')
+lua/plugins/telescope.lua:50:    vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Telescope find files' })
+lua/plugins/telescope.lua:51:    vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'Telescope live grep' })
+lua/plugins/telescope.lua:52:    vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = 'Telescope buffers' })
+lua/plugins/telescope.lua:53:    vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
+lua/plugins/telescope.lua:54:    vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Telescope help tags' })
+lua/plugins/telescope.lua:55:    vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+lua/plugins/telescope.lua:56:    vim.keymap.set('n', '<leader><leader>', '<cmd>Telescope git_status theme=ivy<cr>',
+lua/plugins/telescope.lua:57:      { desc = '[ ] Show edited git files', })
+lua/plugins/telescope.lua:58:    vim.keymap.set('n', '<leader>sn', function()
+lua/plugins/telescope.lua:59:      builtin.find_files { cwd = vim.fn.stdpath 'config' }
+lua/plugins/telescope.lua:60:    end, { desc = '[S]earch [N]eovim files' })
+lua/plugins/telescope.lua:61:  end
+lua/plugins/telescope.lua:62:}
+lua/plugins/neo-tree.lua:1:return {
+lua/plugins/neo-tree.lua:2:  {
+lua/plugins/neo-tree.lua:3:    "nvim-neo-tree/neo-tree.nvim",
+lua/plugins/neo-tree.lua:4:    branch = "v3.x",
+lua/plugins/neo-tree.lua:5:    dependencies = {
+lua/plugins/neo-tree.lua:6:      "nvim-lua/plenary.nvim",
+lua/plugins/neo-tree.lua:7:      "MunifTanjim/nui.nvim",
+lua/plugins/neo-tree.lua:8:    },
+lua/plugins/neo-tree.lua:9:    lazy = false, -- neo-tree will lazily load itself
+lua/plugins/neo-tree.lua:10:    keys = {
+lua/plugins/neo-tree.lua:11:      { '<leader>e', ':Neotree position=current toggle reveal<CR>', desc = 'NeoTree reveal', silent = true },
+lua/plugins/neo-tree.lua:12:
+lua/plugins/neo-tree.lua:13:    },
+lua/plugins/neo-tree.lua:14:    config = function()
+lua/plugins/neo-tree.lua:15:      require('neo-tree').setup {
+lua/plugins/neo-tree.lua:16:        window = {
+lua/plugins/neo-tree.lua:17:          mappings = {
+lua/plugins/neo-tree.lua:18:            ["/"] = "noop", -- disable neo-tree's filter, use native vim search
+lua/plugins/neo-tree.lua:19:          },
+lua/plugins/neo-tree.lua:20:        },
+lua/plugins/neo-tree.lua:21:        filesystem = {
+lua/plugins/neo-tree.lua:22:          filtered_items = {
+lua/plugins/neo-tree.lua:23:            visible = true,
+lua/plugins/neo-tree.lua:24:          },
+lua/plugins/neo-tree.lua:25:        },
+lua/plugins/neo-tree.lua:26:        popup_border_style = 'rounded',
+lua/plugins/neo-tree.lua:27:        close_if_last_window = true,
+lua/plugins/neo-tree.lua:28:        enable_git_status = false,
+lua/plugins/neo-tree.lua:29:        enable_diagnostics = false,
+lua/plugins/neo-tree.lua:30:        default_component_configs = {
+lua/plugins/neo-tree.lua:31:          indent = {
+lua/plugins/neo-tree.lua:32:            with_markers = true,
+lua/plugins/neo-tree.lua:33:            indent_marker = "│",
+lua/plugins/neo-tree.lua:34:            last_indent_marker = "└",
+lua/plugins/neo-tree.lua:35:            indent_size = 2,
+lua/plugins/neo-tree.lua:36:          },
+lua/plugins/neo-tree.lua:37:        },
+lua/plugins/neo-tree.lua:38:        event_handlers = {
+lua/plugins/neo-tree.lua:39:          {
+lua/plugins/neo-tree.lua:40:            event = 'file_opened',
+lua/plugins/neo-tree.lua:41:            handler = function()
+lua/plugins/neo-tree.lua:42:              require('neo-tree.command').execute { action = 'close' }
+lua/plugins/neo-tree.lua:43:            end,
+lua/plugins/neo-tree.lua:44:          },
+lua/plugins/neo-tree.lua:45:        },
+lua/plugins/neo-tree.lua:46:      }
+lua/plugins/neo-tree.lua:47:      -- netrw-like line numbers for Neo-tree
+lua/plugins/neo-tree.lua:48:      vim.api.nvim_create_autocmd("FileType", {
+lua/plugins/neo-tree.lua:49:        pattern = "neo-tree",
+lua/plugins/neo-tree.lua:50:        callback = function()
+lua/plugins/neo-tree.lua:51:          vim.opt_local.relativenumber = true
+lua/plugins/neo-tree.lua:52:          vim.opt_local.signcolumn = "no"
+lua/plugins/neo-tree.lua:53:          vim.opt_local.foldcolumn = "0"
+lua/plugins/neo-tree.lua:54:        end,
+lua/plugins/neo-tree.lua:55:      })
+lua/plugins/neo-tree.lua:56:    end,
+lua/plugins/neo-tree.lua:57:  }
+lua/plugins/neo-tree.lua:58:}
+lua/plugins/mini.lua:1:return {
+lua/plugins/mini.lua:2:  "echasnovski/mini.nvim",
+lua/plugins/mini.lua:3:  version = "*",
+lua/plugins/mini.lua:4:  config = function()
+lua/plugins/mini.lua:5:    require("mini.comment").setup()
+lua/plugins/mini.lua:6:    require("mini.statusline").setup()
+lua/plugins/mini.lua:7:    require("mini.tabline").setup()
+lua/plugins/mini.lua:8:    require("mini.icons").setup({
+lua/plugins/mini.lua:9:      -- Icon style: 'glyph' or 'ascii'
+lua/plugins/mini.lua:10:      style = 'ascii',
+lua/plugins/mini.lua:11:    })
+lua/plugins/mini.lua:12:    MiniIcons.mock_nvim_web_devicons()
+lua/plugins/mini.lua:13:    require("mini.files").setup()
+lua/plugins/mini.lua:14:    require("mini.bufremove").setup()
+lua/plugins/mini.lua:15:    require("mini.extra").setup()
+lua/plugins/mini.lua:16:  end,
+lua/plugins/mini.lua:17:}
+lua/plugins/yazi.lua:1:---@type LazySpec
+lua/plugins/yazi.lua:2:return {
+lua/plugins/yazi.lua:3:  "mikavilpas/yazi.nvim",
+lua/plugins/yazi.lua:4:  version = "*", -- use the latest stable version
+lua/plugins/yazi.lua:5:  event = "VeryLazy",
+lua/plugins/yazi.lua:6:  dependencies = {
+lua/plugins/yazi.lua:7:    { "nvim-lua/plenary.nvim", lazy = true },
+lua/plugins/yazi.lua:8:  },
+lua/plugins/yazi.lua:9:  keys = {
+lua/plugins/yazi.lua:10:    -- 👇 in this section, choose your own keymappings!
+lua/plugins/yazi.lua:11:    {
+lua/plugins/yazi.lua:12:      "<leader>y",
+lua/plugins/yazi.lua:13:      mode = { "n", "v" },
+lua/plugins/yazi.lua:14:      "<cmd>Yazi<cr>",
+lua/plugins/yazi.lua:15:      desc = "Open yazi at the current file",
+lua/plugins/yazi.lua:16:    },
+lua/plugins/yazi.lua:17:    {
+lua/plugins/yazi.lua:18:      -- Open in the current working directory
+lua/plugins/yazi.lua:19:      "<leader>Y",
+lua/plugins/yazi.lua:20:      "<cmd>Yazi cwd<cr>",
+lua/plugins/yazi.lua:21:      desc = "Open the file manager in nvim's working directory",
+lua/plugins/yazi.lua:22:    },
+lua/plugins/yazi.lua:23:    -- {
+lua/plugins/yazi.lua:24:    --   "<c-up>",
+lua/plugins/yazi.lua:25:    --   "<cmd>Yazi toggle<cr>",
+lua/plugins/yazi.lua:26:    --   desc = "Resume the last yazi session",
+lua/plugins/yazi.lua:27:    -- },
+lua/plugins/yazi.lua:28:  },
+lua/plugins/yazi.lua:29:  ---@type YaziConfig | {}
+lua/plugins/yazi.lua:30:  opts = {
+lua/plugins/yazi.lua:31:    -- if you want to open yazi instead of netrw, see below for more info
+lua/plugins/yazi.lua:32:    open_for_directories = false,
+lua/plugins/yazi.lua:33:    keymaps = {
+lua/plugins/yazi.lua:34:      show_help = "<f1>",
+lua/plugins/yazi.lua:35:    },
+lua/plugins/yazi.lua:36:  },
+lua/plugins/yazi.lua:37:  -- 👇 if you use `open_for_directories=true`, this is recommended
+lua/plugins/yazi.lua:38:  init = function()
+lua/plugins/yazi.lua:39:    -- mark netrw as loaded so it's not loaded at all.
+lua/plugins/yazi.lua:40:    --
+lua/plugins/yazi.lua:41:    -- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
+lua/plugins/yazi.lua:42:    -- vim.g.loaded_netrwPlugin = 1
+lua/plugins/yazi.lua:43:  end,
+lua/plugins/yazi.lua:44:}
+lua/plugins/autopairs.lua:1:-- autopairs
+lua/plugins/autopairs.lua:2:-- https://github.com/windwp/nvim-autopairs
+lua/plugins/autopairs.lua:3:
+lua/plugins/autopairs.lua:4:return {
+lua/plugins/autopairs.lua:5:  {
+lua/plugins/autopairs.lua:6:    'windwp/nvim-ts-autotag',
+lua/plugins/autopairs.lua:7:    config = function()
+lua/plugins/autopairs.lua:8:      require('nvim-ts-autotag').setup({
+lua/plugins/autopairs.lua:9:        opts = {
+lua/plugins/autopairs.lua:10:          -- Defaults
+lua/plugins/autopairs.lua:11:          enable_close = true,          -- Auto close tags
+lua/plugins/autopairs.lua:12:          enable_rename = true,         -- Auto rename pairs of tags
+lua/plugins/autopairs.lua:13:          enable_close_on_slash = false -- Auto close on trailing </
+lua/plugins/autopairs.lua:14:        },
+lua/plugins/autopairs.lua:15:        -- Also override individual filetype configs, these take priority.
+lua/plugins/autopairs.lua:16:        -- Empty by default, useful if one of the "opts" global settings
+lua/plugins/autopairs.lua:17:        -- doesn't work well in a specific filetype
+lua/plugins/autopairs.lua:18:      })
+lua/plugins/autopairs.lua:19:    end,
+lua/plugins/autopairs.lua:20:  },
+lua/plugins/autopairs.lua:21:  {
+lua/plugins/autopairs.lua:22:    'windwp/nvim-autopairs',
+lua/plugins/autopairs.lua:23:    event = 'InsertEnter',
+lua/plugins/autopairs.lua:24:    dependencies = { 'hrsh7th/nvim-cmp' },
+lua/plugins/autopairs.lua:25:    config = function()
+lua/plugins/autopairs.lua:26:      require('nvim-autopairs').setup({
+lua/plugins/autopairs.lua:27:        check_ts = true, -- Enable treesitter
+lua/plugins/autopairs.lua:28:        ts_config = {
+lua/plugins/autopairs.lua:29:          lua = { 'string' },
+lua/plugins/autopairs.lua:30:          javascript = { 'template_string' },
+lua/plugins/autopairs.lua:31:        },
+lua/plugins/autopairs.lua:32:      })
+lua/plugins/autopairs.lua:33:      -- Integration with nvim-cmp
+lua/plugins/autopairs.lua:34:      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+lua/plugins/autopairs.lua:35:      local cmp = require('cmp')
+lua/plugins/autopairs.lua:36:      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+lua/plugins/autopairs.lua:37:    end,
+lua/plugins/autopairs.lua:38:  },
+lua/plugins/autopairs.lua:39:}
+lua/plugins/harpoon.lua:1:return {
+lua/plugins/harpoon.lua:2:  'ThePrimeagen/harpoon',
+lua/plugins/harpoon.lua:3:  branch = 'harpoon2',
+lua/plugins/harpoon.lua:4:  dependencies = { 'nvim-lua/plenary.nvim' },
+lua/plugins/harpoon.lua:5:  config = function()
+lua/plugins/harpoon.lua:6:    local harpoon = require 'harpoon'
+lua/plugins/harpoon.lua:7:    harpoon:setup()
+lua/plugins/harpoon.lua:8:
+lua/plugins/harpoon.lua:9:    vim.keymap.set('n', '<leader>oa', function()
+lua/plugins/harpoon.lua:10:      harpoon:list():add()
+lua/plugins/harpoon.lua:11:    end, { desc = 'Add File' })
+lua/plugins/harpoon.lua:12:
+lua/plugins/harpoon.lua:13:    vim.keymap.set('n', '<leader>oi', function()
+lua/plugins/harpoon.lua:14:      harpoon.ui:toggle_quick_menu(harpoon:list())
+lua/plugins/harpoon.lua:15:    end, { desc = 'Open L[I]st' })
+lua/plugins/harpoon.lua:16:
+lua/plugins/harpoon.lua:17:    vim.keymap.set('n', '<leader>1', function()
+lua/plugins/harpoon.lua:18:      harpoon:list():select(1)
+lua/plugins/harpoon.lua:19:    end, { desc = 'Select [1]' })
+lua/plugins/harpoon.lua:20:
+lua/plugins/harpoon.lua:21:    vim.keymap.set('n', '<leader>2', function()
+lua/plugins/harpoon.lua:22:      harpoon:list():select(2)
+lua/plugins/harpoon.lua:23:    end, { desc = 'Select [2]' })
+lua/plugins/harpoon.lua:24:
+lua/plugins/harpoon.lua:25:    vim.keymap.set('n', '<leader>3', function()
+lua/plugins/harpoon.lua:26:      harpoon:list():select(3)
+lua/plugins/harpoon.lua:27:    end, { desc = 'Select [3]' })
+lua/plugins/harpoon.lua:28:
+lua/plugins/harpoon.lua:29:    vim.keymap.set('n', '<leader>4', function()
+lua/plugins/harpoon.lua:30:      harpoon:list():select(4)
+lua/plugins/harpoon.lua:31:    end, { desc = 'Select [4]' })
+lua/plugins/harpoon.lua:32:
+lua/plugins/harpoon.lua:33:    -- Toggle previous & next buffers stored within Harpoon list
+lua/plugins/harpoon.lua:34:    vim.keymap.set('n', '<leader>op', function()
+lua/plugins/harpoon.lua:35:      harpoon:list():prev()
+lua/plugins/harpoon.lua:36:    end, { desc = 'Previus File' })
+lua/plugins/harpoon.lua:37:
+lua/plugins/harpoon.lua:38:    vim.keymap.set('n', '<leader>on', function()
+lua/plugins/harpoon.lua:39:      harpoon:list():next()
+lua/plugins/harpoon.lua:40:    end, { desc = 'Next File' })
+lua/plugins/harpoon.lua:41:  end,
+lua/plugins/harpoon.lua:42:}
+lua/plugins/oil.lua:1:return {
+lua/plugins/oil.lua:2:  'stevearc/oil.nvim',
+lua/plugins/oil.lua:3:  ---@module 'oil'
+lua/plugins/oil.lua:4:  ---@diagnostic disable-next-line: undefined-doc-name
+lua/plugins/oil.lua:5:  ---@type oil.SetupOpts
+lua/plugins/oil.lua:6:  opts = {},
+lua/plugins/oil.lua:7:  enabled = false,
+lua/plugins/oil.lua:8:  -- Optional dependencies
+lua/plugins/oil.lua:9:  -- dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+lua/plugins/oil.lua:10:  -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+lua/plugins/oil.lua:11:  -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+lua/plugins/oil.lua:12:  lazy = false,
+lua/plugins/oil.lua:13:  config = function()
+lua/plugins/oil.lua:14:    require("oil").setup({
+lua/plugins/oil.lua:15:      vim.keymap.set("n", "<leader>e", function()
+lua/plugins/oil.lua:16:        require("oil").open()
+lua/plugins/oil.lua:17:      end, { desc = "Open Oil" }),
+lua/plugins/oil.lua:18:      -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
+lua/plugins/oil.lua:19:      -- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
+lua/plugins/oil.lua:20:      default_file_explorer = true,
+lua/plugins/oil.lua:21:      -- Id is automatically added at the beginning, and name at the end
+lua/plugins/oil.lua:22:      -- See :help oil-columns
+lua/plugins/oil.lua:23:      columns = {
+lua/plugins/oil.lua:24:        "icon",
+lua/plugins/oil.lua:25:        -- "permissions",
+lua/plugins/oil.lua:26:        -- "size",
+lua/plugins/oil.lua:27:        -- "mtime",
+lua/plugins/oil.lua:28:      },
+lua/plugins/oil.lua:29:      -- Buffer-local options to use for oil buffers
+lua/plugins/oil.lua:30:      buf_options = {
+lua/plugins/oil.lua:31:        buflisted = false,
+lua/plugins/oil.lua:32:        bufhidden = "hide",
+lua/plugins/oil.lua:33:      },
+lua/plugins/oil.lua:34:      -- Window-local options to use for oil buffers
+lua/plugins/oil.lua:35:      win_options = {
+lua/plugins/oil.lua:36:        wrap = false,
+lua/plugins/oil.lua:37:        signcolumn = "no",
+lua/plugins/oil.lua:38:        cursorcolumn = false,
+lua/plugins/oil.lua:39:        foldcolumn = "0",
+lua/plugins/oil.lua:40:        spell = false,
+lua/plugins/oil.lua:41:        list = false,
+lua/plugins/oil.lua:42:        conceallevel = 3,
+lua/plugins/oil.lua:43:        concealcursor = "nvic",
+lua/plugins/oil.lua:44:      },
+lua/plugins/oil.lua:45:      -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
+lua/plugins/oil.lua:46:      delete_to_trash = false,
+lua/plugins/oil.lua:47:      -- Skip the confirmation popup for simple operations (:help oil.skip_confirm_for_simple_edits)
+lua/plugins/oil.lua:48:      skip_confirm_for_simple_edits = false,
+lua/plugins/oil.lua:49:      -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
+lua/plugins/oil.lua:50:      -- (:help prompt_save_on_select_new_entry)
+lua/plugins/oil.lua:51:      prompt_save_on_select_new_entry = true,
+lua/plugins/oil.lua:52:      -- Oil will automatically delete hidden buffers after this delay
+lua/plugins/oil.lua:53:      -- You can set the delay to false to disable cleanup entirely
+lua/plugins/oil.lua:54:      -- Note that the cleanup process only starts when none of the oil buffers are currently displayed
+lua/plugins/oil.lua:55:      cleanup_delay_ms = 2000,
+lua/plugins/oil.lua:56:      lsp_file_methods = {
+lua/plugins/oil.lua:57:        -- Enable or disable LSP file operations
+lua/plugins/oil.lua:58:        enabled = true,
+lua/plugins/oil.lua:59:        -- Time to wait for LSP file operations to complete before skipping
+lua/plugins/oil.lua:60:        timeout_ms = 1000,
+lua/plugins/oil.lua:61:        -- Set to true to autosave buffers that are updated with LSP willRenameFiles
+lua/plugins/oil.lua:62:        -- Set to "unmodified" to only save unmodified buffers
+lua/plugins/oil.lua:63:        autosave_changes = false,
+lua/plugins/oil.lua:64:      },
+lua/plugins/oil.lua:65:      -- Constrain the cursor to the editable parts of the oil buffer
+lua/plugins/oil.lua:66:      -- Set to `false` to disable, or "name" to keep it on the file names
+lua/plugins/oil.lua:67:      constrain_cursor = "editable",
+lua/plugins/oil.lua:68:      -- Set to true to watch the filesystem for changes and reload oil
+lua/plugins/oil.lua:69:      watch_for_changes = false,
+lua/plugins/oil.lua:70:      -- Keymaps in oil buffer. Can be any value that `vim.keymap.set` accepts OR a table of keymap
+lua/plugins/oil.lua:71:      -- options with a `callback` (e.g. { callback = function() ... end, desc = "", mode = "n" })
+lua/plugins/oil.lua:72:      -- Additionally, if it is a string that matches "actions.<name>",
+lua/plugins/oil.lua:73:      -- it will use the mapping at require("oil.actions").<name>
+lua/plugins/oil.lua:74:      -- Set to `false` to remove a keymap
+lua/plugins/oil.lua:75:      -- See :help oil-actions for a list of all available actions
+lua/plugins/oil.lua:76:      keymaps = {
+lua/plugins/oil.lua:77:        ["g?"] = { "actions.show_help", mode = "n" },
+lua/plugins/oil.lua:78:        ["<CR>"] = "actions.select",
+lua/plugins/oil.lua:79:        ["<C-s>"] = { "actions.select", opts = { vertical = true } },
+lua/plugins/oil.lua:80:        ["<C-h>"] = { "actions.select", opts = { horizontal = true } },
+lua/plugins/oil.lua:81:        ["<C-t>"] = { "actions.select", opts = { tab = true } },
+lua/plugins/oil.lua:82:        ["<C-p>"] = "actions.preview",
+lua/plugins/oil.lua:83:        ["<C-c>"] = { "actions.close", mode = "n" },
+lua/plugins/oil.lua:84:        ["<C-l>"] = "actions.refresh",
+lua/plugins/oil.lua:85:        ["-"] = { "actions.parent", mode = "n" },
+lua/plugins/oil.lua:86:        ["_"] = { "actions.open_cwd", mode = "n" },
+lua/plugins/oil.lua:87:        ["`"] = { "actions.cd", mode = "n" },
+lua/plugins/oil.lua:88:        ["g~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
+lua/plugins/oil.lua:89:        ["gs"] = { "actions.change_sort", mode = "n" },
+lua/plugins/oil.lua:90:        ["gx"] = "actions.open_external",
+lua/plugins/oil.lua:91:        ["g."] = { "actions.toggle_hidden", mode = "n" },
+lua/plugins/oil.lua:92:        ["g\\"] = { "actions.toggle_trash", mode = "n" },
+lua/plugins/oil.lua:93:      },
+lua/plugins/oil.lua:94:      -- Set to false to disable all of the above keymaps
+lua/plugins/oil.lua:95:      use_default_keymaps = true,
+lua/plugins/oil.lua:96:      view_options = {
+lua/plugins/oil.lua:97:        -- Show files and directories that start with "."
+lua/plugins/oil.lua:98:        show_hidden = false,
+lua/plugins/oil.lua:99:        -- This function defines what is considered a "hidden" file
+lua/plugins/oil.lua:100:        is_hidden_file = function(name, bufnr)
+lua/plugins/oil.lua:101:          local m = name:match("^%.")
+lua/plugins/oil.lua:102:          return m ~= nil
+lua/plugins/oil.lua:103:        end,
+lua/plugins/oil.lua:104:        -- This function defines what will never be shown, even when `show_hidden` is set
+lua/plugins/oil.lua:105:        is_always_hidden = function(name, bufnr)
+lua/plugins/oil.lua:106:          return false
+lua/plugins/oil.lua:107:        end,
+lua/plugins/oil.lua:108:        -- Sort file names with numbers in a more intuitive order for humans.
+lua/plugins/oil.lua:109:        -- Can be "fast", true, or false. "fast" will turn it off for large directories.
+lua/plugins/oil.lua:110:        natural_order = "fast",
+lua/plugins/oil.lua:111:        -- Sort file and directory names case insensitive
+lua/plugins/oil.lua:112:        case_insensitive = false,
+lua/plugins/oil.lua:113:        sort = {
+lua/plugins/oil.lua:114:          -- sort order can be "asc" or "desc"
+lua/plugins/oil.lua:115:          -- see :help oil-columns to see which columns are sortable
+lua/plugins/oil.lua:116:          { "type", "asc" },
+lua/plugins/oil.lua:117:          { "name", "asc" },
+lua/plugins/oil.lua:118:        },
+lua/plugins/oil.lua:119:        -- Customize the highlight group for the file name
+lua/plugins/oil.lua:120:        highlight_filename = function(entry, is_hidden, is_link_target, is_link_orphan)
+lua/plugins/oil.lua:121:          return nil
+lua/plugins/oil.lua:122:        end,
+lua/plugins/oil.lua:123:      },
+lua/plugins/oil.lua:124:      -- Extra arguments to pass to SCP when moving/copying files over SSH
+lua/plugins/oil.lua:125:      extra_scp_args = {},
+lua/plugins/oil.lua:126:      -- Extra arguments to pass to aws s3 when creating/deleting/moving/copying files using aws s3
+lua/plugins/oil.lua:127:      extra_s3_args = {},
+lua/plugins/oil.lua:128:      -- EXPERIMENTAL support for performing file operations with git
+lua/plugins/oil.lua:129:      git = {
+lua/plugins/oil.lua:130:        -- Return true to automatically git add/mv/rm files
+lua/plugins/oil.lua:131:        add = function(path)
+lua/plugins/oil.lua:132:          return false
+lua/plugins/oil.lua:133:        end,
+lua/plugins/oil.lua:134:        mv = function(src_path, dest_path)
+lua/plugins/oil.lua:135:          return false
+lua/plugins/oil.lua:136:        end,
+lua/plugins/oil.lua:137:        rm = function(path)
+lua/plugins/oil.lua:138:          return false
+lua/plugins/oil.lua:139:        end,
+lua/plugins/oil.lua:140:      },
+lua/plugins/oil.lua:141:      -- Configuration for the floating window in oil.open_float
+lua/plugins/oil.lua:142:      float = {
+lua/plugins/oil.lua:143:        -- Padding around the floating window
+lua/plugins/oil.lua:144:        padding = 2,
+lua/plugins/oil.lua:145:        -- max_width and max_height can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
+lua/plugins/oil.lua:146:        max_width = 0,
+lua/plugins/oil.lua:147:        max_height = 0,
+lua/plugins/oil.lua:148:        border = nil,
+lua/plugins/oil.lua:149:        win_options = {
+lua/plugins/oil.lua:150:          winblend = 0,
+lua/plugins/oil.lua:151:        },
+lua/plugins/oil.lua:152:        -- optionally override the oil buffers window title with custom function: fun(winid: integer): string
+lua/plugins/oil.lua:153:        get_win_title = nil,
+lua/plugins/oil.lua:154:        -- preview_split: Split direction: "auto", "left", "right", "above", "below".
+lua/plugins/oil.lua:155:        preview_split = "auto",
+lua/plugins/oil.lua:156:        -- This is the config that will be passed to nvim_open_win.
+lua/plugins/oil.lua:157:        -- Change values here to customize the layout
+lua/plugins/oil.lua:158:        override = function(conf)
+lua/plugins/oil.lua:159:          return conf
+lua/plugins/oil.lua:160:        end,
+lua/plugins/oil.lua:161:      },
+lua/plugins/oil.lua:162:      -- Configuration for the file preview window
+lua/plugins/oil.lua:163:      preview_win = {
+lua/plugins/oil.lua:164:        -- Whether the preview window is automatically updated when the cursor is moved
+lua/plugins/oil.lua:165:        update_on_cursor_moved = true,
+lua/plugins/oil.lua:166:        -- How to open the preview window "load"|"scratch"|"fast_scratch"
+lua/plugins/oil.lua:167:        preview_method = "fast_scratch",
+lua/plugins/oil.lua:168:        -- A function that returns true to disable preview on a file e.g. to avoid lag
+lua/plugins/oil.lua:169:        disable_preview = function(filename)
+lua/plugins/oil.lua:170:          return false
+lua/plugins/oil.lua:171:        end,
+lua/plugins/oil.lua:172:        -- Window-local options to use for preview window buffers
+lua/plugins/oil.lua:173:        win_options = {},
+lua/plugins/oil.lua:174:      },
+lua/plugins/oil.lua:175:      -- Configuration for the floating action confirmation window
+lua/plugins/oil.lua:176:      confirmation = {
+lua/plugins/oil.lua:177:        -- Width dimensions can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
+lua/plugins/oil.lua:178:        -- min_width and max_width can be a single value or a list of mixed integer/float types.
+lua/plugins/oil.lua:179:        -- max_width = {100, 0.8} means "the lesser of 100 columns or 80% of total"
+lua/plugins/oil.lua:180:        max_width = 0.9,
+lua/plugins/oil.lua:181:        -- min_width = {40, 0.4} means "the greater of 40 columns or 40% of total"
+lua/plugins/oil.lua:182:        min_width = { 40, 0.4 },
+lua/plugins/oil.lua:183:        -- optionally define an integer/float for the exact width of the preview window
+lua/plugins/oil.lua:184:        width = nil,
+lua/plugins/oil.lua:185:        -- Height dimensions can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
+lua/plugins/oil.lua:186:        -- min_height and max_height can be a single value or a list of mixed integer/float types.
+lua/plugins/oil.lua:187:        -- max_height = {80, 0.9} means "the lesser of 80 columns or 90% of total"
+lua/plugins/oil.lua:188:        max_height = 0.9,
+lua/plugins/oil.lua:189:        -- min_height = {5, 0.1} means "the greater of 5 columns or 10% of total"
+lua/plugins/oil.lua:190:        min_height = { 5, 0.1 },
+lua/plugins/oil.lua:191:        -- optionally define an integer/float for the exact height of the preview window
+lua/plugins/oil.lua:192:        height = nil,
+lua/plugins/oil.lua:193:        border = nil,
+lua/plugins/oil.lua:194:        win_options = {
+lua/plugins/oil.lua:195:          winblend = 0,
+lua/plugins/oil.lua:196:        },
+lua/plugins/oil.lua:197:      },
+lua/plugins/oil.lua:198:      -- Configuration for the floating progress window
+lua/plugins/oil.lua:199:      progress = {
+lua/plugins/oil.lua:200:        max_width = 0.9,
+lua/plugins/oil.lua:201:        min_width = { 40, 0.4 },
+lua/plugins/oil.lua:202:        width = nil,
+lua/plugins/oil.lua:203:        max_height = { 10, 0.9 },
+lua/plugins/oil.lua:204:        min_height = { 5, 0.1 },
+lua/plugins/oil.lua:205:        height = nil,
+lua/plugins/oil.lua:206:        border = nil,
+lua/plugins/oil.lua:207:        minimized_border = "none",
+lua/plugins/oil.lua:208:        win_options = {
+lua/plugins/oil.lua:209:          winblend = 0,
+lua/plugins/oil.lua:210:        },
+lua/plugins/oil.lua:211:      },
+lua/plugins/oil.lua:212:      -- Configuration for the floating SSH window
+lua/plugins/oil.lua:213:      ssh = {
+lua/plugins/oil.lua:214:        border = nil,
+lua/plugins/oil.lua:215:      },
+lua/plugins/oil.lua:216:      -- Configuration for the floating keymaps help window
+lua/plugins/oil.lua:217:      keymaps_help = {
+lua/plugins/oil.lua:218:        border = nil,
+lua/plugins/oil.lua:219:      },
+lua/plugins/oil.lua:220:    })
+lua/plugins/oil.lua:221:  end
+lua/plugins/oil.lua:222:}
+lua/plugins/lsp.lua:1:return {
+lua/plugins/lsp.lua:2:  {
+lua/plugins/lsp.lua:3:    "neovim/nvim-lspconfig",
+lua/plugins/lsp.lua:4:    config = function()
+lua/plugins/lsp.lua:5:      vim.api.nvim_create_autocmd("LspAttach", {
+lua/plugins/lsp.lua:6:        group = vim.api.nvim_create_augroup("LspKeymaps", { clear = true }),
+lua/plugins/lsp.lua:7:        callback = function(ev)
+lua/plugins/lsp.lua:8:          local map = function(lhs, rhs, desc)
+lua/plugins/lsp.lua:9:            vim.keymap.set("n", lhs, rhs, {
+lua/plugins/lsp.lua:10:              buffer = ev.buf,
+lua/plugins/lsp.lua:11:              desc = "LSP: " .. desc,
+lua/plugins/lsp.lua:12:            })
+lua/plugins/lsp.lua:13:          end
+lua/plugins/lsp.lua:14:          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+lua/plugins/lsp.lua:15:          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+lua/plugins/lsp.lua:16:        end,
+lua/plugins/lsp.lua:17:      })
+lua/plugins/lsp.lua:18:    end,
+lua/plugins/lsp.lua:19:  },
+lua/plugins/lsp.lua:20:  {
+lua/plugins/lsp.lua:21:    "mason-org/mason.nvim",
+lua/plugins/lsp.lua:22:    opts = {}
+lua/plugins/lsp.lua:23:  },
+lua/plugins/lsp.lua:24:  {
+lua/plugins/lsp.lua:25:    "mason-org/mason-lspconfig.nvim",
+lua/plugins/lsp.lua:26:    opts = {
+lua/plugins/lsp.lua:27:      ensure_installed = { "lua_ls", "ts_ls" },
+lua/plugins/lsp.lua:28:    },
+lua/plugins/lsp.lua:29:    dependencies = {
+lua/plugins/lsp.lua:30:      { "mason-org/mason.nvim", opts = {} },
+lua/plugins/lsp.lua:31:      "neovim/nvim-lspconfig",
+lua/plugins/lsp.lua:32:    },
+lua/plugins/lsp.lua:33:  },
+lua/plugins/lsp.lua:34:  {
+lua/plugins/lsp.lua:35:    "nvim-treesitter/nvim-treesitter",
+lua/plugins/lsp.lua:36:    lazy = false,
+lua/plugins/lsp.lua:37:    build = ":TSUpdate",
+lua/plugins/lsp.lua:38:    opts = {
+lua/plugins/lsp.lua:39:      ensure_installed = { 'bash', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+lua/plugins/lsp.lua:40:      -- Autoinstall languages that are not installed
+lua/plugins/lsp.lua:41:      auto_install = true,
+lua/plugins/lsp.lua:42:      highlight = {
+lua/plugins/lsp.lua:43:        enable = true,
+lua/plugins/lsp.lua:44:        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+lua/plugins/lsp.lua:45:        --  If you are experiencing weird indenting issues, add the language to
+lua/plugins/lsp.lua:46:        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
+lua/plugins/lsp.lua:47:        additional_vim_regex_highlighting = { 'ruby' },
+lua/plugins/lsp.lua:48:      },
+lua/plugins/lsp.lua:49:      indent = { enable = true, disable = { 'ruby' } },
+lua/plugins/lsp.lua:50:    },
+lua/plugins/lsp.lua:51:  },
+lua/plugins/lsp.lua:52:  { -- Autocompletion
+lua/plugins/lsp.lua:53:    'hrsh7th/nvim-cmp',
+lua/plugins/lsp.lua:54:    event = 'InsertEnter',
+lua/plugins/lsp.lua:55:    dependencies = {
+lua/plugins/lsp.lua:56:      -- Snippet Engine & its associated nvim-cmp source
+lua/plugins/lsp.lua:57:      {
+lua/plugins/lsp.lua:58:        'L3MON4D3/LuaSnip',
+lua/plugins/lsp.lua:59:        build = (function()
+lua/plugins/lsp.lua:60:          -- Build Step is needed for regex support in snippets.
+lua/plugins/lsp.lua:61:          -- This step is not supported in many windows environments.
+lua/plugins/lsp.lua:62:          -- Remove the below condition to re-enable on windows.
+lua/plugins/lsp.lua:63:          if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
+lua/plugins/lsp.lua:64:            return
+lua/plugins/lsp.lua:65:          end
+lua/plugins/lsp.lua:66:          return 'make install_jsregexp'
+lua/plugins/lsp.lua:67:        end)(),
+lua/plugins/lsp.lua:68:        dependencies = {
+lua/plugins/lsp.lua:69:          -- `friendly-snippets` contains a variety of premade snippets.
+lua/plugins/lsp.lua:70:          --    See the README about individual language/framework/plugin snippets:
+lua/plugins/lsp.lua:71:          --    https://github.com/rafamadriz/friendly-snippets
+lua/plugins/lsp.lua:72:          {
+lua/plugins/lsp.lua:73:            'rafamadriz/friendly-snippets',
+lua/plugins/lsp.lua:74:            config = function()
+lua/plugins/lsp.lua:75:              require('luasnip.loaders.from_vscode').lazy_load()
+lua/plugins/lsp.lua:76:            end,
+lua/plugins/lsp.lua:77:          },
+lua/plugins/lsp.lua:78:        },
+lua/plugins/lsp.lua:79:      },
+lua/plugins/lsp.lua:80:      'saadparwaiz1/cmp_luasnip',
+lua/plugins/lsp.lua:81:
+lua/plugins/lsp.lua:82:      -- Adds other completion capabilities.
+lua/plugins/lsp.lua:83:      --  nvim-cmp does not ship with all sources by default. They are split
+lua/plugins/lsp.lua:84:      --  into multiple repos for maintenance purposes.
+lua/plugins/lsp.lua:85:      'hrsh7th/cmp-nvim-lsp',
+lua/plugins/lsp.lua:86:      'hrsh7th/cmp-path',
+lua/plugins/lsp.lua:87:      'hrsh7th/cmp-nvim-lsp-signature-help',
+lua/plugins/lsp.lua:88:    },
+lua/plugins/lsp.lua:89:    config = function()
+lua/plugins/lsp.lua:90:      -- See `:help cmp`
+lua/plugins/lsp.lua:91:      local cmp = require 'cmp'
+lua/plugins/lsp.lua:92:      local luasnip = require 'luasnip'
+lua/plugins/lsp.lua:93:      luasnip.config.setup {}
+lua/plugins/lsp.lua:94:
+lua/plugins/lsp.lua:95:      cmp.setup {
+lua/plugins/lsp.lua:96:        snippet = {
+lua/plugins/lsp.lua:97:          expand = function(args)
+lua/plugins/lsp.lua:98:            luasnip.lsp_expand(args.body)
+lua/plugins/lsp.lua:99:          end,
+lua/plugins/lsp.lua:100:        },
+lua/plugins/lsp.lua:101:        completion = { completeopt = 'menu,menuone,noinsert' },
+lua/plugins/lsp.lua:102:
+lua/plugins/lsp.lua:103:        -- For an understanding of why these mappings were
+lua/plugins/lsp.lua:104:        -- chosen, you will need to read `:help ins-completion`
+lua/plugins/lsp.lua:105:        --
+lua/plugins/lsp.lua:106:        -- No, but seriously. Please read `:help ins-completion`, it is really good!
+lua/plugins/lsp.lua:107:        mapping = cmp.mapping.preset.insert {
+lua/plugins/lsp.lua:108:          -- Select the [n]ext item
+lua/plugins/lsp.lua:109:          ['<C-n>'] = cmp.mapping.select_next_item(),
+lua/plugins/lsp.lua:110:          ['<C-j>'] = cmp.mapping.select_next_item(),
+lua/plugins/lsp.lua:111:          -- Select the [p]revious item
+lua/plugins/lsp.lua:112:          ['<C-p>'] = cmp.mapping.select_prev_item(),
+lua/plugins/lsp.lua:113:          ['<C-k>'] = cmp.mapping.select_prev_item(),
+lua/plugins/lsp.lua:114:
+lua/plugins/lsp.lua:115:          -- Scroll the documentation window [b]ack / [f]orward
+lua/plugins/lsp.lua:116:          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+lua/plugins/lsp.lua:117:          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+lua/plugins/lsp.lua:118:
+lua/plugins/lsp.lua:119:          -- Accept ([y]es) the completion.
+lua/plugins/lsp.lua:120:          --  This will auto-import if your LSP supports it.
+lua/plugins/lsp.lua:121:          --  This will expand snippets if the LSP sent a snippet.
+lua/plugins/lsp.lua:122:          ['<C-y>'] = cmp.mapping.confirm { select = true },
+lua/plugins/lsp.lua:123:
+lua/plugins/lsp.lua:124:          -- CR mapping with nvim-autopairs integration
+lua/plugins/lsp.lua:125:          ['<CR>'] = cmp.mapping(function(fallback)
+lua/plugins/lsp.lua:126:            if cmp.visible() then
+lua/plugins/lsp.lua:127:              if cmp.get_selected_entry() then
+lua/plugins/lsp.lua:128:                cmp.confirm({ select = true })
+lua/plugins/lsp.lua:129:              else
+lua/plugins/lsp.lua:130:                -- No selection, select first item
+lua/plugins/lsp.lua:131:                cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+lua/plugins/lsp.lua:132:                cmp.confirm({ select = true })
+lua/plugins/lsp.lua:133:              end
+lua/plugins/lsp.lua:134:            else
+lua/plugins/lsp.lua:135:              -- Not in completion menu, check if we should use autopairs
+lua/plugins/lsp.lua:136:              local npairs = require('nvim-autopairs')
+lua/plugins/lsp.lua:137:              if npairs.check_break_line_char() then
+lua/plugins/lsp.lua:138:                -- Use autopairs CR for smart indentation
+lua/plugins/lsp.lua:139:                vim.api.nvim_feedkeys(npairs.autopairs_cr(), 'n', true)
+lua/plugins/lsp.lua:140:              else
+lua/plugins/lsp.lua:141:                fallback()
+lua/plugins/lsp.lua:142:              end
+lua/plugins/lsp.lua:143:            end
+lua/plugins/lsp.lua:144:          end, { 'i', 's' }),
+lua/plugins/lsp.lua:145:          --['<Tab>'] = cmp.mapping.select_next_item(),
+lua/plugins/lsp.lua:146:          --['<S-Tab>'] = cmp.mapping.select_prev_item(),
+lua/plugins/lsp.lua:147:
+lua/plugins/lsp.lua:148:          -- Manually trigger a completion from nvim-cmp.
+lua/plugins/lsp.lua:149:          --  Generally you don't need this, because nvim-cmp will display
+lua/plugins/lsp.lua:150:          --  completions whenever it has completion options available.
+lua/plugins/lsp.lua:151:          ['<C-Space>'] = cmp.mapping.complete {},
+lua/plugins/lsp.lua:152:
+lua/plugins/lsp.lua:153:          -- Think of <c-l> as moving to the right of your snippet expansion.
+lua/plugins/lsp.lua:154:          --  So if you have a snippet that's like:
+lua/plugins/lsp.lua:155:          --  function $name($args)
+lua/plugins/lsp.lua:156:          --    $body
+lua/plugins/lsp.lua:157:          --  end
+lua/plugins/lsp.lua:158:          --
+lua/plugins/lsp.lua:159:          -- <c-l> will move you to the right of each of the expansion locations.
+lua/plugins/lsp.lua:160:          -- <c-h> is similar, except moving you backwards.
+lua/plugins/lsp.lua:161:          ['<C-l>'] = cmp.mapping(function()
+lua/plugins/lsp.lua:162:            if luasnip.expand_or_locally_jumpable() then
+lua/plugins/lsp.lua:163:              luasnip.expand_or_jump()
+lua/plugins/lsp.lua:164:            end
+lua/plugins/lsp.lua:165:          end, { 'i', 's' }),
+lua/plugins/lsp.lua:166:          ['<C-h>'] = cmp.mapping(function()
+lua/plugins/lsp.lua:167:            if luasnip.locally_jumpable(-1) then
+lua/plugins/lsp.lua:168:              luasnip.jump(-1)
+lua/plugins/lsp.lua:169:            end
+lua/plugins/lsp.lua:170:          end, { 'i', 's' }),
+lua/plugins/lsp.lua:171:
+lua/plugins/lsp.lua:172:          -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
+lua/plugins/lsp.lua:173:          --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+lua/plugins/lsp.lua:174:        },
+lua/plugins/lsp.lua:175:        sources = {
+lua/plugins/lsp.lua:176:          {
+lua/plugins/lsp.lua:177:            name = 'lazydev',
+lua/plugins/lsp.lua:178:            -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
+lua/plugins/lsp.lua:179:            group_index = 0,
+lua/plugins/lsp.lua:180:          },
+lua/plugins/lsp.lua:181:          { name = 'nvim_lsp' },
+lua/plugins/lsp.lua:182:          { name = 'luasnip' },
+lua/plugins/lsp.lua:183:          { name = 'path' },
+lua/plugins/lsp.lua:184:          { name = 'nvim_lsp_signature_help' },
+lua/plugins/lsp.lua:185:        },
+lua/plugins/lsp.lua:186:      }
+lua/plugins/lsp.lua:187:    end,
+lua/plugins/lsp.lua:188:  },
+lua/plugins/lsp.lua:189:}
+lua/plugins/git.lua:1:return {
+lua/plugins/git.lua:2:  'lewis6991/gitsigns.nvim',
+lua/plugins/git.lua:3:}
+lua/config/options.lua:1:vim.opt.number = true               -- Show absolute line numbers
+lua/config/options.lua:2:vim.opt.relativenumber = true       -- Show relative line numbers (for easier movement)
+lua/config/options.lua:3:vim.opt.clipboard = 'unnamedplus'   -- Use system clipboard for yank/paste
+lua/config/options.lua:4:vim.opt.breakindent = false         -- Do NOT indent wrapped lines
+lua/config/options.lua:5:vim.opt.undofile = true             -- Enable persistent undo (survives restarts)
+lua/config/options.lua:6:vim.opt.ignorecase = true           -- Ignore case when searching...
+lua/config/options.lua:7:vim.opt.smartcase = true            -- ...unless the search has uppercase letters
+lua/config/options.lua:8:vim.opt.splitright = true           -- Vertical splits open to the right
+lua/config/options.lua:9:vim.opt.splitbelow = true           -- Horizontal splits open below
+lua/config/options.lua:10:vim.opt.scrolloff = 10              -- Keep 10 lines visible above/below cursor
+lua/config/options.lua:11:vim.opt.signcolumn = "yes"          -- Always show the sign column (no layout shift)
+lua/config/options.lua:12:vim.opt.tabstop = 2                 -- A tab character is displayed as 2 spaces
+lua/config/options.lua:13:vim.opt.shiftwidth = 2              -- Indent size for >> << commands
+lua/config/options.lua:14:vim.opt.softtabstop = 2             -- Number of spaces when pressing <Tab>
+lua/config/options.lua:15:vim.opt.expandtab = true            -- Convert tabs to spaces
+lua/config/options.lua:16:vim.opt.smarttab = true             -- Smarter tab behavior at line start
+lua/config/options.lua:17:vim.opt.smartindent = true          -- Smart auto-indenting for code
+lua/config/options.lua:18:vim.opt.autoindent = true           -- Copy indent from previous line
+lua/config/options.lua:19:vim.opt.cursorline = true           -- Highlight the current line
+lua/config/options.lua:20:vim.opt.showmode = false            -- Hide mode indicator (-- INSERT --)
+lua/config/options.lua:21:vim.opt.showcmd = false             -- Hide partial command display
+lua/config/options.lua:22:vim.opt.laststatus = 0              -- Hide the statusline entirely
+lua/config/options.lua:23:vim.opt.termguicolors = true
+lua/config/options.lua:24:vim.opt.showmatch = true
+lua/config/options.lua:25:
+lua/config/options.lua:26:-- Hide command line when not in use
+lua/config/options.lua:27:vim.opt.cmdheight = 0
+lua/config/options.lua:28:vim.api.nvim_command 'autocmd CmdlineEnter * set cmdheight=1'
+lua/config/options.lua:29:vim.api.nvim_command 'autocmd CmdlineLeave * set cmdheight=0'
+lua/config/options.lua:30:vim.api.nvim_command 'autocmd RecordingEnter * set cmdheight=1'
+lua/config/options.lua:31:vim.api.nvim_command 'autocmd RecordingLeave * set cmdheight=0'
+lua/config/options.lua:32:
+lua/config/options.lua:33:vim.g.netrw_liststyle = 3
+lua/config/options.lua:34:
+lua/config/options.lua:35:vim.api.nvim_create_autocmd('TextYankPost', {
+lua/config/options.lua:36:  desc = 'Highlight when yanking (copying) text',
+lua/config/options.lua:37:  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+lua/config/options.lua:38:  callback = function()
+lua/config/options.lua:39:    vim.highlight.on_yank()
+lua/config/options.lua:40:  end,
+lua/config/options.lua:41:})
+lua/config/options.lua:42:
+lua/config/options.lua:43:-- auto resize screen
+lua/config/options.lua:44:-- Create an autocommand group for auto resizing
+lua/config/options.lua:45:vim.api.nvim_create_augroup('autoequalize', { clear = true })
+lua/config/options.lua:46:
+lua/config/options.lua:47:vim.api.nvim_create_autocmd({ 'VimEnter', 'VimResized' }, {
+lua/config/options.lua:48:  callback = function()
+lua/config/options.lua:49:    vim.cmd 'wincmd ='
+lua/config/options.lua:50:  end,
+lua/config/options.lua:51:  group = 'autoequalize',
+lua/config/options.lua:52:})
+lua/config/lazy.lua:1:local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+lua/config/lazy.lua:2:if not (vim.uv or vim.loop).fs_stat(lazypath) then
+lua/config/lazy.lua:3:  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+lua/config/lazy.lua:4:  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+lua/config/lazy.lua:5:  if vim.v.shell_error ~= 0 then
+lua/config/lazy.lua:6:    vim.api.nvim_echo({
+lua/config/lazy.lua:7:      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+lua/config/lazy.lua:8:      { out, "WarningMsg" },
+lua/config/lazy.lua:9:      { "\nPress any key to exit..." },
+lua/config/lazy.lua:10:    }, true, {})
+lua/config/lazy.lua:11:    vim.fn.getchar()
+lua/config/lazy.lua:12:    os.exit(1)
+lua/config/lazy.lua:13:  end
+lua/config/lazy.lua:14:end
+lua/config/lazy.lua:15:vim.opt.rtp:prepend(lazypath)
+lua/config/lazy.lua:16:
+lua/config/lazy.lua:17:-- Make sure to setup `mapleader` and `maplocalleader` before
+lua/config/lazy.lua:18:-- loading lazy.nvim so that mappings are correct.
+lua/config/lazy.lua:19:-- This is also a good place to setup other settings (vim.opt)
+lua/config/lazy.lua:20:vim.g.mapleader = " "
+lua/config/lazy.lua:21:vim.g.maplocalleader = "\\"
+lua/config/lazy.lua:22:
+lua/config/lazy.lua:23:-- Setup lazy.nvim
+lua/config/lazy.lua:24:require("lazy").setup({
+lua/config/lazy.lua:25:  spec = {
+lua/config/lazy.lua:26:    -- import your plugins
+lua/config/lazy.lua:27:    { import = "plugins" },
+lua/config/lazy.lua:28:  },
+lua/config/lazy.lua:29:  -- Configure any other settings here. See the documentation for more details.
+lua/config/lazy.lua:30:  -- colorscheme that will be used when installing plugins.
+lua/config/lazy.lua:31:  install = { colorscheme = { "habamax" } },
+lua/config/lazy.lua:32:  -- automatically check for plugin updates
+lua/config/lazy.lua:33:  checker = { enabled = true },
+lua/config/lazy.lua:34:})
+lua/config/keymaps.lua:1:-- ============================================================================
+lua/config/keymaps.lua:2:-- Requires
+lua/config/keymaps.lua:3:-- ============================================================================
+lua/config/keymaps.lua:4:local bufremove = require("mini.bufremove")
+lua/config/keymaps.lua:5:
+lua/config/keymaps.lua:6:-- ============================================================================
+lua/config/keymaps.lua:7:-- Basics
+lua/config/keymaps.lua:8:-- ============================================================================
+lua/config/keymaps.lua:9:vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+lua/config/keymaps.lua:10:vim.keymap.set("n", "<leader>h", "<cmd>nohlsearch<CR>")
+lua/config/keymaps.lua:11:vim.keymap.set("i", "jj", "<Esc>")
+lua/config/keymaps.lua:12:
+lua/config/keymaps.lua:13:-- ============================================================================
+lua/config/keymaps.lua:14:-- Window navigation
+lua/config/keymaps.lua:15:-- ============================================================================
+lua/config/keymaps.lua:16:vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Window left" })
+lua/config/keymaps.lua:17:vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Window right" })
+lua/config/keymaps.lua:18:vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Window down" })
+lua/config/keymaps.lua:19:vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Window up" })
+lua/config/keymaps.lua:20:
+lua/config/keymaps.lua:21:-- ============================================================================
+lua/config/keymaps.lua:22:-- Buffer navigation
+lua/config/keymaps.lua:23:-- ============================================================================
+lua/config/keymaps.lua:24:vim.keymap.set("n", "<S-l>", "<cmd>bnext<CR>", { desc = "Next buffer" })
+lua/config/keymaps.lua:25:vim.keymap.set("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Prev buffer" })
+lua/config/keymaps.lua:26:
+lua/config/keymaps.lua:27:-- Close current buffer (layout-safe)
+lua/config/keymaps.lua:28:vim.keymap.set("n", "<leader>c", function()
+lua/config/keymaps.lua:29:  bufremove.delete(0)
+lua/config/keymaps.lua:30:end, { desc = "Close buffer" })
+lua/config/keymaps.lua:31:
+lua/config/keymaps.lua:32:-- Close buffers to the left
+lua/config/keymaps.lua:33:vim.keymap.set("n", "<leader>bh", function()
+lua/config/keymaps.lua:34:  local cur = vim.api.nvim_get_current_buf()
+lua/config/keymaps.lua:35:  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+lua/config/keymaps.lua:36:    if buf < cur and vim.bo[buf].buflisted then
+lua/config/keymaps.lua:37:      bufremove.delete(buf, false)
+lua/config/keymaps.lua:38:    end
+lua/config/keymaps.lua:39:  end
+lua/config/keymaps.lua:40:end, { desc = "Close buffers to the left" })
+lua/config/keymaps.lua:41:
+lua/config/keymaps.lua:42:-- Close buffers to the right
+lua/config/keymaps.lua:43:vim.keymap.set("n", "<leader>bl", function()
+lua/config/keymaps.lua:44:  local cur = vim.api.nvim_get_current_buf()
+lua/config/keymaps.lua:45:  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+lua/config/keymaps.lua:46:    if buf > cur and vim.bo[buf].buflisted then
+lua/config/keymaps.lua:47:      bufremove.delete(buf, false)
+lua/config/keymaps.lua:48:    end
+lua/config/keymaps.lua:49:  end
+lua/config/keymaps.lua:50:end, { desc = "Close buffers to the right" })
+lua/config/keymaps.lua:51:
+lua/config/keymaps.lua:52:-- ============================================================================
+lua/config/keymaps.lua:53:-- Diagnostics
+lua/config/keymaps.lua:54:-- ============================================================================
+lua/config/keymaps.lua:55:vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Diagnostics" })
+lua/config/keymaps.lua:56:
+lua/config/keymaps.lua:57:-- ============================================================================
+lua/config/keymaps.lua:58:-- Files
+lua/config/keymaps.lua:59:-- ============================================================================
+lua/config/keymaps.lua:60:vim.keymap.set("n", "<leader>q", "<cmd>q!<CR>", { desc = "Quit" })
+lua/config/keymaps.lua:61:vim.keymap.set("n", "<leader>w", "<cmd>w!<CR>", { desc = "Write" })
+lua/config/keymaps.lua:62:vim.keymap.set("n", "<leader>.", "<cmd>luafile %<CR>", { desc = "Source file" })
+lua/config/keymaps.lua:63:
+lua/config/keymaps.lua:64:
+lua/config/keymaps.lua:65:-- vim.keymap.set("n", "<leader>e", function()
+lua/config/keymaps.lua:66:--   local file = vim.fn.expand("%:t")
+lua/config/keymaps.lua:67:--   local dir = vim.fn.expand("%:p:h")
+lua/config/keymaps.lua:68:--
+lua/config/keymaps.lua:69:--   vim.cmd("Explore " .. dir)
+lua/config/keymaps.lua:70:--
+lua/config/keymaps.lua:71:--   vim.schedule(function()
+lua/config/keymaps.lua:72:--     vim.fn.search("\\V" .. file)
+lua/config/keymaps.lua:73:--   end)
+lua/config/keymaps.lua:74:-- end, { desc = "Netrw (file dir, cursor on file)" })
+lua/config/keymaps.lua:75:
+lua/config/keymaps.lua:76:-- ============================================================================
+lua/config/keymaps.lua:77:-- Editing
+lua/config/keymaps.lua:78:-- ============================================================================
+lua/config/keymaps.lua:79:vim.keymap.set("n", "x", '"_x', { desc = "Delete without yank" })
+lua/config/keymaps.lua:80:
+lua/config/keymaps.lua:81:-- ============================================================================
+lua/config/keymaps.lua:82:-- LSP (global, non-attach)
+lua/config/keymaps.lua:83:-- ============================================================================
+lua/config/keymaps.lua:84:vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code action" })
+lua/config/keymaps.lua:85:vim.keymap.set("n", "<leader>lj", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+lua/config/keymaps.lua:86:vim.keymap.set("n", "<leader>lk", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
+lua/config/keymaps.lua:87:vim.keymap.set("n", "<leader>lf", function()
+lua/config/keymaps.lua:88:  vim.lsp.buf.format({ async = true })
+lua/config/keymaps.lua:89:end, { desc = "Format" })
+lua/config/keymaps.lua:90:vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
+lua/config/keymaps.lua:91:
+lua/config/keymaps.lua:92:-- ============================================================================
+lua/config/keymaps.lua:93:-- Comments (mini.comment)
+lua/config/keymaps.lua:94:-- ============================================================================
+lua/config/keymaps.lua:95:-- vim.keymap.set("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)", { desc = "Toggle comment" })
+lua/config/keymaps.lua:96:-- vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)", { desc = "Toggle comment" })
+lua/config/keymaps.lua:97:vim.keymap.set("n", "<leader>/", "gcc", {
+lua/config/keymaps.lua:98:  desc = "Toggle comment (gcc)",
+lua/config/keymaps.lua:99:  remap = true,
+lua/config/keymaps.lua:100:})
+lua/config/keymaps.lua:101:vim.keymap.set("v", "<leader>/", "gc", {
+lua/config/keymaps.lua:102:  desc = "Toggle comment",
+lua/config/keymaps.lua:103:  remap = true,
+lua/config/keymaps.lua:104:})
+lua/config/keymaps.lua:105:
+lua/config/keymaps.lua:106:-- ============================================================================
+lua/config/keymaps.lua:107:-- Utilities
+lua/config/keymaps.lua:108:-- ============================================================================
+lua/config/keymaps.lua:109:local function kebab_to_camel(str)
+lua/config/keymaps.lua:110:  return str:gsub("%-([a-z])", function(c) return c:upper() end)
+lua/config/keymaps.lua:111:end
+lua/config/keymaps.lua:112:
+lua/config/keymaps.lua:113:vim.keymap.set("n", "<leader>sc", function()
+lua/config/keymaps.lua:114:  local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+lua/config/keymaps.lua:115:  for i, line in ipairs(lines) do
+lua/config/keymaps.lua:116:    lines[i] = line:gsub("([%w]+%-[%w%-]+)", kebab_to_camel)
+lua/config/keymaps.lua:117:  end
+lua/config/keymaps.lua:118:  vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+lua/config/keymaps.lua:119:end, { desc = "kebab-case → camelCase" })
