@@ -8,7 +8,8 @@ return {
     },
     lazy = false, -- neo-tree will lazily load itself
     keys = {
-      { '<leader>e', ':Neotree position=current toggle reveal<CR>', desc = 'NeoTree reveal', silent = true },
+      -- { '<leader>e', ':Neotree position=current toggle reveal<CR>', desc = 'NeoTree reveal', silent = true },
+      { '<leader>e', ':Neotree toggle reveal<CR>', desc = 'NeoTree reveal', silent = true },
 
     },
     config = function()

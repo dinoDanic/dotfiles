@@ -61,7 +61,8 @@ if status is-interactive
     alias serverina="ssh kodius@192.168.10.68"
     alias serverina_vani="ssh kodius@185.98.12.29 -p 22001"
 
-    alias claude="claude --dangerously-skip-permissions"
+    alias claude_yolo="claude --dangerously-skip-permissions"
+    alias weather="curl wttr.in/sveti-ivan-zelina"
 
     # ----------------------------- ALIAS ------------------------------
 
