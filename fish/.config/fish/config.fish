@@ -68,6 +68,29 @@ if status is-interactive
 
 end
 
+
+# ----------------------------- CUSTOM ------------------------------
+function _read_or --argument path fallback
+    if test -r $path
+        cat $path
+    else
+        echo $fallback
+    end
+end
+
+function _read_or --argument path fallback
+    if test -r $path
+        cat $path
+    else
+        echo $fallback
+    end
+end
+
+
+function pp
+    ~/.config/fish/scripts/pp.sh
+end
+
 # ----------------------------- PATHS ------------------------------
 
 set -gx ANDROID_HOME $HOME/Android/Sdk
@@ -94,3 +117,4 @@ set -g VISUAL nvim
 
 # opencode
 fish_add_path /home/dino/.opencode/bin
+
