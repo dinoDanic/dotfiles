@@ -10,12 +10,14 @@
 --
 --
 --
-return {
-  'shaunsingh/nord.nvim',
-  config = function()
-    vim.cmd("colorscheme nord")
-  end
-}
+return { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
+--
+-- return {
+--   'shaunsingh/nord.nvim',
+--   config = function()
+--     vim.cmd("colorscheme nord")
+--   end
+-- }
 
 -- return {
 --   "rose-pine/neovim",
