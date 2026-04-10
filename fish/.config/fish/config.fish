@@ -118,4 +118,15 @@ set -g VISUAL nvim
 # opencode
 fish_add_path /home/dino/.opencode/bin
 
-# bok, hc
+function desti
+    mkdir -p ~/mnt/desti
+
+    if not mount | grep -q "$HOME/mnt/desti"
+        sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 dino@dino-mac.local:/Users/dino/projects/DestiPay_Mobile ~/mnt/desti
+        or return 1
+    end
+
+    cd ~/mnt/desti
+    nvim .
+end
+alias lutris='/usr/bin/python3 /usr/bin/lutris'

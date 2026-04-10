@@ -167,8 +167,6 @@ keybinds clear-defaults=true {
         bind "Alt Shift h" { GoToPreviousTab; }
         bind "Alt Shift l" { GoToNextTab; }
         bind "Alt x" { CloseFocus; }
-        bind "Alt t" { NewTab; }
-        bind "Alt r" { SwitchToMode "renametab"; }
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" { SwitchToMode "locked"; }

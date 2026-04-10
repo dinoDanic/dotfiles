@@ -117,3 +117,9 @@ vim.keymap.set("n", "<leader>sc", function()
   end
   vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
 end, { desc = "kebab-case → camelCase" })
+
+vim.api.nvim_create_user_command("Cpwd", function()
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", path)
+  print("Copied: " .. path)
+end, {})
