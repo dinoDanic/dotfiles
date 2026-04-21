@@ -118,39 +118,39 @@ set -g VISUAL nvim
 # opencode
 fish_add_path /home/dino/.opencode/bin
 
-function ssh-desti
-    mkdir -p ~/mnt/ssh-desti
+function sshfs-desti
+    mkdir -p ~/mnt/sshfs-desti
 
-    if mount | grep -q "$HOME/mnt/ssh-desti"
-        if not ls ~/mnt/ssh-desti >/dev/null 2>&1
+    if mount | grep -q "$HOME/mnt/sshfs-desti"
+        if not ls ~/mnt/sshfs-desti >/dev/null 2>&1
             echo "stale mount detected, unmounting..."
-            fusermount -u ~/mnt/ssh-desti; or fusermount -uz ~/mnt/ssh-desti; or return 1
+            fusermount -u ~/mnt/sshfs-desti; or fusermount -uz ~/mnt/sshfs-desti; or return 1
         end
     end
 
-    if not mount | grep -q "$HOME/mnt/ssh-desti"
-        sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 dino@dino-mac.local:/Users/dino/projects/DestiPay_Mobile ~/mnt/ssh-desti
+    if not mount | grep -q "$HOME/mnt/sshfs-desti"
+        sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 dino@dino-mac.local:/Users/dino/projects/DestiPay_Mobile ~/mnt/sshfs-desti
         or return 1
     end
 
-    cd ~/mnt/ssh-desti
+    cd ~/mnt/sshfs-desti
 end
 
-function ssh-kloki-mobile
-    mkdir -p ~/mnt/ssh-kloki-mobile
+function sshfs-kloki-mobile
+    mkdir -p ~/mnt/sshfs-kloki-mobile
 
-    if mount | grep -q "$HOME/mnt/ssh-kloki-mobile"
-        if not ls ~/mnt/ssh-kloki-mobile >/dev/null 2>&1
+    if mount | grep -q "$HOME/mnt/sshfs-kloki-mobile"
+        if not ls ~/mnt/sshfs-kloki-mobile >/dev/null 2>&1
             echo "stale mount detected, unmounting..."
-            fusermount -u ~/mnt/ssh-kloki-mobile; or fusermount -uz ~/mnt/ssh-kloki-mobile; or return 1
+            fusermount -u ~/mnt/sshfs-kloki-mobile; or fusermount -uz ~/mnt/sshfs-kloki-mobile; or return 1
         end
     end
 
-    if not mount | grep -q "$HOME/mnt/ssh-kloki-mobile"
-        sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 dino@dino-mac.local:/Users/dino/kodius/kloki-mobile ~/mnt/ssh-kloki-mobile
+    if not mount | grep -q "$HOME/mnt/sshfs-kloki-mobile"
+        sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 dino@dino-mac.local:/Users/dino/kodius/kloki-mobile ~/mnt/sshfs-kloki-mobile
         or return 1
     end
 
-    cd ~/mnt/ssh-kloki-mobile
+    cd ~/mnt/sshfs-kloki-mobile
 end
 alias lutris='/usr/bin/python3 /usr/bin/lutris'
