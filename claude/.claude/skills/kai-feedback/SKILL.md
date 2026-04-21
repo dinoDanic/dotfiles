@@ -7,8 +7,8 @@ description: Improve kai-cli instruction files based on bad code generation outp
 
 Analyze bad code generation and update kai instruction files so the issue doesn't recur.
 
-**Instructions path**: `/home/dino/kodius/kai/instructions/`
-**Manifest path**: `/home/dino/kodius/kai/manifest.json`
+**Instructions path**: `~/kodius/kai/instructions/`
+**Manifest path**: `~/kodius/kai/manifest.json`
 
 ## Step 1 — Gather context
 
@@ -23,7 +23,7 @@ Identify: what was asked, what code was generated, why it's wrong, and what the 
 
 ## Step 2 — Find the right instruction file
 
-Read the manifest at `/home/dino/kodius/kai/manifest.json`. Match the problem domain against each instruction's `tags`, `trigger`, and `description`.
+Read the manifest at `~/kodius/kai/manifest.json`. Match the problem domain against each instruction's `tags`, `trigger`, and `description`.
 
 The manifest has multiple presets (e.g. `nextjs`, `react-native`). Each preset references a list of instruction IDs. Instructions can be shared across presets (e.g. `react`, `types`) or preset-specific (e.g. `nextjs`, `react-native`).
 
@@ -37,7 +37,7 @@ Tell the user which file you will update (or that you'll create a new one) and w
 
 ## Step 3 — Read the current instruction file
 
-Instructions live in `/home/dino/kodius/kai/instructions/{id}/` directories. Each has an `index.md` entry point and optional sub-files. Read the target file and understand its existing rules and structure so the new rule fits naturally.
+Instructions live in `~/kodius/kai/instructions/{id}/` directories. Each has an `index.md` entry point and optional sub-files. Read the target file and understand its existing rules and structure so the new rule fits naturally.
 
 ## Step 4 — Write the rule
 
@@ -79,7 +79,7 @@ Also add the new id to the relevant presets in the `presets` array. Ask the user
 
 ## Step 6 — Sync to example projects
 
-After updating an instruction file, check if any example projects inside `/home/dino/kodius/kai/examples/` have the same file in their `.kai/` folder. If the file exists there, copy the updated version over so the example stays in sync without needing `kai update`.
+After updating an instruction file, check if any example projects inside `~/kodius/kai/examples/` have the same file in their `.kai/` folder. If the file exists there, copy the updated version over so the example stays in sync without needing `kai update`.
 
 ## Step 7 — Apply the fix in the current project
 
