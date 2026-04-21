@@ -93,7 +93,12 @@ end
 
 # ----------------------------- PATHS ------------------------------
 
-set -gx ANDROID_HOME $HOME/Android/Sdk
+# Android SDK (OS-aware)
+if test (uname) = Darwin
+    set -gx ANDROID_HOME $HOME/Library/Android/sdk
+else
+    set -gx ANDROID_HOME $HOME/Android/Sdk
+end
 set -x PATH $PATH $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools
 # Homebrew (OS-aware)
 if test (uname) = Darwin
