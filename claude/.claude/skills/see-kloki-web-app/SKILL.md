@@ -9,8 +9,8 @@ Explore the production Kloki web app to extract patterns, types, API usage, and 
 
 ## Web App Location
 
-- **Monorepo root:** `/home/dino/kodius/kloking-core/`
-- **Web app:** `/home/dino/kodius/kloking-core/apps/users/`
+- **Monorepo root:** `~/dino/kodius/kloking-core/`
+- **Web app:** `~/dino/kodius/kloking-core/apps/users/`
 
 ## Key Directories
 
@@ -31,7 +31,7 @@ Explore the production Kloki web app to extract patterns, types, API usage, and 
 When invoked with `ARGUMENTS`:
 
 1. **Read the web app CLAUDE.md** for overall architecture context:
-   - `Read /home/dino/kodius/kloking-core/apps/users/CLAUDE.md`
+   - `Read ~/dino/kodius/kloking-core/apps/users/CLAUDE.md`
 
 2. **Identify what to explore** based on the argument:
    - Feature name (e.g., "entry-hours") -> explore `features/{name}/`
@@ -59,8 +59,8 @@ When invoked with `ARGUMENTS`:
 
 List available features and API domains so the user can pick what to explore:
 ```
-ls /home/dino/kodius/kloking-core/apps/users/features/
-ls /home/dino/kodius/kloking-core/apps/users/api/fns/
+ls ~/dino/kodius/kloking-core/apps/users/features/
+ls ~/dino/kodius/kloking-core/apps/users/api/fns/
 ```
 
 ## Important Notes
