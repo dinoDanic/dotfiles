@@ -95,7 +95,16 @@ end
 
 set -gx ANDROID_HOME $HOME/Android/Sdk
 set -x PATH $PATH $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# Homebrew (OS-aware)
+if test (uname) = Darwin
+    if test -x /opt/homebrew/bin/brew
+        /opt/homebrew/bin/brew shellenv | source
+    else if test -x /usr/local/bin/brew
+        /usr/local/bin/brew shellenv | source
+    end
+else if test -x /home/linuxbrew/.linuxbrew/bin/brew
+    /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
+end
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 set -gx PATH $PNPM_HOME $PATH
 set -Ux ANDROID_AVD_HOME $HOME/.config/.android/avd
