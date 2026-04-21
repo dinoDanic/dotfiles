@@ -169,6 +169,12 @@ keybinds clear-defaults=true {
         bind "Alt x" { CloseFocus; }
         bind "Alt t" { NewTab; }
         bind "Alt r" { SwitchToMode "renametab"; }
+        bind "Alt s" { 
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+        }
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" { SwitchToMode "locked"; }
@@ -277,7 +283,7 @@ simplified_ui true
 // theme "ayu_mirage"
 // theme "ayu_dark"
 // theme "catppuccin-frappe"
-theme "catppuccin-macchiato"
+// theme "catppuccin-macchiato"
 // theme "cyber-noir"
 // theme "blade-runner"
 // theme "retro-wave"
@@ -298,7 +304,7 @@ theme "catppuccin-macchiato"
 // theme "tokyo-night-dark"
 // theme "tokyo-night-storm"
 // theme "tokyo-night"
-// theme "vesper"
+theme "vesper"
 
 // Choose the base input mode of zellij.
 // Default: normal

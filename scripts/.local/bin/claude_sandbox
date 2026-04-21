@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Use -it only when running interactively (TTY attached)
+tty_flags=""
+[ -t 0 ] && [ -t 1 ] && tty_flags="-it" || tty_flags="-i"
+
+git_name=$(git config --global user.name)
+git_email=$(git config --global user.email)
+
+exec docker run $tty_flags --rm \
+  -v "$HOME/.claude:/home/agent/.claude" \
+  -v "$HOME/.claude.json:/home/agent/.claude.json" \
+  -v "$HOME/.config/gh:/home/agent/.config/gh" \
+  -v "$HOME/.config/git:/home/agent/.config/git" \
+  -v "$HOME/.config/skills-claude:/home/dino/.config/skills-claude" \
+  -v "$(pwd):/workspace" \
+  -e GIT_AUTHOR_NAME="$git_name" \
+  -e GIT_AUTHOR_EMAIL="$git_email" \
+  -e GIT_COMMITTER_NAME="$git_name" \
+  -e GIT_COMMITTER_EMAIL="$git_email" \
+  -w /workspace \
+  docker/sandbox-templates:claude-code-docker \
+  claude "$@"
