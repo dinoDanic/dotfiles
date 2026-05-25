@@ -115,6 +115,7 @@ set -gx PATH $PNPM_HOME $PATH
 set -Ux ANDROID_AVD_HOME $HOME/.config/.android/avd
 set -gx PATH $HOME/.local/bin $PATH
 set -gx PATH $HOME/.local/share/gem/ruby/3.4.0/bin $PATH
+set -gx PATH $PATH $HOME/develop/flutter/bin
 # ----------------------------- YAZI ------------------------------
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
