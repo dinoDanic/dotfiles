@@ -53,7 +53,7 @@ if status is-interactive
 
     alias fc="nvim ~/.config/fish/config.fish"
     alias zc="nvim ~/.config/zellij/config.kdl"
-    alias hyp="nvim ~/.config/hypr/bindings.conf"
+    alias hyp="nvim ~/.config/hypr/bindings.lua"
 
     #kodius
     alias milivoje="ssh root@192.168.20.25"

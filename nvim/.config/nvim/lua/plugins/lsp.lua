@@ -33,10 +33,15 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    lazy = false,
+    branch = "main", -- 'master' is legacy and does NOT support Neovim 0.12+
+    lazy = false,    -- the main branch does not support lazy-loading
     build = ":TSUpdate",
-    opts = {
-      ensure_installed = {
+    config = function()
+      require('nvim-treesitter').setup()
+
+      -- Install/ensure parsers (async; no-op if already installed).
+      -- Add languages here to have them installed on next start.
+      require('nvim-treesitter').install({
         'bash',
         'diff',
         'html',
@@ -50,18 +55,20 @@ return {
         'query',
         'vim',
         'vimdoc',
-      },
-      -- Autoinstall languages that are not installed
-      auto_install = true,
-      highlight = {
-        enable = true,
-        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-        --  If you are experiencing weird indenting issues, add the language to
-        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-      indent = { enable = true, disable = { 'ruby' } },
-    },
+      })
+
+      -- Highlighting is provided by Neovim itself; enable it per buffer.
+      -- pcall so buffers without an installed parser just no-op.
+      vim.api.nvim_create_autocmd('FileType', {
+        callback = function(ev)
+          if not pcall(vim.treesitter.start, ev.buf) then
+            return
+          end
+          -- Treesitter-based indentation (experimental on the main branch).
+          vim.bo[ev.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+      })
+    end,
   },
   { -- Autocompletion
     'hrsh7th/nvim-cmp',

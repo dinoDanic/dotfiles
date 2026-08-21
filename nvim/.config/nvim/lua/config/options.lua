@@ -1,3 +1,4 @@
+require("config.remote_clipboard").setup()
 vim.opt.number = true               -- Show absolute line numbers
 vim.opt.relativenumber = true       -- Show relative line numbers (for easier movement)
 vim.opt.clipboard = 'unnamedplus'   -- Use system clipboard for yank/paste
