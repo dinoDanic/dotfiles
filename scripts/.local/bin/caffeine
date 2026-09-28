@@ -1,13 +1,8 @@
 #!/bin/bash
+# Caffeine toggle preko Omarchy stay-awake indikatora (quickshell idle service)
 
-# Toggle hypridle on/off (caffeine mode)
-# When off: no auto-lock, no screen dimming, no DPMS
-
-if pgrep -x hypridle > /dev/null; then
-    killall hypridle
-    notify-send "Caffeine ON" "Screen will stay awake" -i display-brightness-symbolic
+if [[ $(omarchy-toggle-idle toggle) == "disabled" ]]; then
+    echo "Caffeine ON" "Screen will stay awake"
 else
-    hypridle &
-    disown
-    notify-send "Caffeine OFF" "Idle lock restored" -i preferences-desktop-screensaver-symbolic
+    echo "Caffeine OFF" "Idle lock restored"
 fi
