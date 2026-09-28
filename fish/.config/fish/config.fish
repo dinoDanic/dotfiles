@@ -169,3 +169,6 @@ function sshfs-kloki-mobile
     cd ~/mnt/sshfs-kloki-mobile
 end
 alias lutris='/usr/bin/python3 /usr/bin/lutris'
+
+# maestro (mobile QA)
+fish_add_path $HOME/.maestro/bin
