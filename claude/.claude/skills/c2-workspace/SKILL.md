@@ -1,24 +1,32 @@
 ---
 name: c2-workspace
-description: Maps the C2 (C2Connection) workspace — the Next.js frontend, the Elixir GraphQL backend and the legacy ASP.NET app — which one is editable, how data reaches the frontend (GraphQL vs c2-fetch vs iframe), and how the GraphQL contract and codegen flow between repos. Use before implementing any C2 frontend feature and whenever a repo path, GraphQL operation, resolver or legacy page needs to be located. Triggers: "implement X", "build X", "napravi X", "add widget", "where is X", "gdje je X", "why is codegen failing", "is that resolver deployed", "pull master", "sync repove", plus mentions of c2, C2Connection, c2_connect_frontend, c2_connect_backend, c2_ASPNET_facelift, Zvonimir, dev-api.c2-apps.com, iframe/legacy pages, wizard, PrismHR.
+description: Maps the C2 (C2Connection) workspace — the Next.js frontend, the Expo/React Native mobile app, the Elixir GraphQL backend and the legacy ASP.NET app — which one is editable, how data reaches the frontend (GraphQL vs c2-fetch vs iframe), and how the GraphQL contract and codegen flow between repos. Use before implementing any C2 frontend or mobile feature and whenever a repo path, GraphQL operation, resolver or legacy page needs to be located. Triggers: "implement X", "build X", "napravi X", "add widget", "where is X", "gdje je X", "why is codegen failing", "is that resolver deployed", "pull master", "sync repove", plus mentions of c2, C2Connection, c2_connect_frontend, c2_connect_mobile, C2 mobile app, c2_connect_backend, c2_ASPNET_facelift, Zvonimir, dev-api.c2-apps.com, iframe/legacy pages, wizard, PrismHR, landing_framer, C2 landing page, Framer.
 ---
 
 # C2 Workspace
 
-Three repos, one product. Dino works on the **frontend**. Never guess a path — this map is authoritative.
+Four repos, one product. Dino works on the **frontend** and the **mobile app**. Never guess a path — this map is authoritative.
 
-## The three repos
+## The repos
 
 | Repo | Path | What it is |
 |---|---|---|
 | **frontend** | `/home/dino/kodius/c2/c2_connect_frontend/` | Next.js 15 + React 19 + TS. **Where work lands.** Own git repo, `master`. |
 | **backend** | `/home/dino/kodius/c2/c2_connect_backend/` | Elixir/Phoenix + Absinthe GraphQL. The API the FE talks to; it calls the legacy app internally. Zvonimir's side. |
 | **legacy** | `/home/dino/kodius/c2/c2_ASPNET_facelift/` | .NET Framework 4.8 MVC 5 + Razor + jQuery, MSSQL. The old app, still authoritative for un-migrated features. |
+| **mobile** | `/home/dino/kodius/c2/c2_connect_mobile/` | Expo SDK 57 + React Native 0.86 + Expo Router + NativeWind, TS. Dino's own repo, `master`. Same Elixir GraphQL API as the frontend; currently auth/MFA/passkeys, home, profile & security. |
 
 Parent `/home/dino/kodius/c2/` is a plain folder, not a repo — so **the frontend's
 `CLAUDE.md` does not auto-load from here.** Read these before FE work:
 `c2_connect_frontend/CLAUDE.md` (architecture, conventions, key files),
 `AGENTS.md` (code style), `SYSTEM-ARCHITECTURE.md` (the multi-system flow).
+
+Also in the parent folder, **not a repo**: `/home/dino/kodius/c2/landing_framer/`, which holds
+material for the C2 marketing landing page. The site itself is built and hosted in **Framer**
+(Framer AI), so there is no code here and nothing to sync, build or codegen. It only holds
+assets, e.g. `stare-slike-promjena/{desktop,mobile}/` (old images being swapped out,
+`.png` desktop / `.webp` mobile, named with Framer asset IDs). Landing-page changes are
+made in Framer, not in the frontend repo.
 
 **C2 is** a bookkeeping / HR-benefits platform: onboarding, document wizards,
 benefits enrollment, payroll (PrismHR), ACA compliance.
@@ -26,6 +34,8 @@ benefits enrollment, payroll (PrismHR), ACA compliance.
 ## Edit boundaries
 
 - **frontend** — editable, this is the work.
+- **mobile** — editable. Has its own `CLAUDE.md` + `AGENTS.md` + `.kai/` rules: read them,
+  and follow its rule to check versioned Expo docs instead of trusting memory.
 - **backend** — read-only reference. Read schemas/resolvers to learn the contract;
   if something is missing, report it (it's Zvonimir's), don't implement it.
 - **legacy .NET** — read-only *by default*. Narrow exceptions Dino does make:
@@ -36,10 +46,10 @@ benefits enrollment, payroll (PrismHR), ACA compliance.
 
 Backend and legacy move under you — Zvonimir merges to `master` daily. **Before reading
 any backend schema/resolver or legacy controller/view, and before concluding something
-doesn't exist, refresh all three checkouts:**
+doesn't exist, refresh all four checkouts:**
 
 ```bash
-for r in c2_connect_frontend c2_connect_backend c2_ASPNET_facelift; do
+for r in c2_connect_frontend c2_connect_mobile c2_connect_backend c2_ASPNET_facelift; do
   d=/home/dino/kodius/c2/$r
   git -C "$d" fetch origin --quiet
   if [ -z "$(git -C "$d" status --porcelain)" ] \
@@ -79,6 +89,7 @@ Pick in this order:
 backend lib/graphql/schemas/*.ex + lib/c2_web/resolvers/*_resolver.ex   # the contract
   → deployed to https://dev-api.c2-apps.com/api/graphiql
   → FE: pnpm types    (codegen.ts → gql/generated/, from features/**/*.graphql)
+  → mobile: pnpm types (codegen.ts → src/gql/generated/, from src/features/**/*.graphql)
 ```
 
 - `pnpm types` reads the **deployed dev API** — that schema is the source of truth
@@ -86,6 +97,8 @@ backend lib/graphql/schemas/*.ex + lib/c2_web/resolvers/*_resolver.ex   # the co
 - Merged-but-undeployed backend work: after the sync above, check `git log HEAD..origin/master`
   (or `origin/master` itself) **before** claiming a resolver doesn't exist. To codegen against it, run the BE locally
   (`pnpm types_local`) or dump SDL from the checkout and point `CODEGEN_SCHEMA` at the file.
+- Mobile has no `c2-fetch` and no iframes, so GraphQL is its only data path. When web has a
+  feature that mobile lacks, port the web feature's `.graphql` operations and copy its behaviour.
 - Validation rules follow the Elixir contract (`non_null` = required), not legacy .NET client rules.
 
 ## Working a frontend feature

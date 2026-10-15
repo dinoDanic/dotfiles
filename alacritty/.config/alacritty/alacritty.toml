@@ -1,30 +1,23 @@
-[colors]
+[window]
+padding = { x = 4, y = 4 }
+decorations = "None"
+
+[font]
+normal = { family = "DejaVu Sans Mono" }
+size = 11
+
 [colors.primary]
-background = '#1a1b26'
-foreground = '#a9b1d6'
+background = "#000000"
+foreground = "#d0d0d0"
 
-# Normal colors
-[colors.normal]
-black = '#32344a'
-red = '#f7768e'
-green = '#9ece6a'
-yellow = '#e0af68'
-blue = '#7aa2f7'
-magenta = '#ad8ee6'
-cyan = '#449dab'
-white = '#787c99'
+[colors.cursor]
+text = "#000000"
+cursor = "#d0d0d0"
 
-# Bright colors
-[colors.bright]
-black = '#444b6a'
-red = '#ff7a93'
-green = '#b9f27c'
-yellow = '#ff9e64'
-blue = '#7da6ff'
-magenta = '#bb9af7'
-cyan = '#0db9d7'
-white = '#acb0d0'
-
-[colors.selection]
-background = '#7aa2f7'
-
+[[hints.enabled]]
+command = "xdg-open"
+hyperlinks = true
+post_processing = true
+mouse.enabled = true
+binding = { key = "O", mods = "Control|Shift" }
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"

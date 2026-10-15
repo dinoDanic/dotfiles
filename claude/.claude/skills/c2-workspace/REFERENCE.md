@@ -39,6 +39,23 @@ Feature families worth knowing: `*-widget` (home dashboard cards), `wizard` +
 `documents*` + `forms*` (document signing flow), `my-payroll` / `payroll` / `paychecks-widget`
 (PrismHR), `auth` + `mfa` + `sessions`, `admin` / `client-dashboard` / `ai-*`.
 
+## Mobile layout (`c2_connect_mobile/`)
+
+```
+src/app/             # Expo Router screens: sign-in, forgot-*, (app)/(home), (app)/(profile)
+src/features/<name>/ # auth, passkey, profile, security: api/, hooks/, components/, store/, ...
+src/components/      # ui/, primitives/, form/
+src/lib/             # graphql-client.ts, query-client.ts, graphql-error.ts, feature-flags.ts
+src/gql/generated/   # codegen output — never hand-edit
+prd/ plans/          # specs (e.g. mobile-auth-parity)
+```
+
+Commands: `pnpm start`, `pnpm ios|android`, `pnpm types` / `types_local`, `pnpm type-check`,
+`pnpm lint`. Add deps with `npx expo install`, never `pnpm add`. `ios/` and `android/` are
+generated (CNG), so never edit them by hand. Env: `EXPO_PUBLIC_GRAPHQL_API`,
+`EXPO_PUBLIC_MSAL_CLIENT_ID`, `EXPO_PUBLIC_PASSKEYS_ENABLED`, `EXPO_PUBLIC_PASSKEY_RP_ID`.
+Bundle id `com.kodius.c2connectmobile`, URL scheme `c2connectmobile`.
+
 ## Backend layout (`c2_connect_backend/`)
 
 ```

@@ -100,6 +100,13 @@ else
     set -gx ANDROID_HOME $HOME/Android/Sdk
 end
 set -x PATH $PATH $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools
+
+# Java 17 (OS-aware)
+if test (uname) = Darwin
+    test -x /usr/libexec/java_home; and set -gx JAVA_HOME (/usr/libexec/java_home -v 17 2>/dev/null)
+else
+    set -gx JAVA_HOME /usr/lib/jvm/java-17-openjdk-amd64
+end
 # Homebrew (OS-aware)
 if test (uname) = Darwin
     if test -x /opt/homebrew/bin/brew
@@ -168,7 +175,13 @@ function sshfs-kloki-mobile
 
     cd ~/mnt/sshfs-kloki-mobile
 end
-alias lutris='/usr/bin/python3 /usr/bin/lutris'
 
 # maestro (mobile QA)
 fish_add_path $HOME/.maestro/bin
+
+# pnpm
+set -gx PNPM_HOME '/home/dino/.local/share/pnpm'
+if test "$PATH[1]" != "$PNPM_HOME/bin"
+  set -gx PATH "$PNPM_HOME/bin" $PATH
+end
+# pnpm end
